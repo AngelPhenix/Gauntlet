@@ -1,1 +1,1 @@
-testTESTTESTTESTTESTTESTTEST
+This is a simple Godot project
