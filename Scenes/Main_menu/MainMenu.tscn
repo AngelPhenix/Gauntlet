@@ -30,7 +30,7 @@ func _on_Story_pressed():
 
 func _on_Brawl_pressed():
 	yield(fade_menu(), \"completed\")
-	get_tree().change_scene(\"res://Stages/FinishedStages/Level_.tscn\")
+	get_tree().change_scene(\"res://Stages/Level_.tscn\")
 
 
 func _on_Options_pressed():

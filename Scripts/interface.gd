@@ -12,25 +12,7 @@ var weapons: Array = []
 func _ready() -> void:
 	player.connect("coin_pickedup", self, "_on_coin_pickedup")
 	player.connect("hurt", self, "_on_player_hurt")
-	
 	_update_hud()
-	
-#	if !globals.hud.empty():
-#		for weapon in globals.player_weapons:
-#			var img = load(globals.player_weapons[weapon]["png_path"])
-#			var itex = ImageTexture.new()
-#			var image = img.get_data()
-#			itex.create_from_image(image)
-#			var new_gun_to_add = rect_gun_scn.instance()
-#			new_gun_to_add.texture = itex
-#			new_gun_to_add.texture.flags = 0
-#			$"%Container".add_child(new_gun_to_add)
-#
-#		for node in inventory.get_children():
-#			if !node.is_queued_for_deletion():
-#				weapons.append(node)
-#				node.modulate.a = 0.3
-#		weapons[0].modulate.a = 1
 
 func _update_hud() -> void:
 	$CoinCounter/number.text = str(globals.total_coins_collected)
