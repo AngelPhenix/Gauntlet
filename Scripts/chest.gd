@@ -21,7 +21,6 @@ func create_item() -> void:
 	var rng_seed = RandomNumberGenerator.new()
 	rng_seed.randomize()
 	var my_random_number: int = rng_seed.randi_range(0, 100)
-	print("Random number is: " + str(my_random_number))
 	# 20% de chance d'avoir une arme
 	if my_random_number < 20:
 		if globals.weapons_left_to_choose.size() > 0:
@@ -32,6 +31,9 @@ func create_item() -> void:
 			add_child(created_weapon)
 			created_weapon.weapon_name = new_weapon_name
 			globals.weapons_left_to_choose.erase(new_weapon_name)
+		else:
+			var created_money = money_scn.instance()
+			call_deferred("add_child", created_money)
 	# 80% de chance d'avoir de l'argent
 	else:
 		var created_money = money_scn.instance()
