@@ -11,26 +11,30 @@ var money_scn: PackedScene = preload("res://Scenes/Money.tscn")
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("action") && !opened && player_in_area:
-		weapon_preload.create_weapon(position)
+		create_item()
 		opened = true
 		($sprite as Sprite).texture = opened_chest_texture
 		$opening.play()
 		set_process(false)
 
-
-func create_weapon(chest_position: Vector2) -> void:
-	if globals.weapons_left_to_choose.size() > 0:
-		var all_weapons: Array = globals.weapons_left_to_choose.keys()
-		var new_weapon_name: String = all_weapons[int(rand_range(0, all_weapons.size()))]
-		var created_weapon: Node = gun_scn.instance()
-		created_weapon.get_node("sprite").texture = load(globals.weapons[new_weapon_name]["png_path"])
-		created_weapon.global_position = chest_position
-		add_child(created_weapon)
-		created_weapon.weapon_name = new_weapon_name
-		globals.weapons_left_to_choose.erase(new_weapon_name)
+func create_item() -> void:
+	var rng_seed = RandomNumberGenerator.new()
+	rng_seed.randomize()
+	var my_random_number: int = rng_seed.randi_range(0, 100)
+	print("Random number is: " + str(my_random_number))
+	# 20% de chance d'avoir une arme
+	if my_random_number < 20:
+		if globals.weapons_left_to_choose.size() > 0:
+			var all_weapons: Array = globals.weapons_left_to_choose.keys()
+			var new_weapon_name: String = all_weapons[int(rand_range(0, all_weapons.size()))]
+			var created_weapon: Node = gun_scn.instance()
+			created_weapon.get_node("sprite").texture = load(globals.weapons[new_weapon_name]["png_path"])
+			add_child(created_weapon)
+			created_weapon.weapon_name = new_weapon_name
+			globals.weapons_left_to_choose.erase(new_weapon_name)
+	# 80% de chance d'avoir de l'argent
 	else:
 		var created_money = money_scn.instance()
-		created_money.position = chest_position
 		call_deferred("add_child", created_money)
 
 

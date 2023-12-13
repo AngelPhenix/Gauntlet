@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/chest.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/weapon_chest.png" type="Texture" id=2]
-[ext_resource path="res://Sounds/chest_opening.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/chest_opening01.mp3" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -26,8 +26,7 @@ shape = SubResource( 2 )
 
 [node name="opening" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -25.0
-pitch_scale = 0.7
+volume_db = -15.0
 
 [connection signal="body_entered" from="pickup_area" to="." method="_on_pickup_area_body_entered"]
 [connection signal="body_exited" from="pickup_area" to="." method="_on_pickup_area_body_exited"]
