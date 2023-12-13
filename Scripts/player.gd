@@ -10,10 +10,6 @@ var treasures: int = 0
 var velocity: Vector2 = Vector2()
 var spawn_to_hunt: int = 0
 
-#var weapons: Dictionary = {}
-#var equipped_weapon: Dictionary = globals.player_equipped_weapon
-#var current_weapon_name: String
-
 var equipped_weapon: String
 var weapons_in_inventory: Array
 

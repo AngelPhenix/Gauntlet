@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/player_weapon.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/lightmask02.png" type="Texture" id=3]
 [ext_resource path="res://Sounds/gunshot.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/treasure.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/key.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/hurt.wav" type="AudioStream" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -83,10 +82,6 @@ attenuation = 0.297302
 [node name="treasure" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource( 5 )
 volume_db = -45.449
-
-[node name="key" type="AudioStreamPlayer2D" parent="audio"]
-stream = ExtResource( 6 )
-volume_db = -15.0
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource( 7 )
