@@ -13,6 +13,7 @@ onready var menu_buttons: Array = $Background/MarginContainer/VBoxContainer/VBox
 onready var back_btn_options: Button = $Options/ColorRect/MarginContainer/VBoxContainer/Back
 
 func _ready() -> void:
+	OS.center_window()
 	menu_buttons[0].grab_focus()
 
 
