@@ -2,7 +2,7 @@ extends StaticBody2D
 
 var player_in_area: bool = false
 var opened: bool = false
-var opened_chest_texture: StreamTexture = preload("res://Sprites/weapon_chest_open.png")
+var opened_chest_texture: StreamTexture = preload("res://Sprites/chest_open.png")
 onready var weapon_preload: Node = get_tree().get_nodes_in_group("wp_preload")[0]
 
 # CHEST ITEM GENERATIONS

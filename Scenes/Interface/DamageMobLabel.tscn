@@ -1,18 +1,18 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/label.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/kongtext.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/Theme_Menu.tres" type="Theme" id=2]
-[ext_resource path="res://Fonts/kongtext.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/damage_mob_label.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 3 )
+font_data = ExtResource( 1 )
 
-[node name="Node2D" type="Node2D"]
+[node name="DamageMobLabel" type="Node2D"]
 z_index = 999
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -4.0

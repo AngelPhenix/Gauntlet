@@ -5,7 +5,7 @@ var strength: int = 1
 var health: int = 2
 var spawner: Object = null
 var inventory: Array = []
-var label: PackedScene = preload("res://Scenes/Interface/Label.tscn")
+var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 onready var player: Object = get_tree().get_nodes_in_group("player")[0]
 onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
 

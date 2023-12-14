@@ -14,7 +14,7 @@ var equipped_weapon: String
 var weapons_in_inventory: Array
 
 var nearby_chest: Node
-var bullet_scn: PackedScene = preload("res://Scenes/bullet.tscn")
+var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
 onready var weapon_preload: Node = get_parent().get_node("WeaponPreload")
 onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
 onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]

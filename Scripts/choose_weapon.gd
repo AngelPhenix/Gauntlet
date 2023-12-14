@@ -36,6 +36,5 @@ func _ready():
 				2:
 					tween.interpolate_property(node_to_move, "rect_position", node_to_move.rect_position, Vector2(220,85), 0.4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			tween.start()
-			globals.get_node("card").play()
 			yield(tween, "tween_completed")
 			tween.queue_free()

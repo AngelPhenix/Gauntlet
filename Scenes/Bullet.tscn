@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/bullet.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/lightmask02.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/lightmask02.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.0673
@@ -22,7 +22,7 @@ shape = SubResource( 1 )
 
 [node name="light" type="Light2D" parent="."]
 light_mask = 2
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 texture_scale = 0.33
 color = Color( 0.188235, 1, 0.188235, 0.662745 )
 energy = 1.2

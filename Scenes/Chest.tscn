@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/chest.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/chest_opening01.mp3" type="AudioStream" id=2]
-[ext_resource path="res://Sprites/weapon_chest.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/chest.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
