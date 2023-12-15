@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/torch.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/test.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/torch.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/lightmask02.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-blue_color = Color( 0.882353, 0.101961, 0.870588, 1 )
+blue_color = Color( 0.16, 0.36, 0.76, 1 )
 red_color = Color( 0.76, 0.16, 0.16, 1 )
 green_color = Color( 0.16, 0.76, 0.3, 1 )
 
