@@ -35,6 +35,7 @@ func _ready():
 					tween.interpolate_property(node_to_move, "rect_position", node_to_move.rect_position, Vector2(120,85), 0.4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 				2:
 					tween.interpolate_property(node_to_move, "rect_position", node_to_move.rect_position, Vector2(220,85), 0.4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			get_tree().get_nodes_in_group("card_sound")[0].play()
 			tween.start()
 			yield(tween, "tween_completed")
 			tween.queue_free()
