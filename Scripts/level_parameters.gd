@@ -27,7 +27,7 @@ func _generate_map() -> void:
 	spawn_container.name = "SpawnContainer"
 	add_child(spawn_container)
 	var possible_spawner_tile: Array = map.get_used_cells_by_id(2)
-	var number_of_spawners: int = int(rand_range(min_spawner_possible,max_spawner_possible))
+	var number_of_spawners: int = int(rand_range(min_spawner_possible, max_spawner_possible))
 	globals.spawn_to_destroy = number_of_spawners
 	for i in number_of_spawners:
 		var spawner: Node = spawner_scn.instance()
@@ -35,11 +35,19 @@ func _generate_map() -> void:
 		spawner.global_position = map.map_to_world(chosen_tile) + map.cell_size/2
 		get_tree().get_nodes_in_group("spawner")[0].add_child(spawner)
 	
-	# FLOOR (ID-1) IF MAP IS TOO BRIGHT + HIGHER INTENSITY OF TORCHES TO 2.1
-	# Generate random number to have a probability for the tiles to be cracked (Pretty low (1-5%?)
-	# When the probability is met : replace the tile by one of the indexes of the cracked tiles on the tilemap
-	# MAYBE : Check if tiles around the current checked tile is cracked, if that's the case, boosts probability of
-	# current tile to be cracked at 8-9% ? (PROBABLY TOO HIGH)
+	# COMMENTER POUR REVENIR A UN SOL CLEAN
+	# TILES THAT SPAWN MOBS (ID-2)
+	# CRACKED TILES BETWEEN 8 AND 11
+	for tile in possible_spawner_tile:
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var tile_num = rng.randi_range(8, 11)
+		rng.randomize()
+		var probability = rng.randi_range(0, 100)
+		if probability <= 5:
+			map.set_cellv(tile, tile_num)
+	
+	# FLOOR (ID-0) WHICH DOESN'T SPAWN MOBS
 	var floor_tiles_to_modify: Array = map.get_used_cells_by_id(0)
 	for tile in floor_tiles_to_modify:
 		map.set_cellv(tile, 2)

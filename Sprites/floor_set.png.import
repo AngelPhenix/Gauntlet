@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cracked_floor2.png-61282e9ded5e86c8b305e1eaceafc763.stex"
+path="res://.import/floor_set.png-c394f1ba52bb3bd6364f380fab9977bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/cracked_floor2.png"
-dest_files=[ "res://.import/cracked_floor2.png-61282e9ded5e86c8b305e1eaceafc763.stex" ]
+source_file="res://Sprites/floor_set.png"
+dest_files=[ "res://.import/floor_set.png-c394f1ba52bb3bd6364f380fab9977bd.stex" ]
 
 [params]
 
