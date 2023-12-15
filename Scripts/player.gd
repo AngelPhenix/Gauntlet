@@ -53,6 +53,8 @@ func get_input() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_down"):
 		shooting()
+	if event.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
 
 func shooting() -> void:
 	($audio/gunshot as AudioStreamPlayer2D).play()
