@@ -10,13 +10,5 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var index: int = rng.randi_range(0, torch_colors.size()-1)
-	$sprite.frame = index
+	$sprite.modulate = torch_colors[index]
 	$light.color = torch_colors[index]
-
-
-#func _ready():
-#	var rng = RandomNumberGenerator.new()
-#	rng.randomize()
-#	var index: int = rng.randi_range(0, torch_colors.size()-1)
-#	$sprite.modulate = torch_colors[index]
-#	$light.color = torch_colors[index]
