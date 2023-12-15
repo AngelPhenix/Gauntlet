@@ -31,5 +31,6 @@ Button/styles/focus = SubResource( 7 )
 Button/styles/hover = SubResource( 4 )
 Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = SubResource( 5 )
+CheckButton/constants/hseparation = 30
 Label/fonts/font = SubResource( 8 )
-VBoxContainer/constants/separation = 35
+VBoxContainer/constants/separation = 20

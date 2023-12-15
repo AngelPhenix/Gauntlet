@@ -1,9 +1,7 @@
 extends Node2D
 
 const spawner_scn: PackedScene = preload("res://Scenes/Spawner.tscn")
-const bluetorch_scn: PackedScene = preload("res://Scenes/Torches/BlueTorch.tscn")
-const redtorch_scn: PackedScene = preload("res://Scenes/Torches/RedTorch.tscn")
-const greentorch_scn: PackedScene = preload("res://Scenes/Torches/GreenTorch.tscn")
+const torch_scn: PackedScene = preload("res://Scenes/Torch.tscn")
 const chest_scn: PackedScene = preload("res://Scenes/Chest.tscn")
 const teleporter_scn: PackedScene = preload("res://Scenes/Teleporter.tscn")
 const weapon_start_scn: PackedScene = preload("res://Scenes/ChooseWeapon.tscn")
@@ -48,13 +46,12 @@ func _generate_map() -> void:
 	
 	# TORCHES (ID-3)
 	if torches_visible:
-		var torch_to_choose_from: Array = [bluetorch_scn, redtorch_scn, greentorch_scn]
 		var torch_container: Node2D = Node2D.new()
 		torch_container.add_to_group("torches")
 		torch_container.name = "TorchContainer"
 		add_child(torch_container)
 		for tile in map.get_used_cells_by_id(3):
-			var torch: Node = torch_to_choose_from[int(rand_range(0,torch_to_choose_from.size()))].instance()
+			var torch: Node = torch_scn.instance()
 			torch.global_position = map.map_to_world(tile) + map.cell_size/2
 			get_tree().get_nodes_in_group("torches")[0].add_child(torch)
 
