@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=12 format=2]
 
-[ext_resource path="res://Sprites/teleporter_inactive.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/teleporter.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/wall.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Tile2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/floor_spawn.png" type="Texture" id=5]
@@ -95,7 +95,7 @@ load_path = "res://.import/test.png-652c5a93193bb930e41de9e41f5fcb6d.stex"
 } ]
 3/z_index = 0
 5/name = "teleporter ID-5"
-5/texture = ExtResource( 2 )
+5/texture = ExtResource( 1 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 48, 48 )

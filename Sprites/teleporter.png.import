@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/teleporter_inactive.png-e93526833b93465073cd2c758dba8116.stex"
+path="res://.import/teleporter.png-c1d42465e04666ef8e495272450643ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/teleporter_inactive.png"
-dest_files=[ "res://.import/teleporter_inactive.png-e93526833b93465073cd2c758dba8116.stex" ]
+source_file="res://Sprites/teleporter.png"
+dest_files=[ "res://.import/teleporter.png-c1d42465e04666ef8e495272450643ec.stex" ]
 
 [params]
 

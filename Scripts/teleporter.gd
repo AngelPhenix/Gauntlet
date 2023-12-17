@@ -1,12 +1,10 @@
 extends Area2D
 
-onready var activated_sprite: StreamTexture = preload("res://Sprites/teleporter_active.png")
-
 func _ready():
 	globals.connect("end_level", self, "activate_teleporter")
 
 func activate_teleporter() -> void:
-	$Sprite.texture = activated_sprite
+	$Sprite.frame = 1
 	$CollisionShape2D.set_deferred("disabled", false)
 
 func _on_Teleporter_body_entered(body):
