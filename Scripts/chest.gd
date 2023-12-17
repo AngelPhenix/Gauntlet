@@ -2,7 +2,6 @@ extends StaticBody2D
 
 var player_in_area: bool = false
 var opened: bool = false
-var opened_chest_texture: StreamTexture = preload("res://Sprites/chest_open.png")
 
 # CHEST ITEM GENERATIONS
 var gun_scn: PackedScene = preload("res://Scenes/Gun.tscn")
@@ -12,7 +11,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("action") && !opened && player_in_area:
 		create_item()
 		opened = true
-		($sprite as Sprite).texture = opened_chest_texture
+		$sprite.frame = 1
 		$opening.play()
 		set_process(false)
 
