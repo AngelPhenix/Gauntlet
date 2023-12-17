@@ -5,6 +5,7 @@ const torch_scn: PackedScene = preload("res://Scenes/Torch.tscn")
 const chest_scn: PackedScene = preload("res://Scenes/Chest.tscn")
 const teleporter_scn: PackedScene = preload("res://Scenes/Teleporter.tscn")
 const weapon_start_scn: PackedScene = preload("res://Scenes/ChooseWeapon.tscn")
+var already_chosen_tile: Array
 onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 onready var map: TileMap = get_tree().get_nodes_in_group("map")[0]
 
@@ -21,23 +22,11 @@ func _ready() -> void:
 
 # Checks every tile with ID 2 (floor_spawn) to be a potential spawner tile
 func _generate_map() -> void:
-	# SPAWNERS (ID-2)
-	var spawn_container: Node2D = Node2D.new()
-	spawn_container.add_to_group("spawner")
-	spawn_container.name = "SpawnContainer"
-	add_child(spawn_container)
-	var possible_spawner_tile: Array = map.get_used_cells_by_id(2)
-	var number_of_spawners: int = int(rand_range(min_spawner_possible, max_spawner_possible))
-	globals.spawn_to_destroy = number_of_spawners
-	for i in number_of_spawners:
-		var spawner: Node = spawner_scn.instance()
-		var chosen_tile = possible_spawner_tile[rand_range(0,possible_spawner_tile.size())]
-		spawner.global_position = map.map_to_world(chosen_tile) + map.cell_size/2
-		get_tree().get_nodes_in_group("spawner")[0].add_child(spawner)
-	
 	# COMMENTER POUR REVENIR A UN SOL CLEAN
 	# TILES THAT SPAWN MOBS (ID-2)
 	# CRACKED TILES BETWEEN 8 AND 11
+	var possible_spawner_tile: Array = map.get_used_cells_by_id(2)
+	generate_enemy_spawners(possible_spawner_tile)
 	for tile in possible_spawner_tile:
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
@@ -84,6 +73,27 @@ func _choose_weapon() -> void:
 	var weapons_panel = weapon_start_scn.instance()
 	add_child(weapons_panel)
 	weapons_panel.pause_mode = Node.PAUSE_MODE_PROCESS
+
+func generate_enemy_spawners(tile_positions: Array) -> void:
+	# SPAWNERS (ID-2)
+	var spawn_container: Node2D = Node2D.new()
+	spawn_container.add_to_group("spawner")
+	spawn_container.name = "SpawnContainer"
+	add_child(spawn_container)
+	var number_of_spawners: int = int(rand_range(min_spawner_possible, max_spawner_possible))
+	globals.spawn_to_destroy = number_of_spawners
+	for i in number_of_spawners:
+		var spawner: Node = spawner_scn.instance()
+		var num_picked = rand_range(0,tile_positions.size())
+		var chosen_tile = tile_positions[num_picked]
+		# If the tile has already been picked, choose another one
+		while already_chosen_tile.has(chosen_tile):
+			num_picked = rand_range(0,tile_positions.size())
+			chosen_tile = tile_positions[num_picked]
+		already_chosen_tile.append(chosen_tile)
+		
+		spawner.global_position = map.map_to_world(chosen_tile) + map.cell_size/2
+		get_tree().get_nodes_in_group("spawner")[0].add_child(spawner)
 
 # Is called when the weapon has been chosen and the game can start.
 # The signal is emitted by PanelWeaponChoosing on click on one of the panels appearing at the start
