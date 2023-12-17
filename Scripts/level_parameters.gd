@@ -63,7 +63,7 @@ func _generate_map() -> void:
 			torch.global_position = map.map_to_world(tile) + map.cell_size/2
 			get_tree().get_nodes_in_group("torches")[0].add_child(torch)
 
-	# CHEST (ID-4)
+	# CHEST (ID-4) (ID-12?)
 	var chest_container: Node2D = Node2D.new()
 	chest_container.add_to_group("chests")
 	chest_container.name = "ChestContainer"
