@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/level_parameters.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/WeaponPreload.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tilesets/True_Level_Generation.tres" type="TileSet" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
@@ -14,8 +13,6 @@ max_spawner_possible = 10
 [node name="HUD" type="CanvasLayer" parent="." groups=["HUD"]]
 
 [node name="Interface" parent="HUD" instance=ExtResource( 3 )]
-
-[node name="WeaponPreload" parent="." groups=["wp_preload"] instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 17, 65 )

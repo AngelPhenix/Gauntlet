@@ -3,7 +3,6 @@ extends Control
 var weapon_name_chosen
 signal game_can_start
 onready var main_level : Node = get_tree().get_nodes_in_group("level")[0]
-onready var weapon_preload : Node = get_tree().get_nodes_in_group("wp_preload")[0]
 onready var player : Node = get_tree().get_nodes_in_group("player")[0]
 
 func _ready() -> void:

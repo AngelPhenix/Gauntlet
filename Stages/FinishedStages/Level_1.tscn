@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/WeaponPreload.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tilesets/True_Level_Generation.tres" type="TileSet" id=4]
 [ext_resource path="res://Scripts/level_parameters.gd" type="Script" id=5]
@@ -16,8 +15,6 @@ max_spawner_possible = 5
 [node name="Interface" parent="HUD" instance=ExtResource( 1 )]
 margin_top = -0.314022
 margin_bottom = -0.314026
-
-[node name="WeaponPreload" parent="." groups=["wp_preload"] instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
