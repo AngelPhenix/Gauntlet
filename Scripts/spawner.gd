@@ -23,8 +23,6 @@ func delete_object(enemy: Object) -> void:
 func hit(damage):
 	health -= damage
 	$anim.play("hit")
-	if $anim.is_playing():
-		yield($anim, "animation_finished")
 	if health <= 0:
 		globals.destroyed_spawn()
 		for enemy in existing_enemies:

@@ -31,6 +31,8 @@ func load_weapons(file_path: String) -> void:
 	weapons_left_to_choose = weapons.duplicate(true)
 
 func destroyed_spawn() -> void:
+	print("Number of spawn to destroy before : " + str(spawn_to_destroy))
 	spawn_to_destroy -= 1
+	print("Number of spawn to destroy after : " + str(spawn_to_destroy))
 	if spawn_to_destroy <= 0:
 		emit_signal("end_level")
