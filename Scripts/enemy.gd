@@ -49,3 +49,25 @@ func get_loot() -> void:
 	# 5% chance d'avoir coins
 	if chance >= 1 && chance <= 5:
 		inventory.append(globals.zombie_possible_items[0])
+	
+	# Each enemy have a loot table like this : 
+	# loot_table = {
+	# 	"Ruby": 5,
+	#	"Coin": 15,
+	#	"Weapon": 0.2
+	# }
+	# Les clés seront le nom de l'item
+	# Les valeurs associées seront le % de drop /100
+	# Lorsqu'un "get_loot" sera call, il faudra passer la loot_table
+	# Faire une loot table complete ? Faire une loot_table par mob ?
+	# get_loot(zombie_loots)
+	# A ce moment-là, il faudra faire un foreach de la taille du dictionaire
+	# Et roll un random number avec un randomize à chaque fois pour voir si le loot est tombé
+	# (random number probablement en float si je veux des 0.5% par exemple
+	# Lorsque le loot "tombe", lui donner une position approximative de drop à la position
+	# du cadavre du monstre
+	# S'assurer que le nom du loot soit bien le nom de sa scène afin de pouvoir
+	# rendre le script modulable et ajouter rapidement des items dans les tables de loot
+	# Comme par exemple : load("res://Scenes/Interface/+ NOM_DE_LITEM_LOOT +.tscn"
+	# Donc "coin" devra être "Coin.tscn" et noté "Coin" dans la table
+	# "ruby devra être "Ruby.tscn" et noté "Ruby" dans la table
