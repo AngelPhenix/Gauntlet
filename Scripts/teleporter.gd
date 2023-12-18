@@ -6,6 +6,7 @@ func _ready():
 func activate_teleporter() -> void:
 	$Sprite.frame = 1
 	$CollisionShape2D.set_deferred("disabled", false)
+	$Particles2D.emitting = true
 
 func _on_Teleporter_body_entered(body):
 	if body.is_in_group("player"):
