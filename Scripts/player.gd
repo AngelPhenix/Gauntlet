@@ -9,6 +9,8 @@ var coins: int = 0
 var treasures: int = 0
 var velocity: Vector2 = Vector2()
 var spawn_to_hunt: int = 0
+var invincibility_frame: float = 0.50
+var body_should_damage_us_map: Dictionary
 
 var equipped_weapon: String
 var weapons_in_inventory: Array
@@ -66,13 +68,6 @@ func shooting() -> void:
 	bullet.buffed = globals.weapons[equipped_weapon]["goes_through"]
 	($shoot_rate as Timer).start()
 
-func taking_damage(damage: int) -> void:
-	if touching_enemy:
-		health -= damage / resistance
-		emit_signal("hurt", health)
-		yield(get_tree().create_timer(0.33), "timeout")
-		taking_damage(damage)
-
 func weapon_swapped(weapon_name_in_inv: String) -> void:
 	equipped_weapon = weapon_name_in_inv
 
@@ -96,7 +91,6 @@ func _on_Timer_timeout() -> void:
 		shooting()
 		($shoot_rate as Timer).start()
 
-var body_should_damage_us_map: Dictionary = {}
 func _on_hitbox_body_entered(body: Object) -> void:
 	# If the body hit is an enemy
 	if body.is_in_group("enemy"):
@@ -114,7 +108,7 @@ func _on_hitbox_body_entered(body: Object) -> void:
 				($audio/hurt as AudioStreamPlayer2D).play()
 				health -= body.strength / resistance
 				emit_signal("hurt", health)
-				yield(get_tree().create_timer(0.33), "timeout")
+				yield(get_tree().create_timer(invincibility_frame), "timeout")
 			# Not in loop anymore, meaning body is not near us / is dead : No more damage, kick it from dic
 			body_should_damage_us_map.erase(body)
 
