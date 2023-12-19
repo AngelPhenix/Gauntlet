@@ -27,4 +27,4 @@ tile_data = PoolIntArray( -131082, 1, 0, -131081, 1, 0, -131080, 1, 0, -131079, 
 [node name="EnemyContainer" type="Node" parent="." groups=["enemy_container"]]
 
 [node name="tint" type="CanvasModulate" parent="."]
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.607843, 0.607843, 0.607843, 1 )

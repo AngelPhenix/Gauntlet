@@ -24,15 +24,9 @@ func fade_menu() -> void:
 	fade_out.start()
 	yield(fade_out, \"tween_completed\")
 
-
-func _on_Story_pressed():
-	yield(fade_menu(), \"completed\")
-	get_tree().change_scene(\"res://Stages/FinishedStages/Level_1.tscn\")
-
-
 func _on_Brawl_pressed():
 	yield(fade_menu(), \"completed\")
-	get_tree().change_scene(\"res://Stages/Level_.tscn\")
+	get_tree().change_scene(\"res://Stages/Level_1.tscn\")
 
 
 func _on_Options_pressed():
@@ -102,28 +96,22 @@ margin_bottom = 260.0
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Story" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 48.0
-margin_right = 234.0
-margin_bottom = 64.0
-text = "Story"
-
 [node name="Brawl" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 84.0
+margin_top = 66.0
 margin_right = 234.0
-margin_bottom = 100.0
+margin_bottom = 82.0
 text = "Brawl"
 
 [node name="Options" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 120.0
+margin_top = 102.0
 margin_right = 234.0
-margin_bottom = 136.0
+margin_bottom = 118.0
 text = "Options"
 
 [node name="Quit" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 156.0
+margin_top = 138.0
 margin_right = 234.0
-margin_bottom = 172.0
+margin_bottom = 154.0
 text = "Quit"
 
 [node name="Fadeout" type="ColorRect" parent="." groups=["tint"]]
@@ -186,7 +174,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Back"
 
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Story" to="." method="_on_Story_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Brawl" to="." method="_on_Brawl_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
