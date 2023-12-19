@@ -21,7 +21,6 @@ func _update_hud() -> void:
 	$Health_Bar/hp.max_value = player.max_health
 	$Health_Bar/hp.value = player.health
 	$Exp_Bar.value = player.experience
-	print($Exp_Bar.value)
 	exp_total = player.experience
 	
 	if globals.player_weapons_in_inventory.size() > 0:
@@ -65,10 +64,9 @@ func _on_player_hurt(new_health: int) -> void:
 	$Health_Bar/hp.value = new_health
 	
 func _on_player_add_experience(experience: int) -> void:
-	print($Exp_bar.value)
 	var new_exp_value = exp_total + experience
-	if new_exp_value < $Exp_bar.get_max():
-		exp_total =+ experience
+	if new_exp_value < $Exp_Bar.max_value:
+		exp_total += experience
 		$Exp_Bar.value = exp_total
 	else:
 		exp_total = new_exp_value - $Exp_Bar.max_value
