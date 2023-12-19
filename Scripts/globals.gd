@@ -1,7 +1,8 @@
 extends Node
 
 var coin_scn: PackedScene = preload("res://Scenes/Coin.tscn")
-var zombie_possible_items: Array = [coin_scn]
+var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
+var zombie_possible_items: Array = [coin_scn, exp_scn]
 var weapons_left_to_choose: Dictionary
 var weapons: Dictionary
 var spawn_to_destroy: int 

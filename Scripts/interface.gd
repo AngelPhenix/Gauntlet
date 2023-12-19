@@ -8,16 +8,21 @@ onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
 var rect_gun_scn = preload("res://Scenes/Interface/GunNode.tscn")
 var weapons: Array = []
+var exp_total: int = 0
 
 func _ready() -> void:
 	player.connect("coin_pickedup", self, "_on_coin_pickedup")
 	player.connect("hurt", self, "_on_player_hurt")
+	player.connect("exp_pickedup", self, "_on_player_add_experience")
 	_update_hud()
 
 func _update_hud() -> void:
 	$CoinCounter/number.text = str(globals.total_coins_collected)
 	$Health_Bar/hp.max_value = player.max_health
 	$Health_Bar/hp.value = player.health
+	$Exp_Bar.value = player.experience
+	print($Exp_Bar.value)
+	exp_total = player.experience
 	
 	if globals.player_weapons_in_inventory.size() > 0:
 		for weapon in globals.player_weapons_in_inventory:
@@ -59,8 +64,16 @@ func _on_coin_pickedup(total_coins: int) -> void:
 func _on_player_hurt(new_health: int) -> void:
 	$Health_Bar/hp.value = new_health
 	
-func _on_exp_pickedup(experience: int) -> void:
-	$Exp_Bar.value += experience
+func _on_player_add_experience(experience: int) -> void:
+	print($Exp_bar.value)
+	var new_exp_value = exp_total + experience
+	if new_exp_value < $Exp_bar.get_max():
+		exp_total =+ experience
+		$Exp_Bar.value = exp_total
+	else:
+		exp_total = new_exp_value - $Exp_Bar.max_value
+		print("Level up !")
+		$Exp_Bar.value = exp_total
 
 func _on_Interface_weapon_pickedup(weapon_name_picked_up: String) -> void:
 	var new_node = rect_gun_scn.instance()

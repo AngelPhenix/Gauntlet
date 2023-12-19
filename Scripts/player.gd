@@ -12,6 +12,8 @@ var spawn_to_hunt: int = 0
 var invincibility_frame: float = 0.50
 var body_should_damage_us_map: Dictionary
 
+var experience: int
+
 var equipped_weapon: String
 var weapons_in_inventory: Array
 
@@ -26,6 +28,7 @@ var touching_enemy: bool = false
 
 signal hurt(health)
 signal coin_pickedup(value)
+signal exp_pickedup(value)
 
 func _ready() -> void:
 	if globals.level > 1:
@@ -84,6 +87,11 @@ func add_coins(value: int) -> void:
 
 func add_treasure(value: int) -> void:
 	treasures += value
+	($audio/treasure as AudioStreamPlayer2D).play()
+
+func add_experience(value: int) -> void:
+	experience += value
+	emit_signal("exp_pickedup", value)
 	($audio/treasure as AudioStreamPlayer2D).play()
 
 func _on_Timer_timeout() -> void:

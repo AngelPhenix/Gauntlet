@@ -28,9 +28,10 @@ func hit(damage: int) -> void:
 	$tween.start()
 	if health <= 0:
 		if inventory.size() > 0:
-			var looted_item = inventory[0].instance()
-			get_parent().call_deferred("add_child", looted_item)
-			looted_item.global_position = global_position
+			for item in inventory:
+				var looted_item = item.instance()
+				get_parent().call_deferred("add_child", looted_item)
+				looted_item.global_position = global_position + Vector2(5, 5)
 		queue_free()
 		var blood = blood_particle.instance()
 		blood.position = global_position
@@ -49,6 +50,8 @@ func get_loot() -> void:
 	# 5% chance d'avoir coins
 	if chance >= 1 && chance <= 5:
 		inventory.append(globals.zombie_possible_items[0])
+	if chance > 0:
+		inventory.append(globals.zombie_possible_items[1])
 	
 	# Each enemy have a loot table like this : 
 	# loot_table = {
