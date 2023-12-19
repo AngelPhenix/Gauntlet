@@ -3,9 +3,8 @@
 [ext_resource path="res://Fonts/kongtext.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 8
 outline_size = 1
-outline_color = Color( 0.427451, 0.298039, 0.0784314, 1 )
+outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 3
 extra_spacing_bottom = 3
 font_data = ExtResource( 1 )
