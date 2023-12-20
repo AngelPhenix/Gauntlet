@@ -10,7 +10,7 @@ outline_size = 2
 outline_color = Color( 1, 0.372549, 0.0313726, 1 )
 font_data = ExtResource( 2 )
 
-[node name="LevelUp" type="CanvasLayer"]
+[node name="LevelUp" type="CanvasLayer" groups=["lvlup_screen"]]
 script = ExtResource( 4 )
 
 [node name="Control" type="Control" parent="."]
