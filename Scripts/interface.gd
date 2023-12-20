@@ -4,6 +4,8 @@ extends Control
 # S'il en a, prendre chaque arme pour les afficher dans la hotbar
 # Check si le joueur a l'index de l'arme selectionnée (Store in globals.last_weapon_index)
 
+export var debug_mode: bool = false
+
 onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
 var rect_gun_scn = preload("res://Scenes/Interface/GunNode.tscn")
@@ -52,6 +54,8 @@ func _input(event: InputEvent) -> void:
 				equipped_weapon_swapped(-1)
 			if event.button_index == BUTTON_WHEEL_DOWN:
 				equipped_weapon_swapped(1)
+	if event.is_action_pressed("lvlup") && debug_mode:
+		player.levelup()
 
 func delete_node(node: Node) -> void:
 	inventory.remove_child(node)
