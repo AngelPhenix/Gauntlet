@@ -9,7 +9,7 @@ outline_size = 2
 outline_color = Color( 1, 0.372549, 0.0313726, 1 )
 font_data = ExtResource( 2 )
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="LevelUp" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -29,21 +29,22 @@ margin_left = 40.0
 margin_top = 40.0
 margin_right = 280.0
 margin_bottom = 280.0
+custom_constants/separation = 42
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
-margin_top = 15.0
+margin_top = 4.0
 margin_right = 240.0
-margin_bottom = 31.0
+margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 text = "Level up!"
 align = 1
 valign = 1
 
 [node name="BuffContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
-margin_top = 51.0
+margin_top = 62.0
 margin_right = 240.0
-margin_bottom = 224.0
+margin_bottom = 235.0
 custom_constants/separation = 16
 alignment = 1
 
