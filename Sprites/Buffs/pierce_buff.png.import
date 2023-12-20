@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/piercing_buff.png-e9980e15c670e5936f0b2c370ba8fc11.stex"
+path="res://.import/pierce_buff.png-12c05c4aebcca8118f8ee749880caa43.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Buffs/piercing_buff.png"
-dest_files=[ "res://.import/piercing_buff.png-e9980e15c670e5936f0b2c370ba8fc11.stex" ]
+source_file="res://Sprites/Buffs/pierce_buff.png"
+dest_files=[ "res://.import/pierce_buff.png-12c05c4aebcca8118f8ee749880caa43.stex" ]
 
 [params]
 
