@@ -7,7 +7,6 @@ extends Control
 onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
 var rect_gun_scn = preload("res://Scenes/Interface/GunNode.tscn")
-var levelup_panel_scn = preload("res://Scenes/Interface/Levelup.tscn")
 var weapons: Array = []
 var exp_total: int = 0
 
@@ -70,10 +69,7 @@ func _on_player_add_experience(experience: int) -> void:
 		exp_total += experience
 		$Exp_Bar.value = exp_total
 	else:
-		get_tree().paused = true
-		var panel = levelup_panel_scn.instance()
-		add_child(panel)
-		panel.pause_mode = Node.PAUSE_MODE_PROCESS
+		player.levelup()
 		exp_total = new_exp_value - $Exp_Bar.max_value
 		$Exp_Bar.value = exp_total
 

@@ -21,10 +21,13 @@ var nearby_chest: Node
 var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
 onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
 onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
+var levelup_panel_scn = preload("res://Scenes/Interface/Levelup.tscn")
 
 var shoot: bool = true
 var is_playing: bool = false
 var touching_enemy: bool = false
+
+var buff_array: Array = []
 
 signal hurt(health)
 signal coin_pickedup(value)
@@ -123,3 +126,9 @@ func _on_hitbox_body_entered(body: Object) -> void:
 func _on_hitbox_body_exited(body: Object) -> void:
 	if body.is_in_group("enemy"):
 		body_should_damage_us_map[body] = false # tell our loop to stop damaging
+
+func levelup() -> void:
+	get_tree().paused = true
+	var panel = levelup_panel_scn.instance()
+	add_child(panel)
+	panel.pause_mode = Node.PAUSE_MODE_PROCESS
