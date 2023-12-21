@@ -19,7 +19,7 @@ export (String, FILE, "*.json") var weapon_file_path : String
 var buffs: Dictionary = {
 	0 : {
 		"name" : "fire",
-		"tooltip" : "Put the last enemy on fire",
+		"tooltip" : "Put last enemy on fire",
 		"sprite" : "res://Sprites/Buffs/fire_buff.png"
 	},
 	1 : {
@@ -29,7 +29,7 @@ var buffs: Dictionary = {
 	},
 	2 : {
 		"name" : "pierce",
-		"tooltip" : "Bullet pierce enemies depending on level",
+		"tooltip" : "Bullet pierce depending on level",
 		"sprite" : "res://Sprites/Buffs/pierce_buff.png"
 	}
 }

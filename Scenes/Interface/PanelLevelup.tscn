@@ -26,34 +26,37 @@ script = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 10
+custom_constants/margin_right = 5
+custom_constants/margin_top = 8
+custom_constants/margin_left = 27
+custom_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 230.0
-margin_bottom = 37.0
+margin_left = 27.0
+margin_top = 8.0
+margin_right = 235.0
+margin_bottom = 42.0
 custom_constants/separation = 15
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" groups=["lvlup_sprite"]]
-margin_top = 6.0
+margin_top = 9.0
 margin_right = 15.0
-margin_bottom = 21.0
+margin_bottom = 24.0
 size_flags_vertical = 4
 texture = ExtResource( 2 )
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" groups=["lvlup_text"]]
+[node name="Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer" groups=["lvlup_text"]]
 margin_left = 30.0
-margin_top = 9.0
-margin_right = 94.0
-margin_bottom = 17.0
-text = "ATK +10%"
-align = 1
-valign = 1
+margin_top = 2.0
+margin_right = 180.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 150, 30 )
+mouse_filter = 2
+size_flags_vertical = 4
+meta_underlined = false
+fit_content_height = true
+scroll_active = false
 
 [connection signal="gui_input" from="." to="." method="_on_NinePatchRect_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_NinePatchRect_mouse_entered"]
