@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Sprites/9patch_panel.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/piece.png" type="Texture" id=2]
-[ext_resource path="res://Fonts/Theme_Menu.tres" type="Theme" id=3]
+[ext_resource path="res://Fonts/Theme_Panel_Lvl.tres" type="Theme" id=3]
 [ext_resource path="res://Scripts/panel_levelup.gd" type="Script" id=4]
 
 [node name="NinePatchRect" type="NinePatchRect"]

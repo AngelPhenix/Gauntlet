@@ -14,8 +14,9 @@
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="DynamicFont" id=8]
-outline_size = 2
-outline_color = Color( 0.427451, 0.298039, 0.0784314, 1 )
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=9]
