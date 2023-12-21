@@ -6,6 +6,7 @@
 [ext_resource path="res://Scripts/panel_levelup.gd" type="Script" id=4]
 
 [node name="NinePatchRect" type="NinePatchRect"]
+modulate = Color( 0.733333, 0.733333, 0.733333, 1 )
 margin_right = 188.0
 margin_bottom = 47.0
 rect_min_size = Vector2( 240, 47 )
@@ -55,3 +56,5 @@ align = 1
 valign = 1
 
 [connection signal="gui_input" from="." to="." method="_on_NinePatchRect_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_NinePatchRect_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_NinePatchRect_mouse_exited"]
