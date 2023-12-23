@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/interface.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/kongtext.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Fonts/Theme_Menu.tres" type="Theme" id=4]
 [ext_resource path="res://Sprites/HP_EMPTRY.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/HP_FULL.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/default_font.tres" type="DynamicFont" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -94,9 +95,17 @@ alignment = 1
 
 [node name="Exp_Bar" type="ProgressBar" parent="."]
 margin_left = 11.0
-margin_top = 11.0
+margin_top = 17.0
 margin_right = 253.0
-margin_bottom = 21.0
+margin_bottom = 27.0
 custom_fonts/font = SubResource( 2 )
 step = 1.0
 value = 10.0
+
+[node name="Level" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 4.0
+margin_right = 50.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 7 )
+text = "Lv.1"

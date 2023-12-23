@@ -11,6 +11,7 @@ var velocity: Vector2 = Vector2()
 var spawn_to_hunt: int = 0
 var invincibility_frame: float = 0.50
 var body_should_damage_us_map: Dictionary
+var level: int = 1
 
 var experience: int
 
@@ -128,6 +129,7 @@ func _on_hitbox_body_exited(body: Object) -> void:
 		body_should_damage_us_map[body] = false # tell our loop to stop damaging
 
 func levelup() -> void:
+	level += 1
 	get_tree().paused = true
 	var panel = levelup_panel_scn.instance()
 	add_child(panel)

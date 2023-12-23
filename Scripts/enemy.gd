@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed: int = 50
+var speed: int = 10
 var strength: int = 1
 var health: int = 2
 var spawner: Object = null

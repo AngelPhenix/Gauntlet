@@ -56,6 +56,7 @@ func _input(event: InputEvent) -> void:
 				equipped_weapon_swapped(1)
 	if event.is_action_pressed("lvlup") && debug_mode:
 		player.levelup()
+		$Level.text = "Lv." + str(player.level)
 
 func delete_node(node: Node) -> void:
 	inventory.remove_child(node)
@@ -75,6 +76,7 @@ func _on_player_add_experience(experience: int) -> void:
 	else:
 		player.levelup()
 		exp_total = new_exp_value - $Exp_Bar.max_value
+		$Level.text = "Lv." + str(player.level)
 		$Exp_Bar.value = exp_total
 
 func _on_Interface_weapon_pickedup(weapon_name_picked_up: String) -> void:
