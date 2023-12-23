@@ -14,7 +14,7 @@ func _ready() -> void:
 	base_dmg = int(globals.weapons[player.equipped_weapon]["attack"])
 	for buff in player.buffs.keys():
 		if buff == "attack_raw":
-			atk_multiplier = player.buffs["attack_raw"]
+			atk_boost = player.buffs["attack_raw"]
 	dmg_calculated = base_dmg * atk_multiplier + atk_boost
 
 func _process(delta: float) -> void:
