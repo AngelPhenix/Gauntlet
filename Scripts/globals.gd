@@ -18,8 +18,8 @@ export (String, FILE, "*.json") var weapon_file_path : String
 
 var buffs: Dictionary = {
 	0 : {
-		"name" : "fire",
-		"tooltip" : "Put last enemy on fire",
+		"name" : "attack_raw",
+		"tooltip" : "Add +1 to base damage",
 		"sprite" : "res://Sprites/Buffs/fire_buff.png"
 	},
 	1 : {

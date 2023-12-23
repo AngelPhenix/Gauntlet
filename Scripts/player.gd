@@ -72,7 +72,6 @@ func shooting() -> void:
 	bullet.shoot(get_global_mouse_position(), global_position)
 	bullet.get_node("sprite").texture = load(globals.weapons[equipped_weapon]["bullet_sprite"])
 	bullet.get_node("light").color = Color(globals.weapons[equipped_weapon]["light_color"])
-	bullet.strength = int(globals.weapons[equipped_weapon]["attack"])
 	bullet.buffed = globals.weapons[equipped_weapon]["goes_through"]
 	($shoot_rate as Timer).start()
 
@@ -142,9 +141,7 @@ func buff_collected(name: String) -> void:
 	for buff in buffs:
 		if buff == name:
 			buffs[buff] += 1
-			print("The buff: " + buff + " has been leveled up to level " + str(buffs[buff]))
 			hasBuff = true
 	# Will execute only if the buff isn't in the dictionary and initialize it to 1
 	if hasBuff == false:
 		buffs[name] = 1
-		print("The buff: " + name + " has been created to level " + str(buffs[name]))
