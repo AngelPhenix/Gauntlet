@@ -29,9 +29,6 @@ var is_playing: bool = false
 var touching_enemy: bool = false
 
 var buffs: Dictionary = {
-	"explosive": 1,
-	"fire": 4,
-	"pierce": 7
 }
 
 signal hurt(health)
@@ -138,3 +135,16 @@ func levelup() -> void:
 	var panel = levelup_panel_scn.instance()
 	add_child(panel)
 	panel.pause_mode = Node.PAUSE_MODE_PROCESS
+
+func buff_collected(name: String) -> void:
+	var hasBuff: bool = false
+	# Will execute only if the buff is already in the dictionary
+	for buff in buffs:
+		if buff == name:
+			buffs[buff] += 1
+			print("The buff: " + buff + " has been leveled up to level " + str(buffs[buff]))
+			hasBuff = true
+	# Will execute only if the buff isn't in the dictionary and initialize it to 1
+	if hasBuff == false:
+		buffs[name] = 1
+		print("The buff: " + name + " has been created to level " + str(buffs[name]))
