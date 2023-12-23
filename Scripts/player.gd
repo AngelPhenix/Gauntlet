@@ -28,7 +28,11 @@ var shoot: bool = true
 var is_playing: bool = false
 var touching_enemy: bool = false
 
-var buff_array: Array = []
+var buffs: Dictionary = {
+	"explosive": 1,
+	"fire": 4,
+	"pierce": 7
+}
 
 signal hurt(health)
 signal coin_pickedup(value)

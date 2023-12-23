@@ -3,6 +3,7 @@ extends CanvasLayer
 var indexes_left: Array
 
 func _ready():
+	randomize()
 	for key in globals.buffs:
 		indexes_left.append(key)
 	
