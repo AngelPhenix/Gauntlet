@@ -28,7 +28,7 @@ var buffs: Dictionary = {
 		"sprite" : "res://Sprites/Buffs/attack_multiplier.png"
 	},
 	2 : {
-		"name" : "pierce",
+		"name" : "piercing",
 		"tooltip" : "Bullet pierce depending on level",
 		"sprite" : "res://Sprites/Buffs/pierce_buff.png"
 	},

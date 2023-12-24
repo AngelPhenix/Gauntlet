@@ -72,7 +72,6 @@ func shooting() -> void:
 	bullet.shoot(get_global_mouse_position(), global_position)
 	bullet.get_node("sprite").texture = load(globals.weapons[equipped_weapon]["bullet_sprite"])
 	bullet.get_node("light").color = Color(globals.weapons[equipped_weapon]["light_color"])
-	bullet.buffed = globals.weapons[equipped_weapon]["goes_through"]
 	($shoot_rate as Timer).start()
 
 func weapon_swapped(weapon_name_in_inv: String) -> void:
