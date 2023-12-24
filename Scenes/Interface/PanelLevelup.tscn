@@ -40,8 +40,8 @@ custom_constants/separation = 15
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" groups=["lvlup_sprite"]]
 margin_top = 9.0
-margin_right = 15.0
-margin_bottom = 24.0
+margin_right = 16.0
+margin_bottom = 25.0
 size_flags_vertical = 4
 texture = ExtResource( 2 )
 stretch_mode = 6
