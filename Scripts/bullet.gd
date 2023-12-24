@@ -2,9 +2,9 @@ extends Area2D
 
 var faced_direction: Vector2 = Vector2()
 var speed: int = 200
-var base_dmg: int = 1
+var base_dmg = 1
 var dmg_calculated: float
-var atk_multiplier = 1
+var atk_multiplier = 1.0
 var atk_boost = 0
 var buffed = false
 
@@ -15,7 +15,9 @@ func _ready() -> void:
 	for buff in player.buffs.keys():
 		if buff == "attack_raw":
 			atk_boost = player.buffs["attack_raw"]
-	dmg_calculated = base_dmg * atk_multiplier + atk_boost
+		if buff == "attack_multiplier":
+			atk_multiplier += player.buffs["attack_multiplier"]
+	dmg_calculated = (base_dmg + atk_boost) + (base_dmg + atk_boost) * (atk_multiplier/10)
 
 func _process(delta: float) -> void:
 	translate(faced_direction * speed * delta)
