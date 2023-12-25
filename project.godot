@@ -31,8 +31,8 @@ gdscript/warnings/enable=false
 
 window/size/width=320
 window/size/height=320
-window/size/test_width=920
-window/size/test_height=920
+window/size/test_width=960
+window/size/test_height=960
 window/per_pixel_transparency/allowed=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
