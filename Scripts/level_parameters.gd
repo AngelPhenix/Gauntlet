@@ -26,7 +26,7 @@ func _generate_map() -> void:
 	# TILES THAT SPAWN MOBS (ID-2)
 	# CRACKED TILES BETWEEN 8 AND 11
 	var possible_spawner_tile: Array = map.get_used_cells_by_id(2)
-	generate_enemy_spawners(possible_spawner_tile)
+#	generate_enemy_spawners(possible_spawner_tile)
 	for tile in possible_spawner_tile:
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
