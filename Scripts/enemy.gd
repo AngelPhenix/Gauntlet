@@ -6,6 +6,9 @@ var health: int = 10
 var spawner: Object = null
 var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
+var burning: bool = false
+var burning_timer: int = 3
+
 onready var player: Object = get_tree().get_nodes_in_group("player")[0]
 onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
 
@@ -46,17 +49,19 @@ func display_damage(damage: int) -> void:
 	dmg_taken.get_node("Label").text = str(damage)
 
 func on_fire() -> void:
-	pass
-#	$tween.interpolate_property(self, "modulate", Color(1,1,1), Color(1,0.5,0), 1, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
-#	$tween.interpolate_property(self, "modulate", Color(1,0.5,0), Color(1,0,0), 1, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
-#	$tween.interpolate_property(self, "modulate", Color(1,0,0), Color(1,0.5,0), 1, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
-#	$tween.interpolate_property(self, "modulate", Color(1,0.5,0), Color(1,1,1), 1, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
-#	$tween.start()
-
+	burning = true
+	if burning:
+		$Particles2D.emitting = true
+		$tween.interpolate_property(self, "modulate", Color(1,0.5,0), Color(1,1,1), burning_timer, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
+		$tween.start()
+		yield($tween, "tween_completed")
+		burning = false
+	
+	
 func get_loot() -> void:
 	var chance = randi() % 100 + 1
 	# 5% chance d'avoir coins
 	if chance >= 1 && chance <= 5:
 		inventory.append(globals.zombie_possible_items[0])
-	if chance > 5 && chance <= 15:
+	if chance > 5 && chance <= 40:
 		inventory.append(globals.zombie_possible_items[1])

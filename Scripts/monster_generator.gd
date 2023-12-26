@@ -3,7 +3,7 @@ extends Node
 var screen_w_size: int = 320
 var screen_h_size: int = 320
 var spawning_margin: int = 50
-var number_of_mobs: int = 1
+var number_of_mobs: int = 10
 var spawn
 
 var zombie_scn: PackedScene = preload("res://Scenes/Zombie.tscn")
