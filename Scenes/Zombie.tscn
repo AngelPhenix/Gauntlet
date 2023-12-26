@@ -1,41 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/enemy.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.18283
-
-[sub_resource type="Animation" id=3]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.709804, 0.286275, 0.0823529, 1 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "on_fire"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.709804, 0.286275, 0.0823529, 1 ), Color( 0.941176, 0.196078, 0.027451, 1 ), Color( 0.709804, 0.286275, 0.0823529, 1 ), Color( 0.941176, 0.196078, 0.027451, 1 ), Color( 0.709804, 0.286275, 0.0823529, 1 ), Color( 0.941176, 0.196078, 0.027451, 1 ), Color( 0.709804, 0.286275, 0.0823529, 1 ), Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "walk"
@@ -64,15 +33,12 @@ position = Vector2( -2, 0 )
 shape = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.709804, 0.286275, 0.0823529, 1 )
 texture = ExtResource( 2 )
 vframes = 2
 
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "walk"
 playback_speed = 1.5
-anims/RESET = SubResource( 3 )
-anims/on_fire = SubResource( 4 )
 anims/walk = SubResource( 2 )
 
 [node name="tween" type="Tween" parent="."]

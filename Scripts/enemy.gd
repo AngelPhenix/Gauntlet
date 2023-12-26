@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var speed: int = 10
 var strength: int = 1
-var health: int = 2
+var health: int = 10
 var spawner: Object = null
 var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
@@ -46,7 +46,12 @@ func display_damage(damage: int) -> void:
 	dmg_taken.get_node("Label").text = str(damage)
 
 func on_fire() -> void:
-	$anim.play("on_fire")
+	pass
+#	$tween.interpolate_property(self, "modulate", Color(1,1,1), Color(1,0.5,0), 1, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
+#	$tween.interpolate_property(self, "modulate", Color(1,0.5,0), Color(1,0,0), 1, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
+#	$tween.interpolate_property(self, "modulate", Color(1,0,0), Color(1,0.5,0), 1, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
+#	$tween.interpolate_property(self, "modulate", Color(1,0.5,0), Color(1,1,1), 1, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
+#	$tween.start()
 
 func get_loot() -> void:
 	var chance = randi() % 100 + 1

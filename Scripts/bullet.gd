@@ -9,6 +9,8 @@ var atk_boost = 0
 var penetration: bool = false
 var penetration_depth: int = 0
 
+var fire_bullet: bool = false
+
 onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 
 # Checks all the players buffs and act accordingly
@@ -22,6 +24,8 @@ func _ready() -> void:
 		if buff == "piercing":
 			penetration = true
 			penetration_depth = player.buffs["piercing"]
+		if buff == "fire":
+			fire_bullet = true
 			
 	dmg_calculated = (base_dmg + atk_boost) + (base_dmg + atk_boost) * (atk_multiplier/10)
 
@@ -34,13 +38,12 @@ func shoot(target_position: Vector2, player_position: Vector2) -> void:
 	rotation = faced_direction.angle()
 
 func _on_Bullet_body_entered(body: Object) -> void:
-	if body is TileMap:
-		queue_free()
-	if body.is_in_group("wall"):
-		queue_free()
 	if body.is_in_group("enemy"):
 		if body.has_method("hit"):
 			body.hit(dmg_calculated)
+			if fire_bullet:
+				body.on_fire()
+
 			if !penetration:
 				queue_free()
 			else:
@@ -52,9 +55,12 @@ func _on_Bullet_area_entered(area: Object) -> void:
 	if area.is_in_group("enemy"):
 		if area.has_method("hit"):
 			area.hit(dmg_calculated)
+			if fire_bullet:
+				area.on_fire()
+				
 			if !penetration:
 				queue_free()
 			else:
 				penetration_depth -= 1
-				if penetration_depth == 0:
+				if penetration_depth < 0:
 					queue_free()
