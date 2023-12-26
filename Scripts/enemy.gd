@@ -2,17 +2,18 @@ extends KinematicBody2D
 
 var speed: int = 10
 var strength: int = 1
-var health: int = 10
+var health: int = 30
 var spawner: Object = null
 var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 var burning: bool = false
-var burning_timer: int = 3
+var burning_timer: int = 2
 
 onready var player: Object = get_tree().get_nodes_in_group("player")[0]
 onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
 
 func _ready() -> void:
+	$StopFire.wait_time = burning_timer
 	get_loot()
 
 func _physics_process(delta: float) -> void:
@@ -49,13 +50,13 @@ func display_damage(damage: int) -> void:
 	dmg_taken.get_node("Label").text = str(damage)
 
 func on_fire() -> void:
+	$OnFire.start()
+	$StopFire.start()
 	burning = true
 	if burning:
 		$Particles2D.emitting = true
 		$tween.interpolate_property(self, "modulate", Color(1,0.5,0), Color(1,1,1), burning_timer, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
 		$tween.start()
-		yield($tween, "tween_completed")
-		burning = false
 	
 	
 func get_loot() -> void:
@@ -65,3 +66,10 @@ func get_loot() -> void:
 		inventory.append(globals.zombie_possible_items[0])
 	if chance > 5 && chance <= 40:
 		inventory.append(globals.zombie_possible_items[1])
+
+func _on_OnFire_timeout():
+	hit(2)
+
+func _on_StopFire_timeout():
+	$OnFire.stop()
+	burning = false
