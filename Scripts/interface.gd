@@ -30,11 +30,11 @@ func _update_hud() -> void:
 			_on_Interface_weapon_pickedup(weapon)
 	
 	# Gives every weapon in the HUD a lower alpha and the equipped one with the higher alpha 
-	if globals.level > 1:
-		var equipped_weapon_index = globals.player_weapons_in_inventory.find(globals.player_equipped_weapon, 0)
-		for weapon in inventory.get_children():
-			weapon.modulate.a = 0.3
-		inventory.get_children()[equipped_weapon_index].modulate.a = 1
+#	if globals.level > 1:
+#		var equipped_weapon_index = globals.player_weapons_in_inventory.find(globals.player_equipped_weapon, 0)
+#		for weapon in inventory.get_children():
+#			weapon.modulate.a = 0.3
+#		inventory.get_children()[equipped_weapon_index].modulate.a = 1
 
 func equipped_weapon_swapped(index_change: int) -> void:
 	var index_of_equipped_weapon: int = player.weapons_in_inventory.find(player.equipped_weapon, 0)

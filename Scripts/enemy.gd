@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var speed: int = 10
 var strength: int = 1
-var health: int = 30
+var health: int = 10
 var spawner: Object = null
 var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")

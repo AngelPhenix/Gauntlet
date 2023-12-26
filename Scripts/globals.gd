@@ -5,8 +5,6 @@ var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
 var zombie_possible_items: Array = [coin_scn, exp_scn]
 var weapons_left_to_choose: Dictionary
 var weapons: Dictionary
-var spawn_to_destroy: int 
-var level: int = 1
 
 # SAVED VALUES WHEN TELEPORTER IS STEPPED ON
 var player_weapons_in_inventory: Array
@@ -58,8 +56,3 @@ func load_weapons(file_path: String) -> void:
 	assert(weapons_from_json.size() > 0) 
 	weapons = weapons_from_json
 	weapons_left_to_choose = weapons.duplicate(true)
-
-func destroyed_spawn() -> void:
-	spawn_to_destroy -= 1
-	if spawn_to_destroy <= 0:
-		emit_signal("end_level")

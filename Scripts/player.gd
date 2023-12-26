@@ -28,17 +28,16 @@ var shoot: bool = true
 var is_playing: bool = false
 var touching_enemy: bool = false
 
-var buffs: Dictionary = {
-}
+var buffs: Dictionary = {}
 
 signal hurt(health)
 signal coin_pickedup(value)
 signal exp_pickedup(value)
 
-func _ready() -> void:
-	if globals.level > 1:
-		equipped_weapon = globals.player_equipped_weapon
-		weapons_in_inventory = globals.player_weapons_in_inventory
+#func _ready() -> void:
+#	if globals.level > 1:
+#		equipped_weapon = globals.player_equipped_weapon
+#		weapons_in_inventory = globals.player_weapons_in_inventory
 
 func _physics_process(delta: float) -> void:
 	get_input()
