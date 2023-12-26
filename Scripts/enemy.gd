@@ -50,7 +50,7 @@ func get_loot() -> void:
 	# 5% chance d'avoir coins
 	if chance >= 1 && chance <= 5:
 		inventory.append(globals.zombie_possible_items[0])
-	if chance > 0:
+	if chance > 5 && chance <= 15:
 		inventory.append(globals.zombie_possible_items[1])
 	
 	# Each enemy have a loot table like this : 

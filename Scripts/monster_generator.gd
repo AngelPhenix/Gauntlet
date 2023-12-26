@@ -23,11 +23,6 @@ func _on_Tick_timeout():
 		var right_side_screen: float = player.global_position.x + (screen_w_size/2)
 		var top_side_screen: float = player.global_position.y - (screen_h_size/2)
 		var bot_side_screen: float = player.global_position.y + (screen_h_size/2)
-
-		# POS MIN X : player.global_position.x - (screen_w_size/2) - spawning_margin
-		# POS MAX X : player.global_position.x + (screen_w_size/2) + spawning_margin
-		# POS MIN Y : player.global_position.y - (screen_h_size/2) - spawning_margin
-		# POS MAX Y : player.global_position.y + (screen_h_size/2) + spawning_margin
 		
 		var random_x_pos: float = rand_range(left_side_screen - spawning_margin, 
 		right_side_screen + spawning_margin)
@@ -46,4 +41,5 @@ func _on_Tick_timeout():
 			zombie.position.x = random_x_pos
 			zombie.position.y = rand_range(top_side_screen - spawning_margin,
 			bot_side_screen + spawning_margin)
+			
 		add_child(zombie)
