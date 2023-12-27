@@ -68,7 +68,7 @@ func get_loot() -> void:
 		inventory.append(globals.zombie_possible_items[1])
 
 func _on_OnFire_timeout():
-	hit(2)
+	hit(player.buffs["fire"])
 
 func _on_StopFire_timeout():
 	$OnFire.stop()
