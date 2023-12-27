@@ -20,21 +20,14 @@ func _ready() -> void:
 
 func _update_hud() -> void:
 	$CoinCounter/number.text = str(globals.total_coins_collected)
-	$Health_Bar/hp.max_value = player.max_health
-	$Health_Bar/hp.value = player.health
+	$hp.max_value = player.max_health
+	$hp.value = player.health
 	$Exp_Bar.value = player.experience
 	exp_total = player.experience
 	
 	if globals.player_weapons_in_inventory.size() > 0:
 		for weapon in globals.player_weapons_in_inventory:
 			_on_Interface_weapon_pickedup(weapon)
-	
-	# Gives every weapon in the HUD a lower alpha and the equipped one with the higher alpha 
-#	if globals.level > 1:
-#		var equipped_weapon_index = globals.player_weapons_in_inventory.find(globals.player_equipped_weapon, 0)
-#		for weapon in inventory.get_children():
-#			weapon.modulate.a = 0.3
-#		inventory.get_children()[equipped_weapon_index].modulate.a = 1
 
 func equipped_weapon_swapped(index_change: int) -> void:
 	var index_of_equipped_weapon: int = player.weapons_in_inventory.find(player.equipped_weapon, 0)
@@ -66,7 +59,7 @@ func _on_coin_pickedup(total_coins: int) -> void:
 	$CoinCounter/number.text = str(total_coins)
 
 func _on_player_hurt(new_health: int) -> void:
-	$Health_Bar/hp.value = new_health
+	$hp.value = new_health
 	
 func _on_player_add_experience(experience: int) -> void:
 	var new_exp_value = exp_total + experience
