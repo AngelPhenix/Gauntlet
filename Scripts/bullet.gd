@@ -45,7 +45,6 @@ func shoot(target_position: Vector2, player_position: Vector2) -> void:
 func _on_Bullet_body_entered(body: Object) -> void:
 	if body.is_in_group("enemy"):
 		if body.has_method("hit"):
-			body.hit(dmg_calculated)
 			
 			if explosive_bullet:
 				var explosion = explosion_scn.instance()
@@ -53,6 +52,8 @@ func _on_Bullet_body_entered(body: Object) -> void:
 				explosion.damage = player.buffs["explosive"] * 3
 				get_tree().get_root().call_deferred('add_child', explosion)
 				explosive_bullet = false
+			
+			body.hit(dmg_calculated)
 			
 			if fire_bullet:
 				body.on_fire()

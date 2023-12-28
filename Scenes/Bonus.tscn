@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sounds/treasure.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sprites/money.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/bonus.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Bonus" type="Area2D"]
+script = ExtResource( 3 )
+
+[node name="pickup_shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="opening" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -15.0
+
+[connection signal="body_entered" from="." to="." method="_on_Bonus_body_entered"]

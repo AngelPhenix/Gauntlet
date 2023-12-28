@@ -62,9 +62,11 @@ func on_fire() -> void:
 func get_loot() -> void:
 	var chance = randi() % 100 + 1
 	# 5% chance d'avoir coins
-	if chance >= 1 && chance <= 5:
+	if chance >= 1 && chance <= 2:
+		inventory.append(globals.zombie_possible_items[2])
+	if chance > 2 && chance <= 6:
 		inventory.append(globals.zombie_possible_items[0])
-	if chance > 5 && chance <= 40:
+	if chance > 6 && chance <= 36:
 		inventory.append(globals.zombie_possible_items[1])
 
 func _on_OnFire_timeout():
