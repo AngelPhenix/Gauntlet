@@ -9,6 +9,9 @@ var atk_boost = 0
 var penetration: bool = false
 var penetration_depth: int = 0
 
+onready var explosion_scn: PackedScene = preload("res://Scenes/Explosion.tscn")
+
+var explosive_bullet: bool = false
 var fire_bullet: bool = false
 
 onready var player: Node = get_tree().get_nodes_in_group("player")[0]
@@ -26,6 +29,8 @@ func _ready() -> void:
 			penetration_depth = player.buffs["piercing"]
 		if buff == "fire":
 			fire_bullet = true
+		if buff == "explosive":
+			explosive_bullet = true
 			
 	dmg_calculated = (base_dmg + atk_boost) + (base_dmg + atk_boost) * (atk_multiplier/10)
 
@@ -40,7 +45,14 @@ func shoot(target_position: Vector2, player_position: Vector2) -> void:
 func _on_Bullet_body_entered(body: Object) -> void:
 	if body.is_in_group("enemy"):
 		if body.has_method("hit"):
+			if explosive_bullet:
+				var explosion = explosion_scn.instance()
+				explosion.position = self.position
+				get_tree().get_root().add_child(explosion)
+				queue_free()
+			
 			body.hit(dmg_calculated)
+			
 			if fire_bullet:
 				body.on_fire()
 
