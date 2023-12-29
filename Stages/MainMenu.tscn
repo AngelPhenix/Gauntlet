@@ -24,6 +24,7 @@ func fade_menu() -> void:
 	fade_out.start()
 	yield(fade_out, \"tween_completed\")
 
+
 func _on_Brawl_pressed():
 	yield(fade_menu(), \"completed\")
 	get_tree().change_scene(\"res://Stages/Level_1.tscn\")

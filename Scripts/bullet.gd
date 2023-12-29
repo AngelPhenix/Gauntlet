@@ -66,20 +66,5 @@ func _on_Bullet_body_entered(body: Object) -> void:
 				if penetration_depth < 0:
 					queue_free()
 
-func _on_Bullet_area_entered(area: Object) -> void:
-	if area.is_in_group("enemy"):
-		if area.has_method("hit"):
-			area.hit(dmg_calculated)
-			if fire_bullet:
-				area.on_fire()
-				
-			if !penetration:
-				queue_free()
-			else:
-				penetration_depth -= 1
-				if penetration_depth < 0:
-					queue_free()
-
-
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
