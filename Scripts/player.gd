@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # variables
-var speed: int = 120
+var speed: int = 40
 var max_health: int = 20
 var health: int = 20
 var coins: int = 0

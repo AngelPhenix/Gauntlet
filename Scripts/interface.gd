@@ -1,9 +1,5 @@
 extends Control
 
-# Check les armes du joueur s'il en a 
-# S'il en a, prendre chaque arme pour les afficher dans la hotbar
-# Check si le joueur a l'index de l'arme selectionnée (Store in globals.last_weapon_index)
-
 export var debug_mode: bool = false
 
 onready var player: Node = get_tree().get_nodes_in_group("player")[0]
