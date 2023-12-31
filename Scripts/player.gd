@@ -6,9 +6,7 @@ var max_health: int = 20
 var health: int = 20
 var resistance: int = 1
 var coins: int = 0
-var treasures: int = 0
 var velocity: Vector2 = Vector2()
-var spawn_to_hunt: int = 0
 var invincibility_frame: float = 0.50
 var body_should_damage_us_map: Dictionary
 var level: int = 1
@@ -24,6 +22,7 @@ onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
 onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
 var levelup_panel_scn = preload("res://Scenes/Interface/Levelup.tscn")
 
+var can_fire: bool = true
 var shoot: bool = true
 var is_playing: bool = false
 var touching_enemy: bool = false
@@ -54,12 +53,13 @@ func get_input() -> void:
 		is_playing = false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_down"):
+	if event.is_action_pressed("mouse_down") && can_fire:
 		shooting()
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 
 func shooting() -> void:
+	can_fire = false
 	($audio/gunshot as AudioStreamPlayer2D).play()
 	var bullet: Node = bullet_scn.instance()
 	get_tree().get_root().add_child(bullet)
@@ -82,19 +82,10 @@ func add_coins(value: int) -> void:
 	emit_signal("coin_pickedup", globals.total_coins_collected)
 	($audio/treasure as AudioStreamPlayer2D).play()
 
-func add_treasure(value: int) -> void:
-	treasures += value
-	($audio/treasure as AudioStreamPlayer2D).play()
-
 func add_experience(value: int) -> void:
 	experience += value
 	emit_signal("exp_pickedup", value)
 	($audio/treasure as AudioStreamPlayer2D).play()
-
-func _on_Timer_timeout() -> void:
-	if(Input.is_action_pressed("mouse_down")):
-		shooting()
-		($shoot_rate as Timer).start()
 
 func _on_hitbox_body_entered(body: Object) -> void:
 	# If the body hit is an enemy
@@ -138,3 +129,10 @@ func buff_collected(name: String) -> void:
 	# Will execute only if the buff isn't in the dictionary and initialize it to 1
 	if hasBuff == false:
 		buffs[name] = 1
+
+
+func _on_shoot_rate_timeout():
+	can_fire = true
+	if(Input.is_action_pressed("mouse_down") && can_fire):
+		shooting()
+		($shoot_rate as Timer).start()

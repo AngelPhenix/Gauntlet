@@ -46,7 +46,7 @@ texture = ExtResource( 2 )
 vframes = 2
 
 [node name="shoot_rate" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.5
 
 [node name="camera" type="Camera2D" parent="."]
 current = true
@@ -87,6 +87,6 @@ volume_db = -45.449
 stream = ExtResource( 7 )
 volume_db = -35.098
 
-[connection signal="timeout" from="shoot_rate" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="shoot_rate" to="." method="_on_shoot_rate_timeout"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]

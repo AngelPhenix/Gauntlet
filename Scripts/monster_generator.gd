@@ -3,7 +3,7 @@ extends Node
 var screen_w_size: int = 320
 var screen_h_size: int = 320
 var spawning_margin: int = 50
-var number_of_mobs: int = 10
+var number_of_mobs: int = 3
 var spawn
 
 var zombie_scn: PackedScene = preload("res://Scenes/Zombie.tscn")
@@ -11,8 +11,7 @@ onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 
 func _ready():
 	randomize()
-#	screen_w_size = OS.window_size.x
-#	screen_h_size = OS.window_size.y
+	_on_Tick_timeout()
 
 func _on_Tick_timeout():
 	for i in number_of_mobs:
