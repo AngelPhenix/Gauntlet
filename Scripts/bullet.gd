@@ -2,7 +2,7 @@ extends Area2D
 
 var faced_direction: Vector2 = Vector2()
 var speed: int = 200
-var base_dmg = 1
+var base_dmg = 20
 var dmg_calculated: float
 var atk_multiplier = 1.0
 var atk_boost = 0

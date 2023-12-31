@@ -2,8 +2,7 @@ extends KinematicBody2D
 
 var speed: int = 10
 var strength: int = 1
-var health: int = 10
-var spawner: Object = null
+var health: int = 35
 var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 var burning: bool = false
@@ -40,8 +39,6 @@ func hit(damage: int) -> void:
 		var blood = blood_particle.instance()
 		blood.position = global_position
 		get_parent().add_child(blood)
-		if spawner != null:
-			spawner.delete_object(self)
 
 func display_damage(damage: int) -> void:
 	var dmg_taken = label.instance()
