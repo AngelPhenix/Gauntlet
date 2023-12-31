@@ -4,7 +4,6 @@ extends KinematicBody2D
 var speed: int = 120
 var max_health: int = 20
 var health: int = 20
-var resistance: int = 1
 var coins: int = 0
 var velocity: Vector2 = Vector2()
 var invincibility_frame: float = 0.50
@@ -102,7 +101,9 @@ func _on_hitbox_body_entered(body: Object) -> void:
 			# While the body is in the dictionary, take damage every 0.33 sec
 			while body_should_damage_us_map[body]:
 				($audio/hurt as AudioStreamPlayer2D).play()
-				health -= body.strength / resistance
+				health -= body.strength
+				if health <= 0:
+					print("Death !!!!!!!")
 				emit_signal("hurt", health)
 				yield(get_tree().create_timer(invincibility_frame), "timeout")
 			# Not in loop anymore, meaning body is not near us / is dead : No more damage, kick it from dic
