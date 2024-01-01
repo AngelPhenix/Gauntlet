@@ -1,7 +1,6 @@
 extends Node2D
 
 const weapon_start_scn: PackedScene = preload("res://Scenes/ChooseWeapon.tscn")
-onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 onready var map: TileMap = get_tree().get_nodes_in_group("map")[0]
 
 func _ready() -> void:
