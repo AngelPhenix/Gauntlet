@@ -1,29 +1,53 @@
 extends Node2D
 
 const weapon_start_scn: PackedScene = preload("res://Scenes/ChooseWeapon.tscn")
-#onready var map: TileMap = get_tree().get_nodes_in_group("map")[0]
+
+onready var fragment_scn: PackedScene = preload("res://Scenes/TileFragment.tscn")
+
+var player_frag_position: Vector2 = Vector2(0, 0)
 
 func _ready() -> void:
 	randomize()
-	_generate_map()
+	_generate_cracks()
 	_choose_weapon()
 
-# Checks every tile with ID 2 (floor_spawn) to be a potential spawner tile
-func _generate_map() -> void:
-	pass
-	# CRACKED TILES BETWEEN 8 AND 11
-#	var possible_spawner_tile: Array = map.get_used_cells_by_id(2)
-##	generate_enemy_spawners(possible_spawner_tile)
-#	for tile in possible_spawner_tile:
-#		var rng = RandomNumberGenerator.new()
-#		rng.randomize()
-#		var tile_num = rng.randi_range(8, 11)
-#		rng.randomize()
-#		var probability = rng.randi_range(0, 100)
-#		if probability <= 2:
-#			map.set_cellv(tile, tile_num)
+# Checks every tile with ID 2 (floor_spawn) to be a potential cracked tile with a 2% chance
+func _generate_cracks() -> void:
+	for fragment in $Map.get_children():
+		for tile in fragment.get_used_cells_by_id(2):
+			var rng = RandomNumberGenerator.new()
+			rng.randomize()
+			var tile_num = rng.randi_range(8, 11)
+			rng.randomize()
+			var probability = rng.randi_range(0, 100)
+			if probability <= 2:
+				fragment.set_cellv(tile, tile_num)
 
-
+func generate_new_fragments(new_player_pos: Vector2) -> void:
+	# Player went left
+	if new_player_pos.x < player_frag_position.x:
+		for fragment in $Map.get_children():
+			if fragment.position.x > player_frag_position.x:
+				var new_opposite_fragment: Node = fragment_scn.instance()
+				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
+				fragment.queue_free()
+	
+	# Player went right
+	if new_player_pos.x > player_frag_position.x:
+		for fragment in $Map.get_children():
+			if fragment.position.x < player_frag_position.x:
+				fragment.queue_free()
+	
+	# Player went up
+	if new_player_pos.y < player_frag_position.y:
+		for fragment in $Map.get_children():
+			if fragment.position.y > player_frag_position.y:
+				fragment.queue_free()
+	
+	if new_player_pos.y > player_frag_position.y:
+		for fragment in $Map.get_children():
+			if fragment.position.y < player_frag_position.y:
+				fragment.queue_free()
 
 
 func _choose_weapon() -> void:

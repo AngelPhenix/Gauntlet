@@ -12,7 +12,7 @@ var player_weapons_in_inventory: Array
 var player_equipped_weapon: String
 var hud: Array
 var total_coins_collected: int = 0
-var game_just_started: bool = true
+var center_touched: bool = false
 
 export (String, FILE, "*.json") var weapon_file_path : String
 
