@@ -22,6 +22,9 @@ func _generate_map() -> void:
 		if probability <= 2:
 			map.set_cellv(tile, tile_num)
 
+
+
+
 func _choose_weapon() -> void:
 	get_tree().paused = true
 	var weapons_panel = weapon_start_scn.instance()
