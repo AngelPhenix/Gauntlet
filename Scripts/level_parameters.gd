@@ -1,7 +1,7 @@
 extends Node2D
 
 const weapon_start_scn: PackedScene = preload("res://Scenes/ChooseWeapon.tscn")
-onready var map: TileMap = get_tree().get_nodes_in_group("map")[0]
+#onready var map: TileMap = get_tree().get_nodes_in_group("map")[0]
 
 func _ready() -> void:
 	randomize()
@@ -10,17 +10,18 @@ func _ready() -> void:
 
 # Checks every tile with ID 2 (floor_spawn) to be a potential spawner tile
 func _generate_map() -> void:
+	pass
 	# CRACKED TILES BETWEEN 8 AND 11
-	var possible_spawner_tile: Array = map.get_used_cells_by_id(2)
-#	generate_enemy_spawners(possible_spawner_tile)
-	for tile in possible_spawner_tile:
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		var tile_num = rng.randi_range(8, 11)
-		rng.randomize()
-		var probability = rng.randi_range(0, 100)
-		if probability <= 2:
-			map.set_cellv(tile, tile_num)
+#	var possible_spawner_tile: Array = map.get_used_cells_by_id(2)
+##	generate_enemy_spawners(possible_spawner_tile)
+#	for tile in possible_spawner_tile:
+#		var rng = RandomNumberGenerator.new()
+#		rng.randomize()
+#		var tile_num = rng.randi_range(8, 11)
+#		rng.randomize()
+#		var probability = rng.randi_range(0, 100)
+#		if probability <= 2:
+#			map.set_cellv(tile, tile_num)
 
 
 
