@@ -9,5 +9,6 @@ func _on_Area2D_body_entered(body):
 			$Area2D.queue_free()
 		else:
 			globals.center_touched = true
+			level.player_frag = self
 			$Area2D.queue_free()
 
