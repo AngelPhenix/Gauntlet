@@ -30,13 +30,15 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 			if fragment.position.x > player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
+				$Map.call_deferred("add_child", new_opposite_fragment)
 				fragment.queue_free()
+		player_frag_position = new_player_pos
 	
 	# Player went right
 	if new_player_pos.x > player_frag_position.x:
 		for fragment in $Map.get_children():
 			if fragment.position.x < player_frag_position.x:
-				fragment.queue_free()
+				var new_opposite_fragment: Node = fragment_scn.instance()
 	
 	# Player went up
 	if new_player_pos.y < player_frag_position.y:
