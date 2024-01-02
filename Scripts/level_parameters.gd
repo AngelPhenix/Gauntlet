@@ -79,6 +79,8 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 		$Map.call_deferred("add_child", previous_player_fragment)
 		player_frag.queue_free()
 		player_frag_position = new_player_pos
+	
+	_generate_cracks()
 
 
 func _choose_weapon() -> void:
