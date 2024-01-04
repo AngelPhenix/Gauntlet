@@ -24,63 +24,121 @@ func _generate_cracks() -> void:
 			if probability <= 2:
 				fragment.set_cellv(tile, tile_num)
 
+#func generate_new_fragments(new_player_pos: Vector2) -> void:
+#	# Player went left
+#	if new_player_pos.x < player_frag_position.x:
+#		print("Player went left")
+#		for fragment in $Map.get_children():
+#			if fragment.position.x > player_frag_position.x:
+#				var new_opposite_fragment: Node = fragment_scn.instance()
+#				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
+#				$Map.call_deferred("add_child", new_opposite_fragment)
+#				fragment.queue_free()
+#				print("Left")
+#
+#	# Player went right
+#	if new_player_pos.x > player_frag_position.x:
+#		print("Player went right")
+#		for fragment in $Map.get_children():
+#			if fragment.position.x < player_frag_position.x:
+#				var new_opposite_fragment: Node = fragment_scn.instance()
+#				new_opposite_fragment.position = Vector2(new_player_pos.x + (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
+#				$Map.call_deferred("add_child", new_opposite_fragment)
+#				fragment.queue_free()
+#
+#	# Player went up
+#	if new_player_pos.y < player_frag_position.y:
+#		print("Player went up")
+#		for fragment in $Map.get_children():
+#			if fragment.position.y > player_frag_position.y:
+#				var new_opposite_fragment: Node = fragment_scn.instance()
+#				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y - (fragment.get_used_rect().size.y * fragment.cell_size.y))
+#				$Map.call_deferred("add_child", new_opposite_fragment)
+#				fragment.queue_free()
+#
+#	if new_player_pos.y > player_frag_position.y:
+#		print("Player went down")
+#		for fragment in $Map.get_children():
+#			if fragment.position.y < player_frag_position.y:
+#				var new_opposite_fragment: Node = fragment_scn.instance()
+#				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y + (fragment.get_used_rect().size.y * fragment.cell_size.y))
+#				$Map.call_deferred("add_child", new_opposite_fragment)
+#				fragment.queue_free()
+#				print("Down")
+#
+#	var previous_player_fragment: Node = fragment_scn.instance()
+#	previous_player_fragment.position = player_frag_position
+#	$Map.call_deferred("add_child", previous_player_fragment)
+#	player_frag.queue_free()
+#	player_frag_position = new_player_pos
+#	print("Test")
+
+
 func generate_new_fragments(new_player_pos: Vector2) -> void:
+	var fragments: Array = $Map.get_children()
+	print(fragments)
+	print($Map.get_children())
+	var new_frags: Array
+	
 	# Player went left
 	if new_player_pos.x < player_frag_position.x:
-		for fragment in $Map.get_children():
+		for fragment in fragments:
 			if fragment.position.x > player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
-				$Map.call_deferred("add_child", new_opposite_fragment)
+#				$Map.call_deferred("add_child", new_opposite_fragment)
+				fragments.append(new_opposite_fragment)
+				fragments.erase(fragment)
+				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
-		var previous_player_fragment: Node = fragment_scn.instance()
-		previous_player_fragment.position = player_frag_position
-		$Map.call_deferred("add_child", previous_player_fragment)
-		player_frag.queue_free()
-		player_frag_position = new_player_pos
+				print("Left!")
 	
 	# Player went right
 	if new_player_pos.x > player_frag_position.x:
-		for fragment in $Map.get_children():
+		print("Player went right")
+		for fragment in fragments:
 			if fragment.position.x < player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(new_player_pos.x + (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
-				$Map.call_deferred("add_child", new_opposite_fragment)
+#				$Map.call_deferred("add_child", new_opposite_fragment)
+				fragments.append(new_opposite_fragment)
+				fragments.erase(fragment)
+				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
-		var previous_player_fragment: Node = fragment_scn.instance()
-		previous_player_fragment.position = player_frag_position
-		$Map.call_deferred("add_child", previous_player_fragment)
-		player_frag.queue_free()
-		player_frag_position = new_player_pos
 	
 	# Player went up
 	if new_player_pos.y < player_frag_position.y:
-		for fragment in $Map.get_children():
+		print("Player went up")
+		for fragment in fragments:
 			if fragment.position.y > player_frag_position.y:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y - (fragment.get_used_rect().size.y * fragment.cell_size.y))
-				$Map.call_deferred("add_child", new_opposite_fragment)
+#				$Map.call_deferred("add_child", new_opposite_fragment)
+				fragments.append(new_opposite_fragment)
+				fragments.erase(fragment)
+				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
-		var previous_player_fragment: Node = fragment_scn.instance()
-		previous_player_fragment.position = player_frag_position
-		$Map.call_deferred("add_child", previous_player_fragment)
-		player_frag.queue_free()
-		player_frag_position = new_player_pos
 	
 	if new_player_pos.y > player_frag_position.y:
-		for fragment in $Map.get_children():
+		print("Player went down")
+		for fragment in fragments:
 			if fragment.position.y < player_frag_position.y:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y + (fragment.get_used_rect().size.y * fragment.cell_size.y))
-				$Map.call_deferred("add_child", new_opposite_fragment)
+#				$Map.call_deferred("add_child", new_opposite_fragment)
+				fragments.append(new_opposite_fragment)
+				fragments.erase(fragment)
+				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
-		var previous_player_fragment: Node = fragment_scn.instance()
-		previous_player_fragment.position = player_frag_position
-		$Map.call_deferred("add_child", previous_player_fragment)
-		player_frag.queue_free()
-		player_frag_position = new_player_pos
 	
-	_generate_cracks()
+
+	var previous_player_fragment: Node = fragment_scn.instance()
+	previous_player_fragment.position = player_frag_position
+	$Map.call_deferred("add_child", previous_player_fragment)
+	player_frag.queue_free()
+	player_frag_position = new_player_pos
+	print("Test")
+
 
 
 func _choose_weapon() -> void:
