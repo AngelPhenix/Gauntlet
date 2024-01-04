@@ -81,6 +81,7 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	
 	# Player went left
 	if new_player_pos.x < player_frag_position.x:
+		print("Player went left")
 		for fragment in fragments:
 			if fragment.position.x > player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instance()
@@ -125,28 +126,29 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
 	
-
+#
 	var previous_player_fragment: Node = fragment_scn.instance()
 	previous_player_fragment.position = player_frag_position
 	$Map.call_deferred("add_child", previous_player_fragment)
 	player_frag.queue_free()
 	player_frag_position = new_player_pos
-	
-	var new_map: Array = _delete_unwanted_fragments(fragments, frags_to_delete)
+#
+#	_delete_unwanted_fragments(fragments, frags_to_delete)
 	_draw_new_map_from_array(new_frags)
 
-func _delete_unwanted_fragments(main_array: Array, fragments_to_delete: Array) -> Array:
-	for fragment in fragments_to_delete:
-		if main_array.has(fragment):
-			main_array.erase(fragment)
-	
-	return main_array
+#func _delete_unwanted_fragments(main_array: Array, fragments_to_delete: Array) -> void:
+#	for frag in fragments_to_delete:
+#		frag.queue_free()
 
 func _draw_new_map_from_array(array_to_draw_with: Array) -> void:
-	print($Map.get_children())
+#	for map in $Map.get_children():
+#		print(map.position)
 	for frags in array_to_draw_with:
-		
-		pass
+		$Map.call_deferred("add_child", frags)
+	
+	for map in $Map.get_children():
+		print(map.position)
+	print("===================")
 
 func _choose_weapon() -> void:
 	get_tree().paused = true
