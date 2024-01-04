@@ -76,8 +76,7 @@ func _generate_cracks() -> void:
 
 func generate_new_fragments(new_player_pos: Vector2) -> void:
 	var fragments: Array = $Map.get_children()
-	print(fragments)
-	print($Map.get_children())
+	var frags_to_delete: Array
 	var new_frags: Array
 	
 	# Player went left
@@ -86,12 +85,10 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 			if fragment.position.x > player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
-#				$Map.call_deferred("add_child", new_opposite_fragment)
 				fragments.append(new_opposite_fragment)
-				fragments.erase(fragment)
+				frags_to_delete.append(fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
-				print("Left!")
 	
 	# Player went right
 	if new_player_pos.x > player_frag_position.x:
@@ -100,9 +97,8 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 			if fragment.position.x < player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(new_player_pos.x + (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
-#				$Map.call_deferred("add_child", new_opposite_fragment)
 				fragments.append(new_opposite_fragment)
-				fragments.erase(fragment)
+				frags_to_delete.append(fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
 	
@@ -113,9 +109,8 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 			if fragment.position.y > player_frag_position.y:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y - (fragment.get_used_rect().size.y * fragment.cell_size.y))
-#				$Map.call_deferred("add_child", new_opposite_fragment)
 				fragments.append(new_opposite_fragment)
-				fragments.erase(fragment)
+				frags_to_delete.append(fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
 	
@@ -125,9 +120,8 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 			if fragment.position.y < player_frag_position.y:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y + (fragment.get_used_rect().size.y * fragment.cell_size.y))
-#				$Map.call_deferred("add_child", new_opposite_fragment)
 				fragments.append(new_opposite_fragment)
-				fragments.erase(fragment)
+				frags_to_delete.append(fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
 	
@@ -137,9 +131,22 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	$Map.call_deferred("add_child", previous_player_fragment)
 	player_frag.queue_free()
 	player_frag_position = new_player_pos
-	print("Test")
+	
+	var new_map: Array = _delete_unwanted_fragments(fragments, frags_to_delete)
+	_draw_new_map_from_array(new_frags)
 
+func _delete_unwanted_fragments(main_array: Array, fragments_to_delete: Array) -> Array:
+	for fragment in fragments_to_delete:
+		if main_array.has(fragment):
+			main_array.erase(fragment)
+	
+	return main_array
 
+func _draw_new_map_from_array(array_to_draw_with: Array) -> void:
+	print($Map.get_children())
+	for frags in array_to_draw_with:
+		
+		pass
 
 func _choose_weapon() -> void:
 	get_tree().paused = true
