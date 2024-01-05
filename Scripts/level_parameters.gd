@@ -31,7 +31,6 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	
 	# Player went left
 	if new_player_pos.x < player_frag_position.x:
-		print("Player went left")
 		for fragment in fragments:
 			if fragment.position.x > player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instance()
@@ -42,7 +41,6 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	
 	# Player went right
 	if new_player_pos.x > player_frag_position.x:
-		print("Player went right")
 		for fragment in fragments:
 			if fragment.position.x < player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instance()
@@ -53,7 +51,6 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	
 	# Player went up
 	if new_player_pos.y < player_frag_position.y:
-		print("Player went up")
 		for fragment in fragments:
 			if fragment.position.y > player_frag_position.y:
 				var new_opposite_fragment: Node = fragment_scn.instance()
@@ -63,7 +60,6 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 				fragment.queue_free()
 	
 	if new_player_pos.y > player_frag_position.y:
-		print("Player went down")
 		for fragment in fragments:
 			if fragment.position.y < player_frag_position.y:
 				var new_opposite_fragment: Node = fragment_scn.instance()
@@ -73,17 +69,25 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 				fragment.queue_free()
 	
 	player_frag_position = new_player_pos
-
+	
 	_draw_new_map_from_array(new_frags)
+	_clean_map(fragments)
 
 
 func _draw_new_map_from_array(array_to_draw_with: Array) -> void:
-	print("test")
 	for frags in array_to_draw_with:
 		$Map.call_deferred("add_child", frags)
 
 func _clean_map(map_to_clean: Array) -> void:
-	pass
+	for map in map_to_clean:
+		if map.position.x > player_frag_position.x + 320:
+			map.queue_free()
+		if map.position.x < player_frag_position.x - 320:
+			map.queue_free()
+		if map.position.y > player_frag_position.y + 320:
+			map.queue_free()
+		if map.position.y < player_frag_position.y - 320:
+			map.queue_free()
 
 func _choose_weapon() -> void:
 	get_tree().paused = true
