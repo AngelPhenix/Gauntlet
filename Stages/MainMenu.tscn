@@ -11,6 +11,7 @@ var first_focus: bool = true
 
 onready var menu_buttons: Array = $Background/MarginContainer/VBoxContainer/VBoxContainer.get_children()
 onready var back_btn_options: Button = $Options/ColorRect/MarginContainer/VBoxContainer/Back
+onready var back_btn_upgrades: Button = $Upgrades/ColorRect/MarginContainer/VBoxContainer/Back
 
 func _ready() -> void:
 	OS.center_window()
@@ -31,11 +32,7 @@ func _on_Brawl_pressed():
 
 
 func _on_Options_pressed():
-	var tween: Tween = Tween.new()
-	add_child(tween)
-	tween.interpolate_property(self, \"rect_position:x\", rect_position.x, rect_position.x - rect_size.x, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
-	yield(tween, \"tween_completed\")
+	slide_right()
 	for button in menu_buttons:
 		button.focus_mode = Control.FOCUS_NONE
 	back_btn_options.focus_mode = Control.FOCUS_ALL
@@ -43,12 +40,8 @@ func _on_Options_pressed():
 
 
 func _on_Back_pressed():
-	var tween: Tween = Tween.new()
-	add_child(tween)
-	tween.interpolate_property(self, \"rect_position:x\", rect_position.x, rect_position.x + rect_size.x, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+	slide_left()
 	back_btn_options.focus_mode = Control.FOCUS_NONE
-	yield(tween, \"tween_completed\")
 	for button in menu_buttons:
 		button.focus_mode = Control.FOCUS_ALL
 	menu_buttons[2].grab_focus()
@@ -58,16 +51,38 @@ func _on_Quit_pressed():
 	get_tree().quit()
 
 func slide_right() -> void:
-	
-	pass
+	var tween: Tween = Tween.new()
+	add_child(tween)
+	tween.interpolate_property(self, \"rect_position:x\", rect_position.x, rect_position.x - rect_size.x, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(tween, \"tween_completed\")
 
 func slide_left() -> void:
-	
-	pass
+	var tween: Tween = Tween.new()
+	add_child(tween)
+	tween.interpolate_property(self, \"rect_position:x\", rect_position.x, rect_position.x + rect_size.x, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(tween, \"tween_completed\")
 
 
 func _on_CheckButton_toggled(button_pressed):
 	OS.set_window_fullscreen(button_pressed)
+
+
+func _on_Back_Upgrades_pressed() -> void:
+	slide_right()
+	back_btn_upgrades.focus_mode = Control.FOCUS_NONE
+	for button in menu_buttons:
+		button.focus_mode = Control.FOCUS_ALL
+	menu_buttons[1].grab_focus()
+
+
+func _on_Upgrades_pressed() -> void:
+	slide_left()
+	for button in menu_buttons:
+		button.focus_mode = Control.FOCUS_NONE
+	back_btn_upgrades.focus_mode = Control.FOCUS_ALL
+	back_btn_upgrades.grab_focus()
 "
 
 [node name="MainMenu" type="Control" groups=["menu"]]
@@ -106,21 +121,27 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Brawl" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 68.0
+margin_top = 50.0
 margin_right = 220.0
-margin_bottom = 84.0
+margin_bottom = 66.0
 text = "Brawl"
 
-[node name="Options" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 104.0
+[node name="Upgrades" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 86.0
 margin_right = 220.0
-margin_bottom = 120.0
+margin_bottom = 102.0
+text = "Upgrades"
+
+[node name="Options" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 122.0
+margin_right = 220.0
+margin_bottom = 138.0
 text = "Options"
 
 [node name="Quit" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 140.0
+margin_top = 158.0
 margin_right = 220.0
-margin_bottom = 156.0
+margin_bottom = 174.0
 text = "Quit"
 
 [node name="Fadeout" type="ColorRect" parent="." groups=["tint"]]
@@ -217,8 +238,9 @@ size_flags_vertical = 0
 text = "Back"
 
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Brawl" to="." method="_on_Brawl_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Upgrades" to="." method="_on_Upgrades_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="toggled" from="Options/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_CheckButton_toggled"]
 [connection signal="pressed" from="Options/ColorRect/MarginContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="Upgrades/ColorRect/MarginContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Upgrades/ColorRect/MarginContainer/VBoxContainer/Back" to="." method="_on_Back_Upgrades_pressed"]
