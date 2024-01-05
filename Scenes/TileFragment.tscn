@@ -4,6 +4,7 @@
 [ext_resource path="res://Tilesets/LevelGeneration_Tileset.tres" type="TileSet" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
 extents = Vector2( 155.5, 155 )
 
 [node name="TileFragment" type="TileMap"]
@@ -20,4 +21,3 @@ position = Vector2( -0.5, 1 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

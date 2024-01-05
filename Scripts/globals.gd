@@ -13,6 +13,7 @@ var player_equipped_weapon: String
 var hud: Array
 var total_coins_collected: int = 0
 var center_touched: bool = false
+var last_area: Node
 
 export (String, FILE, "*.json") var weapon_file_path : String
 

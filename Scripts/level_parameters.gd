@@ -27,7 +27,6 @@ func _generate_cracks() -> void:
 
 func generate_new_fragments(new_player_pos: Vector2) -> void:
 	var fragments: Array = $Map.get_children()
-	var frags_to_delete: Array
 	var new_frags: Array
 	
 	# Player went left
@@ -38,7 +37,6 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
 				fragments.append(new_opposite_fragment)
-				frags_to_delete.append(fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
 	
@@ -50,7 +48,6 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(new_player_pos.x + (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
 				fragments.append(new_opposite_fragment)
-				frags_to_delete.append(fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
 	
@@ -62,7 +59,6 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y - (fragment.get_used_rect().size.y * fragment.cell_size.y))
 				fragments.append(new_opposite_fragment)
-				frags_to_delete.append(fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
 	
@@ -73,18 +69,21 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 				var new_opposite_fragment: Node = fragment_scn.instance()
 				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y + (fragment.get_used_rect().size.y * fragment.cell_size.y))
 				fragments.append(new_opposite_fragment)
-				frags_to_delete.append(fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
 	
 	player_frag_position = new_player_pos
-	
+
 	_draw_new_map_from_array(new_frags)
 
 
 func _draw_new_map_from_array(array_to_draw_with: Array) -> void:
+	print("test")
 	for frags in array_to_draw_with:
 		$Map.call_deferred("add_child", frags)
+
+func _clean_map(map_to_clean: Array) -> void:
+	pass
 
 func _choose_weapon() -> void:
 	get_tree().paused = true
