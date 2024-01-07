@@ -17,6 +17,8 @@ var last_area: Node
 
 export (String, FILE, "*.json") var weapon_file_path : String
 
+
+
 var buffs: Dictionary = {
 	0 : {
 		"name" : "attack_raw",
