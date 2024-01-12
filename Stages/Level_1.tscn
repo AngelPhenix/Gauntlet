@@ -51,3 +51,5 @@ position = Vector2( 320, 320 )
 
 [node name="TileFragment9" parent="Map" instance=ExtResource( 2 )]
 position = Vector2( 320, -320 )
+
+[node name="Timer" type="Timer" parent="."]

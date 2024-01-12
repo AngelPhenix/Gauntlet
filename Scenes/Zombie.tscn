@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/zombie.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/enemy.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]

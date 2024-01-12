@@ -9,7 +9,7 @@ var player_frag: Node
 
 func _ready() -> void:
 	randomize()
-	_generate_cracks()
+#	_generate_cracks()
 	_choose_weapon()
 
 # Checks every tile with ID 2 (floor_spawn) to be a potential cracked tile with a 2% chance
