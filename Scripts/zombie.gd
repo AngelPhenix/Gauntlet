@@ -7,6 +7,7 @@ var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 var burning: bool = false
 var burning_timer: int = 2
+var veteran: bool = false
 
 onready var player: Object = get_tree().get_nodes_in_group("player")[0]
 onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
@@ -14,13 +15,16 @@ onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodP
 func _ready() -> void:
 	$StopFire.wait_time = burning_timer
 	get_loot()
+	if veteran:
+		$sprite.scale = $sprite.scale * 2
+		$colshape.shape.radius = $colshape.shape.radius * 2
 
 func _physics_process(delta: float) -> void:
 	if player == null:
 		return
 	var direction = (player.global_position - global_position).normalized()
 	$sprite.rotation = direction.angle()
-	$shape.rotation = direction.angle()
+	$colshape.rotation = direction.angle()
 	move_and_collide(direction * delta * speed)
 
 func hit(damage: int) -> void:
