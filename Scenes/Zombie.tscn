@@ -4,6 +4,7 @@
 [ext_resource path="res://Sprites/enemy.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
 radius = 9.18283
 
 [sub_resource type="Animation" id=2]

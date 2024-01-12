@@ -16,8 +16,7 @@ func _ready() -> void:
 	$StopFire.wait_time = burning_timer
 	get_loot()
 	if veteran:
-		$sprite.scale = Vector2(2,2)
-		$colshape.shape.radius = 16
+		become_veteran()
 
 func _physics_process(delta: float) -> void:
 	if player == null:
@@ -27,7 +26,12 @@ func _physics_process(delta: float) -> void:
 	$colshape.rotation = direction.angle()
 	move_and_collide(direction * delta * speed)
 
-
+func become_veteran() -> void:
+	$sprite.scale = Vector2(2,2)
+	$colshape.shape.radius = 16
+	health = health * 5
+	speed = speed / 3
+	strength = strength * 3
 
 func hit(damage: int) -> void:
 	globals.get_node("zombie_hit").play()

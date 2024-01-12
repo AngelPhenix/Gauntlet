@@ -42,6 +42,6 @@ func _on_Tick_timeout():
 			bot_side_screen + spawning_margin)
 			
 		var proba: float = randf()
-		if proba > zombie_prob_boss:
+		if proba < zombie_prob_boss:
 			zombie.veteran = true
 		add_child(zombie)
