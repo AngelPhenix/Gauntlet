@@ -20,6 +20,8 @@ func _ready() -> void:
 	get_loot()
 	if veteran:
 		become_veteran()
+	if boss:
+		become_boss()
 
 func _physics_process(delta: float) -> void:
 	if player == null:
