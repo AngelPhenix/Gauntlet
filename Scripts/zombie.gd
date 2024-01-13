@@ -8,6 +8,8 @@ var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 var burning: bool = false
 var burning_timer: int = 2
 var veteran: bool = false
+var boss: bool = false
+var level: int = 1
 var drop_table: Array = [globals.coin_scn, globals.exp_scn, globals.bonus_scn]
 
 onready var player: Object = get_tree().get_nodes_in_group("player")[0]
@@ -28,11 +30,20 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(direction * delta * speed)
 
 func become_veteran() -> void:
+	level = 2
 	$sprite.scale = Vector2(2,2)
 	$colshape.shape.radius = 16
 	health = health * 5
 	speed = speed / 3
 	strength = strength * 3
+
+func become_boss() -> void:
+	level = 3
+	$sprite.scale = Vector2(3,3)
+	$colshape.shape.radius = 24
+	health = health * 15
+	speed = speed / 5
+	strength = strength * 10
 
 func hit(damage: int) -> void:
 	globals.get_node("zombie_hit").play()
@@ -51,6 +62,8 @@ func _drop_items() -> void:
 	if inventory.size() > 0:
 		for item in inventory:
 			var looted_item = item.instance()
+			if looted_item.is_in_group("experience"):
+				looted_item._change_exp_level(level)
 			get_parent().call_deferred("add_child", looted_item)
 			looted_item.global_position = global_position + Vector2(5, 5)
 
