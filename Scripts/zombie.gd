@@ -8,6 +8,7 @@ var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 var burning: bool = false
 var burning_timer: int = 2
 var veteran: bool = false
+var drop_table: Array = [globals.coin_scn, globals.exp_scn, globals.bonus_scn]
 
 onready var player: Object = get_tree().get_nodes_in_group("player")[0]
 onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
@@ -40,15 +41,18 @@ func hit(damage: int) -> void:
 	$tween.interpolate_property(self, "modulate", Color(1,0,0), Color(1,1,1), 0.05, Tween.TRANS_QUINT, Tween.EASE_IN)
 	$tween.start()
 	if health <= 0:
-		if inventory.size() > 0:
-			for item in inventory:
-				var looted_item = item.instance()
-				get_parent().call_deferred("add_child", looted_item)
-				looted_item.global_position = global_position + Vector2(5, 5)
+		_drop_items()
 		queue_free()
 		var blood = blood_particle.instance()
 		blood.position = global_position
 		get_parent().add_child(blood)
+
+func _drop_items() -> void:
+	if inventory.size() > 0:
+		for item in inventory:
+			var looted_item = item.instance()
+			get_parent().call_deferred("add_child", looted_item)
+			looted_item.global_position = global_position + Vector2(5, 5)
 
 func display_damage(damage: int) -> void:
 	var dmg_taken = label.instance()
@@ -68,13 +72,15 @@ func on_fire() -> void:
 	
 func get_loot() -> void:
 	var chance = randi() % 100 + 1
-	# 5% chance d'avoir coins
+	# 5% chance d'avoir bonus
 	if chance >= 1 && chance <= 2:
-		inventory.append(globals.zombie_possible_items[2])
+		inventory.append(drop_table[2])
+	# Chance d'avoir un coin
 	if chance > 2 && chance <= 6:
-		inventory.append(globals.zombie_possible_items[0])
+		inventory.append(drop_table[0])
+	# Chance d'avoir exp
 	if chance > 6 && chance <= 56:
-		inventory.append(globals.zombie_possible_items[1])
+		inventory.append(drop_table[1])
 
 func _on_OnFire_timeout():
 	hit(player.buffs["fire"])
