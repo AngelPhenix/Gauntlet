@@ -19,6 +19,13 @@ onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 # Checks all the players buffs and act accordingly
 func _ready() -> void:
 	base_dmg = int(globals.weapons[player.equipped_weapon]["attack"])
+	apply_buffs()
+	dmg_calculated = (base_dmg + atk_boost) + (base_dmg + atk_boost) * (atk_multiplier/10)
+
+func _process(delta: float) -> void:
+	translate(faced_direction * speed * delta)
+
+func apply_buffs() ->void:
 	for buff in player.buffs.keys():
 		if buff == "attack_raw":
 			atk_boost = player.buffs["attack_raw"]
@@ -31,11 +38,6 @@ func _ready() -> void:
 			fire_bullet = true
 		if buff == "explosive":
 			explosive_bullet = true
-			
-	dmg_calculated = (base_dmg + atk_boost) + (base_dmg + atk_boost) * (atk_multiplier/10)
-
-func _process(delta: float) -> void:
-	translate(faced_direction * speed * delta)
 
 func shoot(target_position: Vector2, player_position: Vector2) -> void:
 	position = player_position
