@@ -51,8 +51,8 @@ func hit(damage: int) -> void:
 	globals.get_node("zombie_hit").play()
 	health -= damage
 	display_damage(damage)
-	$tween.interpolate_property(self, "modulate", Color(1,0,0), Color(1,1,1), 0.05, Tween.TRANS_QUINT, Tween.EASE_IN)
-	$tween.start()
+	var tween: Tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1,1,1), 0.05).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	if health <= 0:
 		_drop_items()
 		queue_free()

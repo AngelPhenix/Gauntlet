@@ -1,1 +1,9 @@
 res://default_env.tres
+res://Stages/MainMenu.tscn
+res://Fonts/Theme_Menu.tres
+res://Fonts/Theme_Panel_Lvl.tres
+res://Scripts/choose_weapon.gd
+res://Scenes/Interface/DamageMobLabel.tscn
+res://Scripts/damage_mob_label.gd
+res://Scripts/zombie.gd
+res://Scenes/Zombie.tscn

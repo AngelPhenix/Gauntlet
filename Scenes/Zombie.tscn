@@ -1,71 +1,69 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://m1jrqhtave5n"]
 
-[ext_resource path="res://Scripts/zombie.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/enemy.png" type="Texture2D" id=2]
+[ext_resource type="Script" uid="uid://d2ectwc2onltu" path="res://Scripts/zombie.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dyycswodaqm3f" path="res://Sprites/enemy.png" id="2"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true
 radius = 9.18283
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "walk"
-loop = true
+loop_mode = 1
 step = 0.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.5 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [0, 1]
 }
 
-[sub_resource type="Gradient" id=3]
-colors = PackedColorArray( 0.538574, 0.0610104, 0.0610104, 1, 0.812012, 0.554293, 0, 1 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h15oy"]
+_data = {
+&"walk": SubResource("2")
+}
 
-[sub_resource type="GradientTexture2D" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="Gradient" id="3"]
+colors = PackedColorArray(0.538574, 0.0610104, 0.0610104, 1, 0.812012, 0.554293, 0, 1)
 
-[sub_resource type="ParticleProcessMaterial" id=5]
+[sub_resource type="GradientTexture2D" id="4"]
+gradient = SubResource("3")
+
+[sub_resource type="ParticleProcessMaterial" id="5"]
 emission_shape = 1
 emission_sphere_radius = 10.0
-flag_disable_z = true
-direction = Vector3( 0, 0, 0 )
+direction = Vector3(0, 0, 0)
 spread = 180.0
 flatness = 1.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 2.0
-initial_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-tangential_accel = 0.2
-scale = 2.0
-scale_random = 0.2
-color_ramp = SubResource( 4 )
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.0
+color_ramp = SubResource("4")
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-scale = Vector2( 0.75, 0.75 )
 z_index = 1
-script = ExtResource( 1 )
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1")
 
 [node name="colshape" type="CollisionShape2D" parent="."]
-position = Vector2( -2, 0 )
-shape = SubResource( 1 )
+position = Vector2(-2, 0)
+shape = SubResource("1")
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 vframes = 2
 
 [node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_h15oy")
+}
 autoplay = "walk"
-playback_speed = 1.5
-anims/walk = SubResource( 2 )
-
-[node name="tween" type="Tween" parent="."]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 4
@@ -75,8 +73,7 @@ lifetime = 6.0
 one_shot = true
 speed_scale = 4.0
 randomness = 1.0
-draw_order = 1
-process_material = SubResource( 5 )
+process_material = SubResource("5")
 
 [node name="OnFire" type="Timer" parent="."]
 wait_time = 0.5
