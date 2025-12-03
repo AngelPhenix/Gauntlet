@@ -8,14 +8,14 @@
 resource_name = "ColorChange"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_colors/font_color_focus")
+tracks/0/path = NodePath(".:theme_override_colors/font_focus_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.47451, 0.129412, 1 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -23,23 +23,23 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_colors/font_color_focus")
+tracks/0/path = NodePath(".:theme_override_colors/font_focus_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="MainMenu_Button" type="Button"]
-margin_right = 156.0
-margin_bottom = 23.0
+offset_right = 156.0
+offset_bottom = 23.0
 theme = ExtResource( 2 )
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+theme_override_colors/font_focus_color = Color( 1, 1, 1, 1 )
 text = "Text"
 align = 0
 script = ExtResource( 1 )

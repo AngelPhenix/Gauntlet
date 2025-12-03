@@ -1,52 +1,52 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Fonts/kongtext.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/kongtext.ttf" type="FontFile" id=1]
 [ext_resource path="res://Fonts/Theme_Menu.tres" type="Theme" id=2]
 [ext_resource path="res://Scripts/panel_weapon.gd" type="Script" id=3]
-[ext_resource path="res://Fonts/default_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/default_font.tres" type="FontFile" id=4]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 8
 outline_size = 1
 outline_color = Color( 0.427451, 0.298039, 0.0784314, 1 )
-extra_spacing_top = 10
-extra_spacing_bottom = 3
+spacing_top = 10
+spacing_bottom = 3
 font_data = ExtResource( 1 )
 
 [node name="PanelWeaponChoosing" type="Panel"]
-margin_right = 80.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 80, 150 )
+offset_right = 80.0
+offset_bottom = 150.0
+custom_minimum_size = Vector2( 80, 150 )
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 10
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 80.0
-margin_bottom = 14.0
+offset_right = 80.0
+offset_bottom = 14.0
 size_flags_vertical = 1
 theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 4 )
+theme_override_fonts/font = ExtResource( 4 )
 text = "name"
 align = 1
 valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" groups=["weapon_display"]]
-margin_top = 24.0
-margin_right = 80.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 0, 21 )
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 0, 21 )
 stretch_mode = 6
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
-margin_top = 55.0
-margin_right = 80.0
-margin_bottom = 76.0
-custom_fonts/font = SubResource( 1 )
+offset_top = 55.0
+offset_right = 80.0
+offset_bottom = 76.0
+theme_override_fonts/font = SubResource( 1 )
 text = "ATK : 10"
 align = 1
 

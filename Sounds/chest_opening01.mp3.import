@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/chest_opening01.mp3-5d7f8799971c496e7a0f53d0fd2587f3.mp3str"
+uid="uid://dmvb63pyvuqsn"
+path="res://.godot/imported/chest_opening01.mp3-5d7f8799971c496e7a0f53d0fd2587f3.mp3str"
 
 [deps]
 
 source_file="res://Sounds/chest_opening01.mp3"
-dest_files=[ "res://.import/chest_opening01.mp3-5d7f8799971c496e7a0f53d0fd2587f3.mp3str" ]
+dest_files=["res://.godot/imported/chest_opening01.mp3-5d7f8799971c496e7a0f53d0fd2587f3.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

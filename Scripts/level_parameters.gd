@@ -2,7 +2,7 @@ extends Node2D
 
 const weapon_start_scn: PackedScene = preload("res://Scenes/ChooseWeapon.tscn")
 
-onready var fragment_scn: PackedScene = preload("res://Scenes/TileFragment.tscn")
+@onready var fragment_scn: PackedScene = preload("res://Scenes/TileFragment.tscn")
 
 var player_frag_position: Vector2 = Vector2(0, 0)
 var player_frag: Node
@@ -33,7 +33,7 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	if new_player_pos.x < player_frag_position.x:
 		for fragment in fragments:
 			if fragment.position.x > player_frag_position.x:
-				var new_opposite_fragment: Node = fragment_scn.instance()
+				var new_opposite_fragment: Node = fragment_scn.instantiate()
 				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
 				fragments.append(new_opposite_fragment)
 				new_frags.append(new_opposite_fragment)
@@ -43,7 +43,7 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	if new_player_pos.x > player_frag_position.x:
 		for fragment in fragments:
 			if fragment.position.x < player_frag_position.x:
-				var new_opposite_fragment: Node = fragment_scn.instance()
+				var new_opposite_fragment: Node = fragment_scn.instantiate()
 				new_opposite_fragment.position = Vector2(new_player_pos.x + (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
 				fragments.append(new_opposite_fragment)
 				new_frags.append(new_opposite_fragment)
@@ -53,7 +53,7 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	if new_player_pos.y < player_frag_position.y:
 		for fragment in fragments:
 			if fragment.position.y > player_frag_position.y:
-				var new_opposite_fragment: Node = fragment_scn.instance()
+				var new_opposite_fragment: Node = fragment_scn.instantiate()
 				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y - (fragment.get_used_rect().size.y * fragment.cell_size.y))
 				fragments.append(new_opposite_fragment)
 				new_frags.append(new_opposite_fragment)
@@ -62,7 +62,7 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	if new_player_pos.y > player_frag_position.y:
 		for fragment in fragments:
 			if fragment.position.y < player_frag_position.y:
-				var new_opposite_fragment: Node = fragment_scn.instance()
+				var new_opposite_fragment: Node = fragment_scn.instantiate()
 				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y + (fragment.get_used_rect().size.y * fragment.cell_size.y))
 				fragments.append(new_opposite_fragment)
 				new_frags.append(new_opposite_fragment)
@@ -91,9 +91,9 @@ func _clean_map(map_to_clean: Array) -> void:
 
 func _choose_weapon() -> void:
 	get_tree().paused = true
-	var weapons_panel = weapon_start_scn.instance()
+	var weapons_panel = weapon_start_scn.instantiate()
 	add_child(weapons_panel)
-	weapons_panel.pause_mode = Node.PAUSE_MODE_PROCESS
+	weapons_panel.process_mode = Node.PROCESS_MODE_ALWAYS
 
 # Is called when the weapon has been chosen and the game can start.
 # The signal is emitted by PanelWeaponChoosing on click on one of the panels appearing at the start

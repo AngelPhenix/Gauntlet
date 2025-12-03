@@ -15,7 +15,7 @@ var total_coins_collected: int = 0
 var center_touched: bool = false
 var last_area: Node
 
-export (String, FILE, "*.json") var weapon_file_path : String
+@export var weapon_file_path : String # (String, FILE, "*.json")
 
 
 
@@ -54,10 +54,14 @@ func _ready() -> void:
 
 # On return sous la forme de dictionnaire le fichier avec le JSON contenant les armes et leurs caractéristiques.
 func load_weapons(file_path: String) -> void:
-	var file = File.new()
-	assert(file.file_exists(file_path))
+	#var content = file.get_as_text()
+	#return content
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	assert(file.file_exists(file_path),"Le fichier pour load weapons en JSON n'a pas été trouvé.")
 	file.open(file_path, file.READ)
-	var weapons_from_json = parse_json(file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	var weapons_from_json = test_json_conv.get_data()
 	assert(weapons_from_json.size() > 0) 
 	weapons = weapons_from_json
 	weapons_left_to_choose = weapons.duplicate(true)

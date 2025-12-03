@@ -1,18 +1,18 @@
 extends Control
 
-export var debug_mode: bool = false
+@export var debug_mode: bool = false
 
-onready var player: Node = get_tree().get_nodes_in_group("player")[0]
-onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
+@onready var player: Node = get_tree().get_nodes_in_group("player")[0]
+@onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
 var rect_gun_scn = preload("res://Scenes/Interface/GunNode.tscn")
 var weapons: Array = []
 var exp_total: int = 0
 var exp_required: int
 
 func _ready() -> void:
-	player.connect("coin_pickedup", self, "_on_coin_pickedup")
-	player.connect("hurt", self, "_on_player_hurt")
-	player.connect("exp_pickedup", self, "_on_player_add_experience")
+	player.connect("coin_pickedup", Callable(self, "_on_coin_pickedup"))
+	player.connect("hurt", Callable(self, "_on_player_hurt"))
+	player.connect("exp_pickedup", Callable(self, "_on_player_add_experience"))
 	exp_required = get_required_experience(player.level + 1)
 	_update_hud()
 
@@ -41,9 +41,9 @@ func equipped_weapon_swapped(index_change: int) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
-			if event.button_index == BUTTON_WHEEL_UP:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				equipped_weapon_swapped(-1)
-			if event.button_index == BUTTON_WHEEL_DOWN:
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				equipped_weapon_swapped(1)
 	if event.is_action_pressed("lvlup") && debug_mode:
 		player.levelup()
@@ -77,7 +77,7 @@ func _on_player_add_experience(exp_gained: int) -> void:
 	
 
 func _on_Interface_weapon_pickedup(weapon_name_picked_up: String) -> void:
-	var new_node = rect_gun_scn.instance()
+	var new_node = rect_gun_scn.instantiate()
 	new_node.texture = load(globals.weapons[weapon_name_picked_up]["png_path"])
 	inventory.add_child(new_node)
 	if player.weapons_in_inventory.size() > 1:

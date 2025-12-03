@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 class_name enemy
 
@@ -17,8 +17,8 @@ var inventory: Array
 var drop_table: Array = [globals.coin_scn, globals.exp_scn, globals.bonus_scn]
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 
-onready var player: Object = get_tree().get_nodes_in_group("player")[0]
-onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
+@onready var player: Object = get_tree().get_nodes_in_group("player")[0]
+@onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
 
 func mob_setup() -> void:
 	# On change d'abord ses stats en fonction de son level.

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 var speed: int = 10
 var strength: int = 1
@@ -12,8 +12,8 @@ var boss: bool = false
 var level: int = 1
 var drop_table: Array = [globals.coin_scn, globals.exp_scn, globals.bonus_scn]
 
-onready var player: Object = get_tree().get_nodes_in_group("player")[0]
-onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
+@onready var player: Object = get_tree().get_nodes_in_group("player")[0]
+@onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
 
 func _ready() -> void:
 	$StopFire.wait_time = burning_timer
@@ -56,21 +56,21 @@ func hit(damage: int) -> void:
 	if health <= 0:
 		_drop_items()
 		queue_free()
-		var blood = blood_particle.instance()
+		var blood = blood_particle.instantiate()
 		blood.position = global_position
 		get_parent().add_child(blood)
 
 func _drop_items() -> void:
 	if inventory.size() > 0:
 		for item in inventory:
-			var looted_item = item.instance()
+			var looted_item = item.instantiate()
 			if looted_item.is_in_group("experience"):
 				looted_item._change_exp_level(level)
 			get_parent().call_deferred("add_child", looted_item)
 			looted_item.global_position = global_position + Vector2(5, 5)
 
 func display_damage(damage: int) -> void:
-	var dmg_taken = label.instance()
+	var dmg_taken = label.instantiate()
 	dmg_taken.position = global_position + Vector2(0,-10)
 	get_tree().get_root().add_child(dmg_taken)
 	dmg_taken.get_node("Label").text = str(damage)
@@ -80,7 +80,7 @@ func on_fire() -> void:
 	$StopFire.start()
 	burning = true
 	if burning:
-		$Particles2D.emitting = true
+		$GPUParticles2D.emitting = true
 		$tween.interpolate_property(self, "modulate", Color(1,0.5,0), Color(1,1,1), burning_timer, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
 		$tween.start()
 	

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/treasure.wav-7310aba5fa33dc28c6f55c8e59a5b391.sample"
+type="AudioStreamWAV"
+uid="uid://ceroy3v5dhonj"
+path="res://.godot/imported/treasure.wav-7310aba5fa33dc28c6f55c8e59a5b391.sample"
 
 [deps]
 
 source_file="res://Sounds/treasure.wav"
-dest_files=[ "res://.import/treasure.wav-7310aba5fa33dc28c6f55c8e59a5b391.sample" ]
+dest_files=["res://.godot/imported/treasure.wav-7310aba5fa33dc28c6f55c8e59a5b391.sample"]
 
 [params]
 

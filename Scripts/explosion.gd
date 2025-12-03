@@ -7,5 +7,5 @@ func _on_Explosion_body_entered(body):
 		if body.has_method("hit"):
 			$AnimationPlayer.play("detonate")
 			body.hit(damage)
-			yield($AnimationPlayer, "animation_finished")
+			await $AnimationPlayer.animation_finished
 			queue_free()

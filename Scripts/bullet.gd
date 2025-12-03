@@ -9,12 +9,12 @@ var atk_boost = 0
 var penetration: bool = false
 var penetration_depth: int = 0
 
-onready var explosion_scn: PackedScene = preload("res://Scenes/Explosion.tscn")
+@onready var explosion_scn: PackedScene = preload("res://Scenes/Explosion.tscn")
 
 var explosive_bullet: bool = false
 var fire_bullet: bool = false
 
-onready var player: Node = get_tree().get_nodes_in_group("player")[0]
+@onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 
 # Checks all the players buffs and act accordingly
 func _ready() -> void:
@@ -49,7 +49,7 @@ func _on_Bullet_body_entered(body: Object) -> void:
 		if body.has_method("hit"):
 			
 			if explosive_bullet:
-				var explosion = explosion_scn.instance()
+				var explosion = explosion_scn.instantiate()
 				explosion.position = self.position
 				explosion.damage = player.buffs["explosive"] * 3
 				get_tree().get_root().call_deferred('add_child', explosion)

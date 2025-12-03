@@ -1,11 +1,10 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 # variables
 var speed: int = 150
 var max_health: int = 20
 var health: int = 20
 var coins: int = 0
-var velocity: Vector2 = Vector2()
 var invincibility_frame: float = 0.50
 var body_should_damage_us_map: Dictionary
 var level: int = 1
@@ -17,8 +16,8 @@ var weapons_in_inventory: Array
 
 var nearby_chest: Node
 var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
-onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
-onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
+@onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
+@onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
 var levelup_panel_scn = preload("res://Scenes/Interface/Levelup.tscn")
 
 var can_fire: bool = true
@@ -34,7 +33,8 @@ signal exp_pickedup(value)
 
 func _physics_process(delta: float) -> void:
 	get_input()
-	move_and_slide(velocity.normalized() * speed)
+	set_velocity(velocity.normalized() * speed)
+	move_and_slide()
 	rotation += get_local_mouse_position().angle()
 #	var target_offset = (get_global_mouse_position() - global_position)/4
 #	$camera.offset = $camera.offset.linear_interpolate(target_offset, delta * 8.0)
@@ -60,7 +60,7 @@ func _input(event: InputEvent) -> void:
 func shooting() -> void:
 	can_fire = false
 	($audio/gunshot as AudioStreamPlayer2D).play()
-	var bullet: Node = bullet_scn.instance()
+	var bullet: Node = bullet_scn.instantiate()
 	get_tree().get_root().add_child(bullet)
 	bullet.shoot(get_global_mouse_position(), global_position)
 	bullet.get_node("sprite").texture = load(globals.weapons[equipped_weapon]["bullet_sprite"])
@@ -105,7 +105,7 @@ func _on_hitbox_body_entered(body: Object) -> void:
 				if health <= 0:
 					print("Death !!!!!!!")
 				emit_signal("hurt", health)
-				yield(get_tree().create_timer(invincibility_frame), "timeout")
+				await get_tree().create_timer(invincibility_frame).timeout
 			# Not in loop anymore, meaning body is not near us / is dead : No more damage, kick it from dic
 			body_should_damage_us_map.erase(body)
 
@@ -116,9 +116,9 @@ func _on_hitbox_body_exited(body: Object) -> void:
 func levelup() -> void:
 	level += 1
 	get_tree().paused = true
-	var panel = levelup_panel_scn.instance()
+	var panel = levelup_panel_scn.instantiate()
 	add_child(panel)
-	panel.pause_mode = Node.PAUSE_MODE_PROCESS
+	panel.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func buff_collected(name: String) -> void:
 	var hasBuff: bool = false

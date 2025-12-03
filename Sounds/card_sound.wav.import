@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/card_sound.wav-3c90c1a3d895404ea32b7e4259840146.sample"
+type="AudioStreamWAV"
+uid="uid://cxa0y0rivdafu"
+path="res://.godot/imported/card_sound.wav-3c90c1a3d895404ea32b7e4259840146.sample"
 
 [deps]
 
 source_file="res://Sounds/card_sound.wav"
-dest_files=[ "res://.import/card_sound.wav-3c90c1a3d895404ea32b7e4259840146.sample" ]
+dest_files=["res://.godot/imported/card_sound.wav-3c90c1a3d895404ea32b7e4259840146.sample"]
 
 [params]
 

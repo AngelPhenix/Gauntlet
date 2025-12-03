@@ -2,14 +2,14 @@ extends Area2D
 
 var health: int = 4
 var existing_enemies: Array = []
-onready var enemy_container: Object = get_tree().get_nodes_in_group("enemy_container")[0]
+@onready var enemy_container: Object = get_tree().get_nodes_in_group("enemy_container")[0]
 const enemy_scn = preload("res://Scenes/Zombie.tscn")
 
 signal spawn_destroyed
 
 func _on_spawn_timer_timeout() -> void:
 	if existing_enemies.size() < 10:
-		var new_enemy = enemy_scn.instance()
+		var new_enemy = enemy_scn.instantiate()
 		new_enemy.global_position = position
 		enemy_container.add_child(new_enemy)
 		existing_enemies.append(new_enemy)

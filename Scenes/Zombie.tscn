@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/zombie.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/enemy.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/enemy.png" type="Texture2D" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -18,19 +18,19 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
 }
 
 [sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 0.538574, 0.0610104, 0.0610104, 1, 0.812012, 0.554293, 0, 1 )
+colors = PackedColorArray( 0.538574, 0.0610104, 0.0610104, 1, 0.812012, 0.554293, 0, 1 )
 
-[sub_resource type="GradientTexture" id=4]
+[sub_resource type="GradientTexture2D" id=4]
 gradient = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticleProcessMaterial" id=5]
 emission_shape = 1
 emission_sphere_radius = 10.0
 flag_disable_z = true
@@ -47,7 +47,7 @@ scale = 2.0
 scale_random = 0.2
 color_ramp = SubResource( 4 )
 
-[node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2( 0.75, 0.75 )
 z_index = 1
 script = ExtResource( 1 )
@@ -56,7 +56,7 @@ script = ExtResource( 1 )
 position = Vector2( -2, 0 )
 shape = SubResource( 1 )
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource( 2 )
 vframes = 2
 
@@ -67,7 +67,7 @@ anims/walk = SubResource( 2 )
 
 [node name="tween" type="Tween" parent="."]
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 4
 emitting = false
 amount = 150
