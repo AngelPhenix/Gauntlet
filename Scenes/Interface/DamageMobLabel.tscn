@@ -20,10 +20,10 @@ z_index = 999
 script = ExtResource("3")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -4.0
-offset_top = -7.0
-offset_right = 5.0
-offset_bottom = 7.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 theme = ExtResource("2")
 theme_override_colors/font_color = Color(0.568627, 0.419608, 0.0666667, 1)
 theme_override_fonts/font = SubResource("1")

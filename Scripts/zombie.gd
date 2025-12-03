@@ -71,7 +71,7 @@ func _drop_items() -> void:
 
 func display_damage(damage: int) -> void:
 	var dmg_taken = label.instantiate()
-	dmg_taken.position = global_position + Vector2(0,-10)
+	dmg_taken.position = position + Vector2(0, -10)
 	get_tree().get_root().add_child(dmg_taken)
 	dmg_taken.get_node("Label").text = str(damage)
 

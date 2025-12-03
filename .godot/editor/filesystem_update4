@@ -7,3 +7,4 @@ res://Scenes/Interface/DamageMobLabel.tscn
 res://Scripts/damage_mob_label.gd
 res://Scripts/zombie.gd
 res://Scenes/Zombie.tscn
+res://Tilesets/LevelGeneration_Tileset.tres
