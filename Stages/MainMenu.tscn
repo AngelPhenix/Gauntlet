@@ -60,7 +60,10 @@ func slide_left() -> void:
 
 
 func _on_CheckButton_toggled(button_pressed):
-	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (button_pressed) else Window.MODE_WINDOWED
+	if button_pressed:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 
 func _on_Back_Upgrades_pressed() -> void:

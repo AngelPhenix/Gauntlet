@@ -1,60 +1,136 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://nmxduwfegirw"]
 
-[ext_resource path="res://Fonts/kongtext.ttf" type="FontFile" id=1]
-[ext_resource path="res://Fonts/Theme_Menu.tres" type="Theme" id=2]
-[ext_resource path="res://Scripts/panel_weapon.gd" type="Script" id=3]
-[ext_resource path="res://Fonts/default_font.tres" type="FontFile" id=4]
+[ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="1"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
+[ext_resource type="Script" uid="uid://bxwxcgvcg6n14" path="res://Scripts/panel_weapon.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://d0cklelxxx3bs" path="res://Sprites/Guns/01.png" id="3_viht0"]
 
-[sub_resource type="FontFile" id=1]
-size = 8
-outline_size = 1
-outline_color = Color( 0.427451, 0.298039, 0.0784314, 1 )
-spacing_top = 10
-spacing_bottom = 3
-font_data = ExtResource( 1 )
+[sub_resource type="LabelSettings" id="LabelSettings_xyrm2"]
+font_size = 8
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/13/0/ascent = 0.0
+cache/0/13/0/descent = 0.0
+cache/0/13/0/underline_position = 0.0
+cache/0/13/0/underline_thickness = 0.0
+cache/0/13/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/9/0/ascent = 0.0
+cache/0/9/0/descent = 0.0
+cache/0/9/0/underline_position = 0.0
+cache/0/9/0/underline_thickness = 0.0
+cache/0/9/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+cache/0/7/0/ascent = 0.0
+cache/0/7/0/descent = 0.0
+cache/0/7/0/underline_position = 0.0
+cache/0/7/0/underline_thickness = 0.0
+cache/0/7/0/scale = 1.0
+cache/0/6/0/ascent = 0.0
+cache/0/6/0/descent = 0.0
+cache/0/6/0/underline_position = 0.0
+cache/0/6/0/underline_thickness = 0.0
+cache/0/6/0/scale = 1.0
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_jhaeg"]
+font_size = 8
 
 [node name="PanelWeaponChoosing" type="Panel"]
+custom_minimum_size = Vector2(80, 150)
 offset_right = 80.0
 offset_bottom = 150.0
-custom_minimum_size = Vector2( 80, 150 )
-theme = ExtResource( 2 )
-script = ExtResource( 3 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-offset_right = 80.0
-offset_bottom = 14.0
-size_flags_vertical = 1
-theme = ExtResource( 2 )
-theme_override_fonts/font = ExtResource( 4 )
-text = "name"
-align = 1
-valign = 1
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer" groups=["weapon_display"]]
-offset_top = 24.0
-offset_right = 80.0
-offset_bottom = 45.0
-custom_minimum_size = Vector2( 0, 21 )
-stretch_mode = 6
-
-[node name="Label2" type="Label" parent="VBoxContainer"]
-offset_top = 55.0
-offset_right = 80.0
-offset_bottom = 76.0
-theme_override_fonts/font = SubResource( 1 )
-text = "ATK : 10"
-align = 1
+theme = ExtResource("2")
+script = ExtResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-color = Color( 0, 0, 0, 0.392157 )
+color = Color(0, 0, 0, 0.8666667)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2")
+text = "name"
+label_settings = SubResource("LabelSettings_xyrm2")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" groups=["weapon_display"]]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 2
+texture = ExtResource("3_viht0")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+text = "ATK : 10"
+label_settings = SubResource("LabelSettings_jhaeg")
+horizontal_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_PanelWeaponChoosing_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_PanelWeaponChoosing_mouse_entered"]
