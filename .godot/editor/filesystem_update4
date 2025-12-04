@@ -6,3 +6,5 @@ res://Fonts/Theme_Panel_Lvl.tres
 res://ProgressBar_ExpBG.tres
 res://Scripts/interface.gd
 res://Scripts/player.gd
+res://Scenes/PanelWeaponChoosing.tscn
+res://Scripts/panel_weapon.gd

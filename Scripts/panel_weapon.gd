@@ -24,4 +24,4 @@ func _on_PanelWeaponChoosing_mouse_entered():
 	$ColorRect.color.a = 0
 
 func _on_PanelWeaponChoosing_mouse_exited():
-	$ColorRect.color.a = 0.39
+	$ColorRect.color.a = 0.50
