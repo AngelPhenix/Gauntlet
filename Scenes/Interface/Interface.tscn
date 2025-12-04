@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="3"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="4"]
 [ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="5_ms1au"]
-[ext_resource type="StyleBox" uid="uid://dlnmbfxjhn6xe" path="res://ProgressBar_ExpBG.tres" id="6_rt5m7"]
+[ext_resource type="StyleBox" uid="uid://dlnmbfxjhn6xe" path="res://ThemeResources/ProgressBar_ExpBG.tres" id="6_rt5m7"]
 [ext_resource type="FontFile" path="res://Fonts/default_font.tres" id="7"]
-[ext_resource type="StyleBox" uid="uid://ckbkfdvmobl31" path="res://ProgressBar_Exp.tres" id="7_na6wh"]
+[ext_resource type="StyleBox" uid="uid://ckbkfdvmobl31" path="res://ThemeResources/ProgressBar_Exp.tres" id="7_na6wh"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("2"), ExtResource("2")])
@@ -118,7 +118,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -7.0
+offset_top = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("5_ms1au")
