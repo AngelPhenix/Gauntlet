@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b3cuhhlhaw0w4"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://b3cuhhlhaw0w4"]
 
 [ext_resource type="FontFile" path="res://Fonts/default_font.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="2"]
+[ext_resource type="StyleBox" uid="uid://dlnmbfxjhn6xe" path="res://ProgressBar_ExpBG.tres" id="3_k00sy"]
+[ext_resource type="StyleBox" uid="uid://ckbkfdvmobl31" path="res://ProgressBar_Exp.tres" id="4_y487s"]
 
 [sub_resource type="StyleBoxEmpty" id="3"]
 
@@ -21,11 +23,17 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlnp3"]
+bg_color = Color(0, 0.7176471, 0.3764706, 0.11764706)
+
 [sub_resource type="StyleBoxFlat" id="9"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="10"]
 bg_color = Color(0.788235, 0.345098, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5kmq"]
+bg_color = Color(0, 0.718656, 0.328116, 1)
 
 [sub_resource type="StyleBoxEmpty" id="11"]
 
@@ -48,9 +56,17 @@ Button/styles/pressed = SubResource("5")
 CheckButton/constants/hseparation = 30
 HBoxContainer/constants/separation = 4
 Label/fonts/font = SubResource("8")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
 ProgressBar/fonts/font = ExtResource("1")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_hlnp3")
 ProgressBar/styles/bg = SubResource("9")
+ProgressBar/styles/bg_exp = ExtResource("3_k00sy")
 ProgressBar/styles/fg = SubResource("10")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_a5kmq")
+ProgressBar/styles/fill_exp = ExtResource("4_y487s")
 RichTextLabel/fonts/normal_font = ExtResource("1")
 VBoxContainer/constants/separation = 20
 VSeparator/styles/separator = SubResource("11")

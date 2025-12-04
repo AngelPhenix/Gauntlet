@@ -17,7 +17,6 @@ var weapons_in_inventory: Array
 var nearby_chest: Node
 var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
 @onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
-@onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
 var levelup_panel_scn = preload("res://Scenes/Interface/Levelup.tscn")
 
 var can_fire: bool = true
@@ -54,8 +53,6 @@ func get_input() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_down") && can_fire:
 		shooting()
-	if event.is_action_pressed("restart"):
-		get_tree().reload_current_scene()
 
 func shooting() -> void:
 	can_fire = false

@@ -3,7 +3,6 @@ extends Control
 @export var debug_mode: bool = false
 
 @onready var player: Node = get_tree().get_nodes_in_group("player")[0]
-@onready var inventory: Node = get_tree().get_nodes_in_group("inventory")[0]
 var rect_gun_scn = preload("res://Scenes/Interface/GunNode.tscn")
 var weapons: Array = []
 var exp_total: int = 0
@@ -27,31 +26,12 @@ func _update_hud() -> void:
 		for weapon in globals.player_weapons_in_inventory:
 			_on_Interface_weapon_pickedup(weapon)
 
-func equipped_weapon_swapped(index_change: int) -> void:
-	var index_of_equipped_weapon: int = player.weapons_in_inventory.find(player.equipped_weapon, 0)
-	var new_index: int = index_of_equipped_weapon + index_change
-	if new_index < 0:
-		new_index = 0
-	elif new_index > player.weapons_in_inventory.size() - 1 :
-		new_index  = player.weapons_in_inventory.size() - 1 
-	inventory.get_children()[index_of_equipped_weapon].modulate.a = 0.3
-	inventory.get_children()[new_index].modulate.a = 1
-	player.weapon_swapped(player.weapons_in_inventory[new_index])
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				equipped_weapon_swapped(-1)
-			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				equipped_weapon_swapped(1)
 	if event.is_action_pressed("lvlup") && debug_mode:
 		player.levelup()
 		$Level.text = "Lv." + str(player.level)
 
-func delete_node(node: Node) -> void:
-	inventory.remove_child(node)
-	node.queue_free()
 
 func _on_coin_pickedup(total_coins: int) -> void:
 	$CoinCounter/number.text = str(total_coins)
@@ -79,6 +59,5 @@ func _on_player_add_experience(exp_gained: int) -> void:
 func _on_Interface_weapon_pickedup(weapon_name_picked_up: String) -> void:
 	var new_node = rect_gun_scn.instantiate()
 	new_node.texture = load(globals.weapons[weapon_name_picked_up]["png_path"])
-	inventory.add_child(new_node)
 	if player.weapons_in_inventory.size() > 1:
 		new_node.modulate.a = 0.3
