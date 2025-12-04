@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" path="res://Fonts/default_font.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="2"]
-[ext_resource type="StyleBox" uid="uid://dlnmbfxjhn6xe" path="res://ProgressBar_ExpBG.tres" id="3_k00sy"]
-[ext_resource type="StyleBox" uid="uid://ckbkfdvmobl31" path="res://ProgressBar_Exp.tres" id="4_y487s"]
+[ext_resource type="StyleBox" uid="uid://dlnmbfxjhn6xe" path="res://ThemeResources/ProgressBar_ExpBG.tres" id="3_k00sy"]
+[ext_resource type="StyleBox" uid="uid://ckbkfdvmobl31" path="res://ThemeResources/ProgressBar_Exp.tres" id="4_y487s"]
 
 [sub_resource type="StyleBoxEmpty" id="3"]
 

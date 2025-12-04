@@ -1,10 +1,8 @@
 res://default_env.tres
-res://Scenes/Interface/Interface.tscn
+res://Scenes/Zombie.tscn
 res://Fonts/Theme_Menu.tres
 res://Tilesets/LevelGeneration_Tileset.tres
 res://Fonts/Theme_Panel_Lvl.tres
-res://ProgressBar_ExpBG.tres
-res://Scripts/interface.gd
-res://Scripts/player.gd
-res://Scenes/PanelWeaponChoosing.tscn
-res://Scripts/panel_weapon.gd
+res://Scenes/Experience.tscn
+res://Scenes/Particles/BloodParticle.tscn
+res://Scenes/Particles/TeleporterParticle.tscn
