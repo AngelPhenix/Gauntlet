@@ -2,7 +2,7 @@ extends TileMapLayer
 
 @onready var level = get_tree().get_nodes_in_group("level")[0]
 
-func _on_Area2D_body_entered(body):
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") && level.player_frag != self:
 		if globals.center_touched:
 			level.generate_new_fragments(position)

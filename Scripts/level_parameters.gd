@@ -27,14 +27,14 @@ func _generate_cracks() -> void:
 
 func generate_new_fragments(new_player_pos: Vector2) -> void:
 	var fragments: Array = $Map.get_children()
-	var new_frags: Array = []
+	var new_frags: Array
 	
 	# Player went left
 	if new_player_pos.x < player_frag_position.x:
 		for fragment in fragments:
 			if fragment.position.x > player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instantiate()
-				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
+				new_opposite_fragment.position = Vector2(new_player_pos.x - (fragment.get_used_rect().size.x * fragment.tile_set.tile_size.x), fragment.position.y)
 				fragments.append(new_opposite_fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
@@ -44,7 +44,7 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 		for fragment in fragments:
 			if fragment.position.x < player_frag_position.x:
 				var new_opposite_fragment: Node = fragment_scn.instantiate()
-				new_opposite_fragment.position = Vector2(new_player_pos.x + (fragment.get_used_rect().size.x * fragment.cell_size.x), fragment.position.y)
+				new_opposite_fragment.position = Vector2(new_player_pos.x + (fragment.get_used_rect().size.x * fragment.tile_set.tile_size.x), fragment.position.y)
 				fragments.append(new_opposite_fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
@@ -54,7 +54,7 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 		for fragment in fragments:
 			if fragment.position.y > player_frag_position.y:
 				var new_opposite_fragment: Node = fragment_scn.instantiate()
-				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y - (fragment.get_used_rect().size.y * fragment.cell_size.y))
+				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y - (fragment.get_used_rect().size.y * fragment.tile_set.tile_size.y))
 				fragments.append(new_opposite_fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
@@ -63,7 +63,7 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 		for fragment in fragments:
 			if fragment.position.y < player_frag_position.y:
 				var new_opposite_fragment: Node = fragment_scn.instantiate()
-				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y + (fragment.get_used_rect().size.y * fragment.cell_size.y))
+				new_opposite_fragment.position = Vector2(fragment.position.x, new_player_pos.y + (fragment.get_used_rect().size.y * fragment.tile_set.tile_size.y))
 				fragments.append(new_opposite_fragment)
 				new_frags.append(new_opposite_fragment)
 				fragment.queue_free()
