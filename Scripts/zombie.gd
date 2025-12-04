@@ -79,10 +79,11 @@ func on_fire() -> void:
 	$OnFire.start()
 	$StopFire.start()
 	burning = true
+	self.modulate = Color(1,0.5,0)
 	if burning:
 		$GPUParticles2D.emitting = true
-		$tween.interpolate_property(self, "modulate", Color(1,0.5,0), Color(1,1,1), burning_timer, Tween.TRANS_QUINT, Tween.EASE_IN_OUT)
-		$tween.start()
+		var tween: Tween = create_tween()
+		tween.tween_property(self, "modulate", Color(1,1,1), burning_timer)
 	
 	
 func get_loot() -> void:

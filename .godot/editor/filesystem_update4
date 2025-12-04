@@ -3,3 +3,12 @@ res://Stages/MainMenu.tscn
 res://Fonts/Theme_Menu.tres
 res://Tilesets/LevelGeneration_Tileset.tres
 res://Fonts/Theme_Panel_Lvl.tres
+res://Scenes/Player.tscn
+res://Scenes/Experience.tscn
+res://Scripts/experience.gd
+res://Scripts/level_parameters.gd
+res://Scenes/TileFragment.tscn
+res://Stages/Level_1.tscn
+res://Scripts/tile_fragment.gd
+res://Scripts/zombie.gd
+res://Scenes/Zombie.tscn

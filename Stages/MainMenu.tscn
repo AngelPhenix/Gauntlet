@@ -14,9 +14,7 @@ var first_focus: bool = true
 @onready var back_btn_upgrades: Button = $Upgrades/ColorRect/MarginContainer/VBoxContainer/Back
 
 func _ready() -> void:
-	#OS.center_window() NOT IN GD-V.4
 	menu_buttons[0].grab_focus()
-
 
 func fade_menu():
 	var tween: Tween = create_tween()

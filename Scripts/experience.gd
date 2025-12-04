@@ -3,6 +3,7 @@ extends Area2D
 var value: int = 1
 
 func _on_Experience_body_entered(body):
+	print(body)
 	if body.is_in_group("player"):
 		body.add_experience(value)
 		queue_free()

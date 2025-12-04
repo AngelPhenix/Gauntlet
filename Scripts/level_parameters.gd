@@ -27,7 +27,7 @@ func _generate_cracks() -> void:
 
 func generate_new_fragments(new_player_pos: Vector2) -> void:
 	var fragments: Array = $Map.get_children()
-	var new_frags: Array
+	var new_frags: Array = []
 	
 	# Player went left
 	if new_player_pos.x < player_frag_position.x:

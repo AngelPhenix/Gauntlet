@@ -1,4 +1,4 @@
-extends TileMap
+extends TileMapLayer
 
 @onready var level = get_tree().get_nodes_in_group("level")[0]
 
