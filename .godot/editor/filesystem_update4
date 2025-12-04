@@ -11,3 +11,5 @@ res://Scripts/damage_mob_label.gd
 res://Stages/Level_1.tscn
 res://Scenes/Zombie.tscn
 res://Scripts/zombie.gd
+res://Scenes/Explosion.tscn
+res://Scripts/explosion.gd

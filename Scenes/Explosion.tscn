@@ -57,5 +57,3 @@ texture = ExtResource("2")
 libraries = {
 &"": SubResource("AnimationLibrary_ix64a")
 }
-
-[connection signal="body_entered" from="." to="." method="_on_Explosion_body_entered"]
