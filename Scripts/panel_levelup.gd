@@ -10,6 +10,8 @@ func _on_NinePatchRect_gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			player.buff_collected(buff_name)
 			get_tree().paused = false
+			globals.get_node("levelup_music").stop()
+			globals.get_node("ingame_music").volume_db = -25
 			lvlup_screen.queue_free()
 
 

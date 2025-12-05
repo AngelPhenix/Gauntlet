@@ -1,70 +1,69 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://dvk8p8tj466dq"]
 
-[ext_resource path="res://Scenes/Interface/PanelLevelup.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Fonts/kongtext.ttf" type="FontFile" id=2]
-[ext_resource path="res://Fonts/Theme_Menu.tres" type="Theme" id=3]
-[ext_resource path="res://Scripts/levelup.gd" type="Script" id=4]
+[ext_resource type="PackedScene" uid="uid://cgbmsbtxhgv6n" path="res://Scenes/Interface/PanelLevelup.tscn" id="1"]
+[ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="2"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="3"]
+[ext_resource type="Script" uid="uid://2a1pyo15l737" path="res://Scripts/levelup.gd" id="4"]
 
-[sub_resource type="FontFile" id=1]
-outline_size = 2
-outline_color = Color( 1, 0.372549, 0.0313726, 1 )
-font_data = ExtResource( 2 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("2"), ExtResource("2")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [node name="LevelUp" type="CanvasLayer" groups=["lvlup_screen"]]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.72549 )
+color = Color(0, 0, 0, 0.72549)
 
 [node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 3 )
+theme = ExtResource("3")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_top = 40
 theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 280.0
-offset_bottom = 280.0
+layout_mode = 2
 theme_override_constants/separation = 42
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
-offset_top = 4.0
-offset_right = 240.0
-offset_bottom = 20.0
-theme_override_fonts/font = SubResource( 1 )
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
 text = "Level up!"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BuffContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-offset_top = 62.0
-offset_right = 240.0
-offset_bottom = 235.0
+layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Buff1" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource( 1 )]
-offset_right = 240.0
+[node name="Buff1" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource("1")]
+layout_mode = 2
 
-[node name="Buff2" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource( 1 )]
-offset_top = 63.0
-offset_right = 240.0
-offset_bottom = 110.0
+[node name="Buff2" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource("1")]
+layout_mode = 2
 
-[node name="Buff3" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource( 1 )]
-offset_top = 126.0
-offset_right = 240.0
-offset_bottom = 173.0
+[node name="Buff3" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource("1")]
+layout_mode = 2

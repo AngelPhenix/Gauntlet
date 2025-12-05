@@ -114,6 +114,8 @@ func _on_hitbox_body_exited(body: Object) -> void:
 
 func levelup() -> void:
 	level += 1
+	globals.get_node("levelup_music").play()
+	globals.get_node("ingame_music").volume_db = -40
 	get_tree().paused = true
 	var panel = levelup_panel_scn.instantiate()
 	add_child(panel)
