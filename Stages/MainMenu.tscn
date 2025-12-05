@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dommik54whurs"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Interface/MainMenuButton.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://du1hideq43ggx" path="res://Scenes/Interface/MainMenuButton.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
 
 [sub_resource type="GDScript" id="1"]
@@ -10,41 +10,62 @@ const FADE_OUT_TIME: float = 1.0
 var first_focus: bool = true
 
 @onready var menu_buttons: Array = $Background/MarginContainer/VBoxContainer/VBoxContainer.get_children()
-@onready var back_btn_options: Button = $Options/ColorRect/MarginContainer/VBoxContainer/Back
-@onready var back_btn_upgrades: Button = $Upgrades/ColorRect/MarginContainer/VBoxContainer/Back
+@onready var back_btn_options: Button = $Options/ColorRect/MarginContainer/VBoxContainer/OptionBack
+@onready var back_btn_upgrades: Button = $Upgrades/ColorRect/MarginContainer/VBoxContainer/UpgradesBack
 
 func _ready() -> void:
 	menu_buttons[0].grab_focus()
 
-func fade_menu():
-	var tween: Tween = create_tween()
-	tween.tween_property($Fadeout, \"modulate:a\", 1, FADE_OUT_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	await tween.finished
+	# Disable the focus mode of buttons that aren't on the main screen
+	for btn in get_tree().get_nodes_in_group(\"menu_option_btn\"):
+		btn.focus_mode = Control.FOCUS_NONE
+	for btn in get_tree().get_nodes_in_group(\"menu_upgrades_btn\"):
+		btn.focus_mode = Control.FOCUS_NONE
 
 func _on_Brawl_pressed():
 	await fade_menu()
 	get_tree().change_scene_to_file(\"res://Stages/Level_1.tscn\")
 
-
 func _on_Options_pressed():
 	slide_right()
 	for button in menu_buttons:
 		button.focus_mode = Control.FOCUS_NONE
-	back_btn_options.focus_mode = Control.FOCUS_ALL
+		
+	for btn in get_tree().get_nodes_in_group(\"menu_option_btn\"):
+		btn.focus_mode = Control.FOCUS_ALL
+		
 	back_btn_options.grab_focus()
 
-
-func _on_Back_pressed():
+func _on_option_back_pressed() -> void:
 	slide_left()
-	back_btn_options.focus_mode = Control.FOCUS_NONE
+	for btn in get_tree().get_nodes_in_group(\"menu_option_btn\"):
+		btn.focus_mode = Control.FOCUS_NONE
 	for button in menu_buttons:
 		button.focus_mode = Control.FOCUS_ALL
 	menu_buttons[2].grab_focus()
+	
+func _on_Upgrades_pressed() -> void:
+	slide_left()
+	for button in menu_buttons:
+		button.focus_mode = Control.FOCUS_NONE
+	
+	for btn in get_tree().get_nodes_in_group(\"menu_upgrades_btn\"):
+		btn.focus_mode = Control.FOCUS_ALL
+	
+	back_btn_upgrades.grab_focus()
 
+func _on_upgrades_back_pressed() -> void:
+	slide_right()
+	for btn in get_tree().get_nodes_in_group(\"menu_upgrades_btn\"):
+		btn.focus_mode = Control.FOCUS_NONE
+	for button in menu_buttons:
+		button.focus_mode = Control.FOCUS_ALL
+	menu_buttons[1].grab_focus()
 
 func _on_Quit_pressed():
 	get_tree().quit()
 
+# We're on the Upgrade menu when this happens
 func slide_right() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(self, \"position:x\", position.x - size.x, 0.25).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
@@ -63,21 +84,10 @@ func _on_CheckButton_toggled(button_pressed):
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
-
-func _on_Back_Upgrades_pressed() -> void:
-	slide_right()
-	back_btn_upgrades.focus_mode = Control.FOCUS_NONE
-	for button in menu_buttons:
-		button.focus_mode = Control.FOCUS_ALL
-	menu_buttons[1].grab_focus()
-
-
-func _on_Upgrades_pressed() -> void:
-	slide_left()
-	for button in menu_buttons:
-		button.focus_mode = Control.FOCUS_NONE
-	back_btn_upgrades.focus_mode = Control.FOCUS_ALL
-	back_btn_upgrades.grab_focus()
+func fade_menu():
+	var tween: Tween = create_tween()
+	tween.tween_property($Fadeout, \"modulate:a\", 1, FADE_OUT_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
 "
 
 [node name="MainMenu" type="Control" groups=["menu"]]
@@ -117,35 +127,21 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Brawl" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1")]
+[node name="Brawl" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" groups=["main_menu_btn"] instance=ExtResource("1")]
 layout_mode = 2
 text = "Brawl"
 
-[node name="Upgrades" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1")]
+[node name="Upgrades" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" groups=["main_menu_btn"] instance=ExtResource("1")]
 layout_mode = 2
 text = "Upgrades"
 
-[node name="Options" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1")]
+[node name="Options" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" groups=["main_menu_btn"] instance=ExtResource("1")]
 layout_mode = 2
 text = "Options"
 
-[node name="Quit" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1")]
+[node name="Quit" parent="Background/MarginContainer/VBoxContainer/VBoxContainer" groups=["main_menu_btn"] instance=ExtResource("1")]
 layout_mode = 2
 text = "Quit"
-
-[node name="Fadeout" type="ColorRect" parent="." groups=["tint"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = -1.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="Options" type="Control" parent="."]
 anchors_preset = 0
@@ -187,11 +183,8 @@ text = "Fullscreen"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Back" type="Button" parent="Options/ColorRect/MarginContainer/VBoxContainer"]
+[node name="OptionBack" parent="Options/ColorRect/MarginContainer/VBoxContainer" groups=["menu_option_btn"] instance=ExtResource("1")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-focus_mode = 0
 text = "Back"
 
 [node name="Upgrades" type="Control" parent="."]
@@ -220,16 +213,28 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Back" type="Button" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer"]
+[node name="UpgradesBack" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer" groups=["menu_upgrades_btn"] instance=ExtResource("1")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
 text = "Back"
+
+[node name="Fadeout" type="ColorRect" parent="." groups=["tint"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Brawl" to="." method="_on_Brawl_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Upgrades" to="." method="_on_Upgrades_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="toggled" from="Options/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_CheckButton_toggled"]
-[connection signal="pressed" from="Options/ColorRect/MarginContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="Upgrades/ColorRect/MarginContainer/VBoxContainer/Back" to="." method="_on_Back_Upgrades_pressed"]
+[connection signal="pressed" from="Options/ColorRect/MarginContainer/VBoxContainer/OptionBack" to="." method="_on_option_back_pressed"]
+[connection signal="pressed" from="Upgrades/ColorRect/MarginContainer/VBoxContainer/UpgradesBack" to="." method="_on_upgrades_back_pressed"]

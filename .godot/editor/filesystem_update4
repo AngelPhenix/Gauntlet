@@ -3,7 +3,6 @@ res://Scenes/Player.tscn
 res://Fonts/Theme_Menu.tres
 res://Tilesets/LevelGeneration_Tileset.tres
 res://Fonts/Theme_Panel_Lvl.tres
-res://Scenes/Bullet.tscn
-res://Scenes/GLOBALS.tscn
-res://Scenes/Interface/Interface.tscn
-res://Scripts/interface.gd
+res://Stages/MainMenu.tscn
+res://Scenes/Interface/MainMenuButton.tscn
+res://Scripts/main_menu_button.gd
