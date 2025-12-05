@@ -1,4 +1,3 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://cvxmg5a4wh3cc"]
 
 [resource]
-bus/0/send = &"IngameMusic"

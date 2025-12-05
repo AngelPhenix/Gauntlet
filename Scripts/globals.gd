@@ -1,5 +1,13 @@
 extends Node
 
+# Z-INDEX SORTING :
+# 0 : Floor
+# 1 : Blood Particles
+# 2 : Items On The Ground
+# 3 : Player & Enemies (grounded)
+# 4 : Flying Enemies
+# 5 : Thrown Weapons?
+
 var coin_scn: PackedScene = preload("res://Scenes/Coin.tscn")
 var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
 var bonus_scn: PackedScene = preload("res://Scenes/Bonus.tscn")

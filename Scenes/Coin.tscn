@@ -7,7 +7,7 @@
 radius = 13.8573
 
 [node name="Coin" type="Area2D"]
-z_index = 1
+z_index = 2
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1")
 

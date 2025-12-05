@@ -39,7 +39,7 @@ radius = 22.704
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 light_mask = 2
-z_index = 2
+z_index = 3
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1")
 
