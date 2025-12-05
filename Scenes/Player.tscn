@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbmpr8hlk1pp8" path="res://Scripts/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c4dhic5hp0trv" path="res://Sprites/player_weapon.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://xhhs62xckgat" path="res://Sprites/lightmask02.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b1p6a24p37a4j" path="res://Sprites/lightmask01.png" id="3_nn08x"]
 [ext_resource type="AudioStream" uid="uid://brqxfnso8nsh1" path="res://Sounds/gunshot.wav" id="4"]
 [ext_resource type="AudioStream" uid="uid://ceroy3v5dhonj" path="res://Sounds/treasure.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://b57vr62oo6n1x" path="res://Sounds/hurt.wav" id="7"]
@@ -72,9 +72,10 @@ shape = SubResource("4")
 
 [node name="light" type="PointLight2D" parent="."]
 light_mask = 2
+energy = 0.35
 shadow_enabled = true
-texture = ExtResource("3")
-texture_scale = 3.2
+texture = ExtResource("3_nn08x")
+texture_scale = 2.5
 
 [node name="audio" type="Node2D" parent="."]
 

@@ -6,7 +6,6 @@ func _ready():
 	await get_tree().physics_frame
 
 	for body in get_overlapping_bodies():
-		print(body)
 		if body.is_in_group("enemy") and body.has_method("hit"):
 			body.hit(damage)
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cuycl0wd60o43"]
 
 [ext_resource type="Script" uid="uid://n2v6n54pvuqc" path="res://Scripts/bullet.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://xhhs62xckgat" path="res://Sprites/lightmask02.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b1p6a24p37a4j" path="res://Sprites/lightmask01.png" id="2_14k46"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 2.0673
@@ -23,8 +23,9 @@ shape = SubResource("1")
 
 [node name="light" type="PointLight2D" parent="."]
 light_mask = 2
-texture = ExtResource("2")
-texture_scale = 0.2
+energy = 0.4
+texture = ExtResource("2_14k46")
+texture_scale = 0.17
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

@@ -16,7 +16,7 @@ func _ready() -> void:
 	_update_hud()
 
 func _update_hud() -> void:
-	$CoinCounter/number.text = str(globals.total_coins_collected)
+	$CoinCounter/MarginContainer/HBoxContainer/number.text = str(globals.total_coins_collected)
 	$hp.max_value = player.max_health
 	$hp.value = player.health
 	$Exp_Bar.max_value = exp_required
@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_coin_pickedup(total_coins: int) -> void:
-	$CoinCounter/number.text = str(total_coins)
+	$CoinCounter/MarginContainer/HBoxContainer/number.text = str(total_coins)
 
 func _on_player_hurt(new_health: int) -> void:
 	$hp.value = new_health

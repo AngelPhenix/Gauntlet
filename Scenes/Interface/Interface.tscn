@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://xldxgjhapwfg"]
+[gd_scene load_steps=11 format=3 uid="uid://xldxgjhapwfg"]
 
 [ext_resource type="Script" uid="uid://c71qliqvyshvi" path="res://Scripts/interface.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="2"]
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bfosup075cmr" path="res://Sprites/9patch_panel.png" id="3_rt5m7"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="4"]
 [ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="5_ms1au"]
 [ext_resource type="StyleBox" uid="uid://dlnmbfxjhn6xe" path="res://ThemeResources/ProgressBar_ExpBG.tres" id="6_rt5m7"]
@@ -72,45 +73,46 @@ script = ExtResource("1")
 
 [node name="CoinCounter" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 271.0
-offset_right = 319.0
-offset_bottom = 16.0
-region_rect = Rect2(0, 0, 31, 12)
+offset_left = 276.0
+offset_right = 320.0
+offset_bottom = 21.0
+texture = ExtResource("3_rt5m7")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+metadata/_edit_group_ = true
 
-[node name="icon" type="TextureRect" parent="CoinCounter"]
+[node name="MarginContainer" type="MarginContainer" parent="CoinCounter"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -7.5
-offset_bottom = 7.5
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3")
-stretch_mode = 2
+theme_override_constants/margin_right = 4
 
-[node name="number" type="Label" parent="CoinCounter"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -7.0
-offset_right = 31.0
-offset_bottom = 7.0
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="CoinCounter/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="number" type="Label" parent="CoinCounter/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
 theme = ExtResource("4")
 theme_override_fonts/font = SubResource("1")
 theme_override_font_sizes/font_size = 8
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="icon" type="TextureRect" parent="CoinCounter/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3")
+stretch_mode = 2
 
 [node name="Exp_Bar" type="ProgressBar" parent="."]
 layout_mode = 1
