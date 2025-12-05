@@ -81,16 +81,16 @@ texture_scale = 2.5
 
 [node name="gunshot" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource("4")
-volume_db = -45.0
+volume_db = -27.0
 attenuation = 0.297302
 
 [node name="treasure" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource("5")
-volume_db = -45.449
+volume_db = -35.0
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource("7")
-volume_db = -35.098
+volume_db = -30.0
 
 [connection signal="timeout" from="shoot_rate" to="." method="_on_shoot_rate_timeout"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

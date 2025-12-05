@@ -65,7 +65,7 @@ libraries = {
 }
 autoplay = "walk"
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="BurningEffect" type="GPUParticles2D" parent="."]
 z_index = 4
 emitting = false
 amount = 150

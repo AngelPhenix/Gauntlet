@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://br4fyk3wr3fp1"]
+[gd_scene load_steps=5 format=3 uid="uid://br4fyk3wr3fp1"]
 
 [ext_resource type="Script" uid="uid://d2su2d5s0n43o" path="res://Scripts/globals.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://d061oap0iseh2" path="res://Sounds/zombiedeath.wav" id="2"]
+[ext_resource type="AudioStream" uid="uid://dkuyjrko6qrwx" path="res://Sounds/Intro-remaxim.ogg" id="3_6tejs"]
+[ext_resource type="AudioStream" uid="uid://c6qymmdm3yptl" path="res://Sounds/ingame_music.mp3" id="4_0nk1l"]
 
 [node name="GLOBALS" type="Node"]
 script = ExtResource("1")
@@ -10,3 +12,14 @@ weapon_file_path = "res://JSON/weapons_db.json"
 [node name="zombie_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2")
 volume_db = -45.0
+
+[node name="menu_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6tejs")
+volume_db = -10.0
+pitch_scale = 0.75
+
+[node name="ingame_music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_0nk1l")
+volume_db = -25.0
+parameters/looping = false

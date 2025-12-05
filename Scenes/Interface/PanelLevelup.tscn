@@ -1,62 +1,55 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cgbmsbtxhgv6n"]
 
-[ext_resource path="res://Sprites/9patch_panel.png" type="Texture2D" id=1]
-[ext_resource path="res://Sprites/piece.png" type="Texture2D" id=2]
-[ext_resource path="res://Fonts/Theme_Panel_Lvl.tres" type="Theme" id=3]
-[ext_resource path="res://Scripts/panel_levelup.gd" type="Script" id=4]
+[ext_resource type="Texture2D" uid="uid://bfosup075cmr" path="res://Sprites/9patch_panel.png" id="1"]
+[ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="3"]
+[ext_resource type="Script" uid="uid://b8v868f7fstny" path="res://Scripts/panel_levelup.gd" id="4"]
 
 [node name="NinePatchRect" type="NinePatchRect"]
-modulate = Color( 0.733333, 0.733333, 0.733333, 1 )
+modulate = Color(0.733333, 0.733333, 0.733333, 1)
+custom_minimum_size = Vector2(240, 47)
 offset_right = 188.0
 offset_bottom = 47.0
-custom_minimum_size = Vector2( 240, 47 )
-mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 3 )
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 48, 48 )
+mouse_filter = 0
+theme = ExtResource("3")
+texture = ExtResource("1")
+region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 9
 patch_margin_bottom = 8
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_top = 8
 theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-offset_left = 27.0
-offset_top = 8.0
-offset_right = 235.0
-offset_bottom = 42.0
+layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" groups=["lvlup_sprite"]]
-offset_top = 9.0
-offset_right = 16.0
-offset_bottom = 25.0
+layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource( 2 )
 stretch_mode = 6
 
 [node name="Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer" groups=["lvlup_text"]]
-offset_left = 30.0
-offset_top = 2.0
-offset_right = 180.0
-offset_bottom = 32.0
-custom_minimum_size = Vector2( 150, 30 )
-mouse_filter = 2
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 size_flags_vertical = 4
-meta_underlined = false
-fit_content_height = true
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 8
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+meta_underlined = false
 
 [connection signal="gui_input" from="." to="." method="_on_NinePatchRect_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_NinePatchRect_mouse_entered"]

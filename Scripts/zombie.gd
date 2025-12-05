@@ -81,7 +81,7 @@ func on_fire() -> void:
 	burning = true
 	self.modulate = Color(1,0.5,0)
 	if burning:
-		$GPUParticles2D.emitting = true
+		$BurningEffect.emitting = true
 		var tween: Tween = create_tween()
 		tween.tween_property(self, "modulate", Color(1,1,1), burning_timer)
 	

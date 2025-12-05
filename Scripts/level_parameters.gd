@@ -8,6 +8,7 @@ var player_frag_position: Vector2 = Vector2(0, 0)
 var player_frag: Node
 
 func _ready() -> void:
+	globals.get_node("ingame_music").play()
 	randomize()
 #	_generate_cracks()
 	_choose_weapon()
