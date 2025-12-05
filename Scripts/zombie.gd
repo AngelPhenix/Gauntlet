@@ -95,7 +95,7 @@ func get_loot() -> void:
 	if chance > 2 && chance <= 6:
 		inventory.append(drop_table[0])
 	# Chance d'avoir exp
-	if chance > 6 && chance <= 56:
+	if chance > 6 && chance <= 96:
 		inventory.append(drop_table[1])
 
 func _on_OnFire_timeout():
