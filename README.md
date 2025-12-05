@@ -10,7 +10,6 @@ For now, it has one enemy, some buffs you can get from leveling up, a level up s
 
 This game has sounds and music from the website OpenGameArt.org.
 
-Everything is either under public domain CC0 or is gonna be listed below :
-
-[Music Intro] A New Beginning from *Remaxim* : https://opengameart.org/content/new-beginning
-[Levelup Song] Decimeter-Stand_Alone_Complex_(Second_Gig_Remix) from *Gobusto* : https://opengameart.org/content/cybermusic
+Everything is either under public domain CC0 or is gonna be listed below :  
+[Music Intro] A New Beginning from *Remaxim* : https://opengameart.org/content/new-beginning  
+[Levelup Song] Decimeter-Stand_Alone_Complex_(Second_Gig_Remix) from *Gobusto* : https://opengameart.org/content/cybermusic  
