@@ -7,7 +7,9 @@
 script/source = "extends Control
 
 const FADE_OUT_TIME: float = 1.0
+const SLIDING_TIME: float = 0.1
 var first_focus: bool = true
+var is_sliding: bool = false
 
 @onready var menu_buttons: Array = $Background/MarginContainer/VBoxContainer/VBoxContainer.get_children()
 @onready var back_btn_options: Button = $Options/ColorRect/MarginContainer/VBoxContainer/OptionBack
@@ -29,7 +31,10 @@ func _on_Brawl_pressed():
 	get_tree().change_scene_to_file(\"res://Stages/Level_1.tscn\")
 
 func _on_Options_pressed():
-	slide_right()
+	if is_sliding:
+		return
+	is_sliding = true
+	await slide_right()
 	for button in menu_buttons:
 		button.focus_mode = Control.FOCUS_NONE
 		
@@ -37,17 +42,25 @@ func _on_Options_pressed():
 		btn.focus_mode = Control.FOCUS_ALL
 		
 	back_btn_options.grab_focus()
+	is_sliding = false
 
 func _on_option_back_pressed() -> void:
-	slide_left()
+	if is_sliding:
+		return
+	is_sliding = true
+	await slide_left()
 	for btn in get_tree().get_nodes_in_group(\"menu_option_btn\"):
 		btn.focus_mode = Control.FOCUS_NONE
 	for button in menu_buttons:
 		button.focus_mode = Control.FOCUS_ALL
 	menu_buttons[2].grab_focus()
+	is_sliding = false
 	
 func _on_Upgrades_pressed() -> void:
-	slide_left()
+	if is_sliding:
+		return
+	is_sliding = true
+	await slide_left()
 	for button in menu_buttons:
 		button.focus_mode = Control.FOCUS_NONE
 	
@@ -55,14 +68,19 @@ func _on_Upgrades_pressed() -> void:
 		btn.focus_mode = Control.FOCUS_ALL
 	
 	back_btn_upgrades.grab_focus()
+	is_sliding = false
 
 func _on_upgrades_back_pressed() -> void:
-	slide_right()
+	if is_sliding:
+		return
+	is_sliding = true
+	await slide_right()
 	for btn in get_tree().get_nodes_in_group(\"menu_upgrades_btn\"):
 		btn.focus_mode = Control.FOCUS_NONE
 	for button in menu_buttons:
 		button.focus_mode = Control.FOCUS_ALL
 	menu_buttons[1].grab_focus()
+	is_sliding = false
 
 func _on_Quit_pressed():
 	get_tree().quit()
@@ -70,13 +88,13 @@ func _on_Quit_pressed():
 # We're on the Upgrade menu when this happens
 func slide_right() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, \"position:x\", position.x - size.x, 0.25).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, \"position:x\", position.x - size.x, SLIDING_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	
 
 func slide_left() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, \"position:x\", position.x + size.x, 0.25).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, \"position:x\", position.x + size.x, SLIDING_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 
 
@@ -195,7 +213,8 @@ offset_left = -320.0
 offset_bottom = 320.0
 
 [node name="ColorRect" type="ColorRect" parent="Upgrades"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.0509804, 0.054902, 0.0862745, 1)

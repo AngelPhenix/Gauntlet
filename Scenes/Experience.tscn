@@ -7,14 +7,13 @@
 radius = 11.0
 
 [node name="Experience" type="Area2D" groups=["experience"]]
-z_index = 1
+z_index = 2
 script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 2
 texture = ExtResource("1")
 hframes = 3
 

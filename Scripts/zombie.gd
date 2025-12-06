@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed: int = 10
+var speed: int = 20
 var strength: int = 1
 var health: int = 35
 var inventory: Array = []
