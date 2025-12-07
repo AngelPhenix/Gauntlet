@@ -5,19 +5,22 @@ var strength: int = 1
 var health: int = 35
 var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
-var burning: bool = false
-var burning_timer: int = 2
 var veteran: bool = false
 var boss: bool = false
 var level: int = 1
 var drop_table: Array = [globals.coin_scn, globals.exp_scn]
 
+# Debuff Related Variables
+var burning: bool = false
+
 @onready var player: Object = get_tree().get_nodes_in_group("player")[0]
 @onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
+@onready var burning_particle: PackedScene = preload("res://Scenes/Particles/BurningParticle.tscn")
 
 func _ready() -> void:
-	$StopFire.wait_time = burning_timer
+	# Fill enemy inventory
 	get_loot()
+	
 	if veteran:
 		become_veteran()
 	if boss:
@@ -36,23 +39,22 @@ func become_veteran() -> void:
 	$sprite.scale = Vector2(2,2)
 	$colshape.shape.radius = 16
 	health = health * 5
-	speed = speed / 3
+	speed = speed / 5
 	strength = strength * 3
 
 func become_boss() -> void:
 	level = 3
 	$sprite.scale = Vector2(3,3)
 	$colshape.shape.radius = 24
-	health = health * 15
-	speed = speed / 5
+	health = health * 20
+	speed = speed / 8
 	strength = strength * 10
 
 func hit(damage: int) -> void:
 	globals.get_node("zombie_hit").play()
 	health -= damage
 	display_damage(damage)
-	var tween: Tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1,1,1), 0.05).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	
 	if health <= 0:
 		_drop_items()
 		queue_free()
@@ -87,18 +89,20 @@ func get_loot() -> void:
 
 # ########################### ON FIRE STATUS ########################### #
 func on_fire() -> void:
-	$OnFire.start()
-	$StopFire.start()
+	$FireDuration.wait_time = globals.base_burn_timer
+	$FireTick.wait_time = globals.base_tick_burn
+	$FireDuration.start()
+	$FireTick.start()
 	burning = true
 	self.modulate = Color(1,0.5,0)
 	if burning:
 		$BurningEffect.emitting = true
 		var tween: Tween = create_tween()
-		tween.tween_property(self, "modulate", Color(1,1,1), burning_timer)
+		tween.tween_property(self, "modulate", Color(1,1,1), globals.base_burn_timer)
 
 func _on_OnFire_timeout():
 	hit(player.buffs["fire"])
 
 func _on_StopFire_timeout():
-	$OnFire.stop()
+	$FireTick.stop()
 	burning = false

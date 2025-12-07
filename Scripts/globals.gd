@@ -13,14 +13,16 @@ var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
 var zombie_possible_items: Array = [coin_scn, exp_scn]
 var weapons_left_to_choose: Dictionary
 var weapons: Dictionary
-
-# SAVED VALUES WHEN TELEPORTER IS STEPPED ON
 var player_weapons_in_inventory: Array
 var player_equipped_weapon: String
 var hud: Array
 var total_coins_collected: int = 0
 var center_touched: bool = false
 var last_area: Node
+
+# DEBUFF RELATED
+var base_burn_timer: int = 1
+var base_tick_burn: float = 0.5
 
 @export var weapon_file_path : String # (String, FILE, "*.json")
 

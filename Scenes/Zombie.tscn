@@ -51,11 +51,11 @@ autoplay = "walk"
 
 [node name="BurningEffect" parent="." instance=ExtResource("3_yf4vm")]
 
-[node name="OnFire" type="Timer" parent="."]
+[node name="FireTick" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="StopFire" type="Timer" parent="."]
+[node name="FireDuration" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="OnFire" to="." method="_on_OnFire_timeout"]
-[connection signal="timeout" from="StopFire" to="." method="_on_StopFire_timeout"]
+[connection signal="timeout" from="FireTick" to="." method="_on_OnFire_timeout"]
+[connection signal="timeout" from="FireDuration" to="." method="_on_StopFire_timeout"]
