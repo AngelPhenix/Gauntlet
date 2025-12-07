@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dommik54whurs"]
+[gd_scene load_steps=5 format=3 uid="uid://dommik54whurs"]
 
 [ext_resource type="PackedScene" uid="uid://du1hideq43ggx" path="res://Scenes/Interface/MainMenuButton.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://26kdk36wcac" path="res://Scenes/Interface/UpgradeBtn.tscn" id="3_rw2bk"]
 
 [sub_resource type="GDScript" id="1"]
 script/source = "extends Control
@@ -235,6 +236,20 @@ alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureButton" type="Control" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeBtn" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 7.0
+offset_right = -278.0
+offset_bottom = -251.0
 
 [node name="UpgradesBack" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer" groups=["menu_upgrades_btn"] instance=ExtResource("1")]
 layout_mode = 2
