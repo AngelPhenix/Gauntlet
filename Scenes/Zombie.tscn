@@ -50,7 +50,6 @@ libraries = {
 autoplay = "walk"
 
 [node name="BurningEffect" parent="." instance=ExtResource("3_yf4vm")]
-visible = false
 
 [node name="OnFire" type="Timer" parent="."]
 wait_time = 0.5

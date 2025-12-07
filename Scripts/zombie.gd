@@ -5,7 +5,6 @@ var strength: int = 1
 var health: int = 35
 var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
-var debuff: PackedScene = preload("res://Scenes/DebuffMachine.tscn")
 var burning: bool = false
 var burning_timer: int = 2
 var veteran: bool = false
@@ -93,10 +92,7 @@ func on_fire() -> void:
 	burning = true
 	self.modulate = Color(1,0.5,0)
 	if burning:
-		var debuff_node: Node = debuff.instantiate()
-		add_child(debuff_node)
-		debuff_node.burn_entity(self, burning_timer)
-		#$BurningEffect.emitting = true
+		$BurningEffect.emitting = true
 		var tween: Tween = create_tween()
 		tween.tween_property(self, "modulate", Color(1,1,1), burning_timer)
 
