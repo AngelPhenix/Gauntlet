@@ -14,7 +14,6 @@ var experience: int
 var equipped_weapon: String
 var weapons_in_inventory: Array
 
-var nearby_chest: Node
 var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
 @onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
 var levelup_panel_scn = preload("res://Scenes/Interface/Levelup.tscn")

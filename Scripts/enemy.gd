@@ -14,7 +14,7 @@ var veteran: bool = false
 var boss: bool = false
 
 var inventory: Array
-var drop_table: Array = [globals.coin_scn, globals.exp_scn, globals.bonus_scn]
+var drop_table: Array = [globals.coin_scn, globals.exp_scn]
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 
 @onready var player: Object = get_tree().get_nodes_in_group("player")[0]
