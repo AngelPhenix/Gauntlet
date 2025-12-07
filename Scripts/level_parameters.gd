@@ -14,7 +14,7 @@ func _ready() -> void:
 	_generate_cracks(starting_map)
 	_choose_weapon()
 
-# Checks every tile with ID 0 (floor) to be a potential cracked tile with a 8% chance
+# Checks every tile with ID 0 (floor) to be a potential cracked tile with a 2% chance
 func _generate_cracks(tilefragments) -> void:
 	for fragment in tilefragments:
 		for tile in fragment.get_used_cells_by_id(0):
@@ -23,7 +23,7 @@ func _generate_cracks(tilefragments) -> void:
 			var tile_num = rng.randi_range(1, 4)
 			rng.randomize()
 			var probability = rng.randi_range(0, 100)
-			if probability <= 8:
+			if probability <= 2:
 				fragment.set_cell(tile, tile_num, Vector2i(0,0), 0)
 
 

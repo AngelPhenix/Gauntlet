@@ -10,7 +10,7 @@ var burning_timer: int = 2
 var veteran: bool = false
 var boss: bool = false
 var level: int = 1
-var drop_table: Array = [globals.coin_scn, globals.exp_scn, globals.bonus_scn]
+var drop_table: Array = [globals.coin_scn, globals.exp_scn]
 
 @onready var player: Object = get_tree().get_nodes_in_group("player")[0]
 @onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
