@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcjmg1udb2a7l"]
+
+[ext_resource type="Script" uid="uid://c2lwugjowacyw" path="res://Scripts/debuff_machine.gd" id="1_h4e0s"]
+[ext_resource type="PackedScene" uid="uid://lk54qx68vbpv" path="res://Scenes/Particles/BurningParticle.tscn" id="2_mnaij"]
+
+[node name="DebuffMachine" type="Node2D"]
+script = ExtResource("1_h4e0s")
+
+[node name="BurningEffect" parent="." instance=ExtResource("2_mnaij")]
+
+[node name="Existing" type="Timer" parent="."]
+
+[connection signal="timeout" from="Existing" to="." method="_on_existing_timeout"]

@@ -5,6 +5,7 @@ var strength: int = 1
 var health: int = 35
 var inventory: Array = []
 var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
+var debuff: PackedScene = preload("res://Scenes/DebuffMachine.tscn")
 var burning: bool = false
 var burning_timer: int = 2
 var veteran: bool = false
@@ -75,28 +76,29 @@ func display_damage(damage: int) -> void:
 	get_tree().get_root().add_child(dmg_taken)
 	dmg_taken.get_node("Label").text = str(damage)
 
-func on_fire() -> void:
-	$OnFire.start()
-	$StopFire.start()
-	burning = true
-	self.modulate = Color(1,0.5,0)
-	if burning:
-		$BurningEffect.emitting = true
-		var tween: Tween = create_tween()
-		tween.tween_property(self, "modulate", Color(1,1,1), burning_timer)
-	
-	
 func get_loot() -> void:
 	var chance = randi() % 100 + 1
-	# 5% chance d'avoir bonus
-	if chance >= 1 && chance <= 2:
-		inventory.append(drop_table[2])
 	# Chance d'avoir un coin
 	if chance > 2 && chance <= 6:
 		inventory.append(drop_table[0])
 	# Chance d'avoir exp
 	if chance > 6 && chance <= 96:
 		inventory.append(drop_table[1])
+
+
+# ########################### ON FIRE STATUS ########################### #
+func on_fire() -> void:
+	$OnFire.start()
+	$StopFire.start()
+	burning = true
+	self.modulate = Color(1,0.5,0)
+	if burning:
+		var debuff_node: Node = debuff.instantiate()
+		add_child(debuff_node)
+		debuff_node.burn_entity(self, burning_timer)
+		#$BurningEffect.emitting = true
+		var tween: Tween = create_tween()
+		tween.tween_property(self, "modulate", Color(1,1,1), burning_timer)
 
 func _on_OnFire_timeout():
 	hit(player.buffs["fire"])
