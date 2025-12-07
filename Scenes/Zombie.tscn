@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://m1jrqhtave5n"]
+[gd_scene load_steps=6 format=3 uid="uid://m1jrqhtave5n"]
 
 [ext_resource type="Script" uid="uid://d2ectwc2onltu" path="res://Scripts/zombie.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dyycswodaqm3f" path="res://Sprites/enemy.png" id="2"]
-[ext_resource type="PackedScene" uid="uid://lk54qx68vbpv" path="res://Scenes/Particles/BurningParticle.tscn" id="3_yf4vm"]
 
 [sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true
@@ -48,8 +47,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_h15oy")
 }
 autoplay = "walk"
-
-[node name="BurningEffect" parent="." instance=ExtResource("3_yf4vm")]
 
 [node name="FireTick" type="Timer" parent="."]
 wait_time = 0.5

@@ -89,14 +89,15 @@ func get_loot() -> void:
 
 # ########################### ON FIRE STATUS ########################### #
 func on_fire() -> void:
+	burning = true
 	$FireDuration.wait_time = globals.base_burn_timer
 	$FireTick.wait_time = globals.base_tick_burn
 	$FireDuration.start()
 	$FireTick.start()
-	burning = true
 	self.modulate = Color(1,0.5,0)
 	if burning:
-		$BurningEffect.emitting = true
+		var burning_effect = burning_particle.instantiate()
+		add_child(burning_effect)
 		var tween: Tween = create_tween()
 		tween.tween_property(self, "modulate", Color(1,1,1), globals.base_burn_timer)
 

@@ -35,9 +35,6 @@ func _physics_process(delta: float) -> void:
 	set_velocity(velocity.normalized() * speed)
 	move_and_slide()
 	rotation += get_local_mouse_position().angle()
-	
-#	var target_offset = (get_global_mouse_position() - global_position)/4
-#	$camera.offset = $camera.offset.linear_interpolate(target_offset, delta * 8.0)
 
 func get_input() -> void:
 	velocity = Vector2()
