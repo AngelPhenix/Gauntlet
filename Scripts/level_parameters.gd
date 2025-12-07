@@ -10,12 +10,13 @@ var player_frag: Node
 func _ready() -> void:
 	globals.get_node("ingame_music").play()
 	randomize()
-	#_generate_cracks()
+	var starting_map = $Map.get_children()
+	_generate_cracks(starting_map)
 	_choose_weapon()
 
-# Checks every tile with ID 0 (floor) to be a potential cracked tile with a 2% chance
-func _generate_cracks() -> void:
-	for fragment in $Map.get_children():
+# Checks every tile with ID 0 (floor) to be a potential cracked tile with a 8% chance
+func _generate_cracks(tilefragments) -> void:
+	for fragment in tilefragments:
 		for tile in fragment.get_used_cells_by_id(0):
 			var rng = RandomNumberGenerator.new()
 			rng.randomize()
@@ -71,9 +72,9 @@ func generate_new_fragments(new_player_pos: Vector2) -> void:
 	
 	player_frag_position = new_player_pos
 	
+	_generate_cracks(new_frags)
 	_draw_new_map_from_array(new_frags)
 	_clean_map(fragments)
-
 
 func _draw_new_map_from_array(array_to_draw_with: Array) -> void:
 	for frags in array_to_draw_with:
