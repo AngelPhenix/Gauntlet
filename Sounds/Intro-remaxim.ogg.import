@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Intro-remaxim.ogg-43d8d72bc650ca0c6c162d040a6
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

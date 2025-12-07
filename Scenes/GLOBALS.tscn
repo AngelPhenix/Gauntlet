@@ -22,7 +22,7 @@ pitch_scale = 0.75
 [node name="ingame_music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("4_0nk1l")
-volume_db = -25.0
+volume_db = -28.0
 parameters/looping = false
 
 [node name="levelup_music" type="AudioStreamPlayer" parent="."]
