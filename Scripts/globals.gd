@@ -11,7 +11,7 @@ extends Node
 var coin_scn: PackedScene = preload("res://Scenes/Coin.tscn")
 var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
 var zombie_possible_items: Array = [coin_scn, exp_scn]
-var total_coins_collected: int = 20
+var total_coins_collected: int = 1000
 
 
 var weapons_left_to_choose: Dictionary
@@ -36,7 +36,9 @@ var upgrades: Dictionary = {
 		"max_level" : 2,
 		"price" : [10, 25],
 		"description" : "This card's effect doubles/quadruples the radius of explosions.",
-		"effect" : [2, 4, 6]
+		"effect" : [2, 4, 6],
+		"locked" : false,
+		"next_upgrade" : "Explo2"
 	},
 	"Explo2" : {
 		"name" : "Atomic Bomb",
@@ -44,7 +46,9 @@ var upgrades: Dictionary = {
 		"max_level" : 5,
 		"price" : [100, 120, 150, 200, 260],
 		"description" : "Adds a multiplier to 3/7/10/20/40x more base damage to explosions.",
-		"effect" : [1, 3, 7, 10, 20, 40]
+		"effect" : [1, 3, 7, 10, 20, 40],
+		"locked" : true,
+		"next_upgrade" : ""
 	}
 }
 

@@ -36,6 +36,9 @@ func _ready() -> void:
 	# Connecting signal sent from each UpgradeBtn to MainMenu
 	for upgrade_btn in upgrade_btns:
 		upgrade_btn.connect(\"coins_spent\", Callable(self, \"_on_coin_spent\"))
+		upgrade_btn.locked = globals.upgrades[upgrade_btn.name].locked
+		if upgrade_btn.locked:
+			upgrade_btn.disabled = true
 
 	# Disable the focus mode of buttons that aren't on the main screen
 	for btn in get_tree().get_nodes_in_group(\"menu_option_btn\"):
