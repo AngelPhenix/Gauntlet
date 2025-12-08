@@ -26,7 +26,22 @@ var base_tick_burn: float = 0.5
 
 @export var weapon_file_path : String # (String, FILE, "*.json")
 
-
+var upgrades: Dictionary = {
+	"Explo1" : {
+		"name" : "Explosivity",
+		"level" : 0,
+		"max_level" : 2,
+		"price" : [10, 25],
+		"description" : "This card doubles the radius of explosion for each level."
+	},
+	"Explo2" : {
+		"name" : "Atomic Bomb",
+		"level" : 0,
+		"max_level" : 5,
+		"price" : [100, 120, 150, 200, 260],
+		"description" : "Adds a multiplier to 3/7/10/20/40x more base damage to explosions."
+	}
+}
 
 var buffs: Dictionary = {
 	0 : {

@@ -1,19 +1,15 @@
 extends TextureButton
 
-var level: int = 0
-var max_level: int = 3
-
 func _ready() -> void:
-	$Level.text = str(level) + "/" + str(max_level)
+	$Level.text = str(globals.upgrades[name].level) + "/" + str(globals.upgrades[name].max_level)
 
 func _on_pressed() -> void:
-	level = level + 1
-	if level > max_level:
-		level = max_level
+	#price = globals.upgrades["explo1"].price[level]
+	globals.upgrades[name].level = globals.upgrades[name].level + 1
+	if globals.upgrades[name].level > globals.upgrades[name].max_level:
+		globals.upgrades[name].level = globals.upgrades[name].max_level
 		return
-	$Level.text = str(level) + "/" + str(max_level)
-	print("Upgrade!")
+	$Level.text = str(globals.upgrades[name].level) + "/" + str(globals.upgrades[name].max_level)
 
 func _on_focus_entered() -> void:
-	print("focused!")
 	pass # Replace with function body.
