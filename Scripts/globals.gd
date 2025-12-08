@@ -32,14 +32,16 @@ var upgrades: Dictionary = {
 		"level" : 0,
 		"max_level" : 2,
 		"price" : [10, 25],
-		"description" : "This card doubles the radius of explosion for each level."
+		"description" : "This card's effect doubles/quadruples the radius of explosions.",
+		"effect" : [2, 4, 6]
 	},
 	"Explo2" : {
 		"name" : "Atomic Bomb",
 		"level" : 0,
 		"max_level" : 5,
 		"price" : [100, 120, 150, 200, 260],
-		"description" : "Adds a multiplier to 3/7/10/20/40x more base damage to explosions."
+		"description" : "Adds a multiplier to 3/7/10/20/40x more base damage to explosions.",
+		"effect" : [1, 3, 7, 10, 20, 40]
 	}
 }
 
