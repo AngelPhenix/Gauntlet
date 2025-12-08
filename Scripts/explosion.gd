@@ -6,7 +6,6 @@ var radius: int
 
 func _ready():
 	apply_upgrades()
-	print(damage)
 	await get_tree().physics_frame
 
 	for body in get_overlapping_bodies():

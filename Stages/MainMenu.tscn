@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dommik54whurs"]
+[gd_scene load_steps=8 format=3 uid="uid://dommik54whurs"]
 
 [ext_resource type="PackedScene" uid="uid://du1hideq43ggx" path="res://Scenes/Interface/MainMenuButton.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://26kdk36wcac" path="res://Scenes/Interface/UpgradeBtn.tscn" id="3_rw2bk"]
 [ext_resource type="Texture2D" uid="uid://dmy2cio2o4hy1" path="res://Sprites/Buffs/explo_dmg.png" id="4_v8rri"]
 [ext_resource type="Texture2D" uid="uid://dk1qg4mtkhwbv" path="res://Sprites/Buffs/explo_dmg_focused.png" id="5_473rl"]
+[ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="6_473rl"]
 
 [sub_resource type="GDScript" id="1"]
 script/source = "extends Control
@@ -17,10 +18,18 @@ var is_sliding: bool = false
 @onready var menu_buttons: Array = $Background/MarginContainer/VBoxContainer/VBoxContainer.get_children()
 @onready var back_btn_options: Button = $Options/ColorRect/MarginContainer/VBoxContainer/OptionBack
 @onready var back_btn_upgrades: Button = $Upgrades/ColorRect/MarginContainer/VBoxContainer/UpgradesBack
+@onready var money_display: Label = $Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton/MoneyContainer/Money
+@onready var upgrade_btns: Array[Node] = get_tree().get_nodes_in_group(\"btn_upgrade\")
 
 func _ready() -> void:
 	globals.get_node(\"menu_music\").play()
 	menu_buttons[0].grab_focus()
+	money_display.text = str(globals.total_coins_collected)
+	
+	# Connecting signal sent from each UpgradeBtn to MainMenu
+	for upgrade_btn in upgrade_btns:
+		upgrade_btn.connect(\"coins_spent\", Callable(self, \"_on_coin_spent\"))
+		print(str(upgrade_btn) + \" is not connected to main menu\")
 
 	# Disable the focus mode of buttons that aren't on the main screen
 	for btn in get_tree().get_nodes_in_group(\"menu_option_btn\"):
@@ -111,6 +120,9 @@ func fade_menu():
 	var tween: Tween = create_tween()
 	tween.tween_property($Fadeout, \"modulate:a\", 1, FADE_OUT_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
+
+func _on_coin_spent() -> void:
+	money_display.text = str(globals.total_coins_collected)
 "
 
 [node name="MainMenu" type="Control" groups=["menu"]]
@@ -143,7 +155,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Gauntlet v0.2"
+text = "Gauntlet v0.5"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -261,6 +273,27 @@ offset_right = 63.0
 offset_bottom = 23.0
 texture_normal = ExtResource("4_v8rri")
 texture_focused = ExtResource("5_473rl")
+
+[node name="MoneyContainer" type="HBoxContainer" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_bottom = 16.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Money" type="Label" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton/MoneyContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneySprite" type="TextureRect" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton/MoneyContainer"]
+layout_mode = 2
+texture = ExtResource("6_473rl")
+stretch_mode = 2
 
 [node name="UpgradesBack" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer" groups=["menu_upgrades_btn"] instance=ExtResource("1")]
 layout_mode = 2
