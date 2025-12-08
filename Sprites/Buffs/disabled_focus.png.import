@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmu3uwwqg78au"
-path="res://.godot/imported/test.png-318d305681abc08eee98fa87fa472c0d.ctex"
+uid="uid://r4tu2cuwi0m7"
+path="res://.godot/imported/disabled_focus.png-56787d1cd055941d9292df8ee7de3499.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Buffs/test.png"
-dest_files=["res://.godot/imported/test.png-318d305681abc08eee98fa87fa472c0d.ctex"]
+source_file="res://Sprites/Buffs/disabled_focus.png"
+dest_files=["res://.godot/imported/disabled_focus.png-56787d1cd055941d9292df8ee7de3499.ctex"]
 
 [params]
 

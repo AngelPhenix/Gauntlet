@@ -26,9 +26,10 @@ func _on_pressed() -> void:
 			# Level up the skill. If it's higher than max_level, lock it
 			globals.upgrades[name].level = globals.upgrades[name].level + 1
 			
-			# Unlock the related nodes that needs this one to be minimum lvl 1
+			# Unlocks the related nodes that needs this one to be minimum lvl 1
 			for node in get_tree().get_nodes_in_group("btn_upgrade"):
 				if node.name == globals.upgrades[name].next_upgrade:
+					node.locked = false
 					node.disabled = false
 			
 			if globals.upgrades[name].level > globals.upgrades[name].max_level:
