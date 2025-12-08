@@ -57,6 +57,11 @@ cache/0/7/0/descent = 0.0
 cache/0/7/0/underline_position = 0.0
 cache/0/7/0/underline_thickness = 0.0
 cache/0/7/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlnp3"]
 bg_color = Color(0, 0.7176471, 0.3764706, 0.11764706)

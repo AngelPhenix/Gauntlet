@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl7hcui4iknsu"]
+
+[ext_resource type="Texture2D" uid="uid://bfosup075cmr" path="res://Sprites/9patch_panel.png" id="1_grhaq"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2_66jn6"]
+[ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="3_66jn6"]
+
+[node name="SkillDescriptionContent" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_grhaq")
+region_rect = Rect2(9.646984, 9.918274, 29.053062, 27.97202)
+
+[node name="SkillDescription" type="Label" parent="NinePatchRect" groups=["skill_desc"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_66jn6")
+theme_override_font_sizes/font_size = 8
+text = "This is the placeholder description of a skill to see how the text reacts to its parent."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 273.0
+offset_top = -16.0
+offset_right = 318.0
+offset_bottom = 3.0
+texture = ExtResource("1_grhaq")
+region_rect = Rect2(0, 0, 48, 47.58074)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Price" type="Label" parent="NinePatchRect/NinePatchRect/HBoxContainer" groups=["skill_price"]]
+layout_mode = 2
+theme = ExtResource("2_66jn6")
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinSprite" type="TextureRect" parent="NinePatchRect/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("3_66jn6")
+stretch_mode = 2
