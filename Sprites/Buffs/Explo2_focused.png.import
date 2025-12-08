@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmy2cio2o4hy1"
-path="res://.godot/imported/explo_dmg.png-e9849a5956ccd745e647ab8b3afe4610.ctex"
+uid="uid://dk1qg4mtkhwbv"
+path="res://.godot/imported/Explo2_focused.png-d7124f6dabdd526370bb2c1eaab46695.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Buffs/explo_dmg.png"
-dest_files=["res://.godot/imported/explo_dmg.png-e9849a5956ccd745e647ab8b3afe4610.ctex"]
+source_file="res://Sprites/Buffs/Explo2_focused.png"
+dest_files=["res://.godot/imported/Explo2_focused.png-d7124f6dabdd526370bb2c1eaab46695.ctex"]
 
 [params]
 

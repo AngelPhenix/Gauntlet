@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dommik54whurs"]
+[gd_scene load_steps=10 format=3 uid="uid://dommik54whurs"]
 
 [ext_resource type="PackedScene" uid="uid://du1hideq43ggx" path="res://Scenes/Interface/MainMenuButton.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://26kdk36wcac" path="res://Scenes/Interface/UpgradeBtn.tscn" id="3_rw2bk"]
 [ext_resource type="Texture2D" uid="uid://vxnu0pffdsgq" path="res://Sprites/Buffs/disabled.png" id="4_du6k5"]
-[ext_resource type="Texture2D" uid="uid://dmy2cio2o4hy1" path="res://Sprites/Buffs/explo_dmg.png" id="4_v8rri"]
-[ext_resource type="Texture2D" uid="uid://dk1qg4mtkhwbv" path="res://Sprites/Buffs/explo_dmg_focused.png" id="5_473rl"]
-[ext_resource type="Texture2D" uid="uid://4sm0b0fxkydg" path="res://Sprites/Buffs/explosive_buff_focused.png" id="5_rcs22"]
+[ext_resource type="Texture2D" uid="uid://dmy2cio2o4hy1" path="res://Sprites/Buffs/Explo2.png" id="4_v8rri"]
+[ext_resource type="Texture2D" uid="uid://dk1qg4mtkhwbv" path="res://Sprites/Buffs/Explo2_focused.png" id="5_473rl"]
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="6_473rl"]
 [ext_resource type="PackedScene" uid="uid://cl7hcui4iknsu" path="res://Scenes/Interface/SkillDescriptionContent.tscn" id="7_jttb6"]
 
@@ -196,6 +195,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 320.0
 offset_right = 320.0
+mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="Options"]
 layout_mode = 0
@@ -232,12 +232,14 @@ size_flags_vertical = 3
 
 [node name="OptionBack" parent="Options/ColorRect/MarginContainer/VBoxContainer" groups=["menu_option_btn"] instance=ExtResource("1")]
 layout_mode = 2
+mouse_filter = 2
 text = "Back"
 
 [node name="Upgrades" type="Control" parent="."]
 anchors_preset = 0
 offset_left = -320.0
 offset_bottom = 320.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Upgrades"]
 layout_mode = 1
@@ -269,6 +271,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="TextureButton" type="Control" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Explo1" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
 layout_mode = 1
@@ -277,7 +280,6 @@ offset_top = 7.0
 offset_right = -278.0
 offset_bottom = -251.0
 texture_disabled = ExtResource("4_du6k5")
-texture_focused = ExtResource("5_rcs22")
 
 [node name="Explo2" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
 layout_mode = 0
@@ -312,6 +314,7 @@ stretch_mode = 2
 
 [node name="UpgradesBack" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer" groups=["menu_upgrades_btn"] instance=ExtResource("1")]
 layout_mode = 2
+mouse_filter = 2
 text = "Back"
 
 [node name="SkillDescriptionContent" parent="Upgrades" instance=ExtResource("7_jttb6")]

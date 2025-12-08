@@ -76,7 +76,7 @@ var buffs: Dictionary = {
 	4 : {
 		"name" : "explosive",
 		"tooltip" : "Bullet explode on impact",
-		"sprite" : "res://Sprites/Buffs/explosive_buff.png"
+		"sprite" : "res://Sprites/Buffs/Explo1.png"
 	}
 }
 

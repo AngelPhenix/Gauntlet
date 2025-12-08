@@ -5,7 +5,7 @@ signal coins_spent(value)
 # Connected on scene/script SkillDescriptionContent to update price when skill leveled-up
 signal skill_levelup(new_skill_price)
 
-var locked: bool = true
+var locked: bool
 
 @onready var skill_desc_node: Node = get_tree().get_nodes_in_group("skill_desc_node")[0]
 @onready var skill_description: Node = get_tree().get_nodes_in_group("skill_desc")[0]
@@ -13,6 +13,9 @@ var locked: bool = true
 
 func _ready() -> void:
 	$Level.text = str(globals.upgrades[name].level) + "/" + str(globals.upgrades[name].max_level)
+	
+	if globals.upgrades[name].locked:
+		self.texture_focused = load("res://Sprites/Buffs/disabled_focus.png")
 
 func _on_pressed() -> void:
 	if globals.upgrades[name].level < globals.upgrades[name].max_level:
@@ -29,8 +32,9 @@ func _on_pressed() -> void:
 			# Unlocks the related nodes that needs this one to be minimum lvl 1
 			for node in get_tree().get_nodes_in_group("btn_upgrade"):
 				if node.name == globals.upgrades[name].next_upgrade:
-					node.locked = false
+					globals.upgrades[node.name].locked = false
 					node.disabled = false
+					node.texture_focused = load("res://Sprites/Buffs/"+node.name+"_focused.png")
 			
 			if globals.upgrades[name].level > globals.upgrades[name].max_level:
 				globals.upgrades[name].level = globals.upgrades[name].max_level
