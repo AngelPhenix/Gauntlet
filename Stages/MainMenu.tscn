@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dommik54whurs"]
+[gd_scene load_steps=9 format=3 uid="uid://dommik54whurs"]
 
 [ext_resource type="PackedScene" uid="uid://du1hideq43ggx" path="res://Scenes/Interface/MainMenuButton.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmy2cio2o4hy1" path="res://Sprites/Buffs/explo_dmg.png" id="4_v8rri"]
 [ext_resource type="Texture2D" uid="uid://dk1qg4mtkhwbv" path="res://Sprites/Buffs/explo_dmg_focused.png" id="5_473rl"]
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="6_473rl"]
+[ext_resource type="PackedScene" uid="uid://cl7hcui4iknsu" path="res://Scenes/Interface/SkillDescriptionContent.tscn" id="7_jttb6"]
 
 [sub_resource type="GDScript" id="1"]
 script/source = "extends Control
@@ -20,11 +21,17 @@ var is_sliding: bool = false
 @onready var back_btn_upgrades: Button = $Upgrades/ColorRect/MarginContainer/VBoxContainer/UpgradesBack
 @onready var money_display: Label = $Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton/MoneyContainer/Money
 @onready var upgrade_btns: Array[Node] = get_tree().get_nodes_in_group(\"btn_upgrade\")
+@onready var skill_desc_node: Node = get_tree().get_nodes_in_group(\"skill_desc_node\")[0]
+@onready var skill_price: Node = get_tree().get_nodes_in_group(\"skill_price\")[0]
 
 func _ready() -> void:
 	globals.get_node(\"menu_music\").play()
 	menu_buttons[0].grab_focus()
 	money_display.text = str(globals.total_coins_collected)
+	
+	# Hide the skill description in case it's not
+	if skill_desc_node.visible:
+		skill_desc_node.visible = false
 	
 	# Connecting signal sent from each UpgradeBtn to MainMenu
 	for upgrade_btn in upgrade_btns:
@@ -131,6 +138,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("2")
 script = SubResource("1")
 
@@ -297,6 +305,10 @@ stretch_mode = 2
 [node name="UpgradesBack" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer" groups=["menu_upgrades_btn"] instance=ExtResource("1")]
 layout_mode = 2
 text = "Back"
+
+[node name="SkillDescriptionContent" parent="Upgrades" instance=ExtResource("7_jttb6")]
+visible = false
+layout_mode = 1
 
 [node name="Fadeout" type="ColorRect" parent="." groups=["tint"]]
 modulate = Color(1, 1, 1, 0)
