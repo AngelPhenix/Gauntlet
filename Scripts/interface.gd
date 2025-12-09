@@ -3,6 +3,7 @@ extends Control
 @export var debug_mode: bool = false
 
 @onready var player: Node = get_tree().get_nodes_in_group("player")[0]
+@onready var gameoverhud: PackedScene = preload("res://Scenes/Interface/GameOverHUD.tscn")
 var rect_gun_scn = preload("res://Scenes/Interface/GunNode.tscn")
 var weapons: Array = []
 var exp_total: int = 0
@@ -12,6 +13,8 @@ func _ready() -> void:
 	player.connect("coin_pickedup", Callable(self, "_on_coin_pickedup"))
 	player.connect("hurt", Callable(self, "_on_player_hurt"))
 	player.connect("exp_pickedup", Callable(self, "_on_player_add_experience"))
+	
+	player.dead.connect(_on_player_dead)
 	exp_required = get_required_experience(player.level + 1)
 	_update_hud()
 
@@ -38,8 +41,11 @@ func _on_coin_pickedup(total_coins: int) -> void:
 
 func _on_player_hurt(new_health: int) -> void:
 	$hp.value = new_health
-	
-	
+
+func _on_player_dead() -> void:
+	var go_hud: Node = gameoverhud.instantiate()
+	add_child(go_hud)
+
 func get_required_experience(level: int) -> float:
 	return round(pow(level, 1.8) + level * 4)
 	

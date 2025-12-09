@@ -70,6 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4")
 script = ExtResource("1")
+debug_mode = true
 
 [node name="CoinCounter" type="NinePatchRect" parent="."]
 layout_mode = 0

@@ -3,7 +3,7 @@ extends Button
 @onready var menu = get_tree().get_nodes_in_group("menu")[0]
 @onready var base_position = position.x
 
-func _on_MainMenu_Button_focus_entered():
+func _on_MainMenu_Button_focus_entered(): 
 	if menu.first_focus:
 		menu.first_focus = false
 	else:

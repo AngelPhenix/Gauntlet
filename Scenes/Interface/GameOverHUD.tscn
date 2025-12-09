@@ -4,6 +4,21 @@
 [ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="2_adovk"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="3_c1xpy"]
 
+[sub_resource type="Animation" id="Animation_adovk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("List/Menu:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5468978, 1.9608799, 0.94752604, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_wen7t"]
 resource_name = "restart_btn"
 length = 0.2
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "values": [Color(0.5468978, 1.9608799, 0.94752604, 1), Color(1.2303226, 1.9608799, 0.5468978, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_adovk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("List/Menu:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.5468978, 1.9608799, 0.94752604, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c1xpy"]
 _data = {
 &"RESET": SubResource("Animation_adovk"),
@@ -43,6 +43,7 @@ _data = {
 }
 
 [node name="GameOverHUD" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -83,11 +85,14 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="Menu" type="Button" parent="List"]
+z_as_relative = false
 layout_mode = 2
-theme = ExtResource("2_adovk")
+focus_mode = 1
+theme = ExtResource("3_c1xpy")
 theme_override_colors/font_color = Color(0.5468978, 1.9608799, 0.94752604, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Go to menu"
-flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -96,12 +101,15 @@ libraries = {
 autoplay = "restart_btn"
 
 [node name="Fadeout" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 50
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="List/Menu" to="." method="_on_menu_pressed"]
