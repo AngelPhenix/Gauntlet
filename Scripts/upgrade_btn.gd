@@ -24,6 +24,7 @@ func _on_pressed() -> void:
 			
 			# Spend the right amount of money to upgrade then update money display
 			globals.total_coins_collected -= globals.upgrades[name].price[globals.upgrades[name].level]
+			globals.get_node("skill_lvlup").play()
 			emit_signal("coins_spent")
 			
 			# Level up the skill. If it's higher than max_level, lock it

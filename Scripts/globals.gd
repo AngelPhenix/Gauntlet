@@ -13,7 +13,6 @@ var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
 var zombie_possible_items: Array = [coin_scn, exp_scn]
 var total_coins_collected: int = 1000
 
-
 var weapons_left_to_choose: Dictionary
 var weapons: Dictionary
 var player_weapons_in_inventory: Array

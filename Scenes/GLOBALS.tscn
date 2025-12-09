@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://br4fyk3wr3fp1"]
+[gd_scene load_steps=7 format=3 uid="uid://br4fyk3wr3fp1"]
 
 [ext_resource type="Script" uid="uid://d2su2d5s0n43o" path="res://Scripts/globals.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://d061oap0iseh2" path="res://Sounds/zombiedeath.wav" id="2"]
 [ext_resource type="AudioStream" uid="uid://dkuyjrko6qrwx" path="res://Sounds/Intro-remaxim.ogg" id="3_6tejs"]
 [ext_resource type="AudioStream" uid="uid://c6qymmdm3yptl" path="res://Sounds/ingame_music.mp3" id="4_0nk1l"]
 [ext_resource type="AudioStream" uid="uid://deuld5ksrpo1b" path="res://Sounds/levelup.ogg" id="5_uyg7e"]
+[ext_resource type="AudioStream" uid="uid://c1yosxpo8y7e6" path="res://Sounds/skill_lvlup.wav" id="6_4iesu"]
 
 [node name="GLOBALS" type="Node"]
 script = ExtResource("1")
@@ -31,3 +32,9 @@ stream = ExtResource("5_uyg7e")
 volume_db = -12.0
 pitch_scale = 0.75
 parameters/looping = false
+
+[node name="skill_lvlup" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_4iesu")
+volume_db = -20.0
+pitch_scale = 2.0
