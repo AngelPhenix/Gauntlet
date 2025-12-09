@@ -3,7 +3,7 @@ extends CharacterBody2D
 # variables
 var speed: int = 150
 var max_health: int = 20
-var health: int = 2
+var health: int = 1
 var coins: int = 0
 var invincibility_frame: float = 0.50
 var body_should_damage_us_map: Dictionary
@@ -99,6 +99,7 @@ func _on_hitbox_body_entered(body: Object) -> void:
 				($audio/hurt as AudioStreamPlayer2D).play()
 				health -= body.strength
 				if health <= 0:
+					# Signal caught by ?
 					dead.emit()
 				emit_signal("hurt", health)
 				await get_tree().create_timer(invincibility_frame).timeout

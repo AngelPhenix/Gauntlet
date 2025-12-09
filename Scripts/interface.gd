@@ -43,6 +43,7 @@ func _on_player_hurt(new_health: int) -> void:
 	$hp.value = new_health
 
 func _on_player_dead() -> void:
+	get_tree().paused = true
 	var go_hud: Node = gameoverhud.instantiate()
 	add_child(go_hud)
 
