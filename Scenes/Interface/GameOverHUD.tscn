@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://87v6p1ase1ok"]
+
+[ext_resource type="Script" uid="uid://bytscwfjav1s7" path="res://Scripts/game_over_hud.gd" id="1_wen7t"]
+[ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="2_adovk"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="3_c1xpy"]
+
+[sub_resource type="Animation" id="Animation_wen7t"]
+resource_name = "restart_btn"
+length = 0.2
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("List/Menu:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5468978, 1.9608799, 0.94752604, 1), Color(1.2303226, 1.9608799, 0.5468978, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_adovk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("List/Menu:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5468978, 1.9608799, 0.94752604, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1xpy"]
+_data = {
+&"RESET": SubResource("Animation_adovk"),
+&"restart_btn": SubResource("Animation_wen7t")
+}
+
+[node name="GameOverHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wen7t")
+
+[node name="List" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="GO" type="Label" parent="List"]
+layout_mode = 2
+theme = ExtResource("2_adovk")
+theme_override_colors/font_color = Color(1, 0.35000002, 0.35000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GO_text" type="Label" parent="List"]
+layout_mode = 2
+theme = ExtResource("3_c1xpy")
+theme_override_font_sizes/font_size = 8
+text = "Another hero might come to your rescue... "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Menu" type="Button" parent="List"]
+layout_mode = 2
+theme = ExtResource("2_adovk")
+theme_override_colors/font_color = Color(0.5468978, 1.9608799, 0.94752604, 1)
+text = "Go to menu"
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_c1xpy")
+}
+autoplay = "restart_btn"
+
+[node name="Fadeout" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="List/Menu" to="." method="_on_menu_pressed"]
