@@ -1,18 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://df3tqegl5aamg"]
 
-[ext_resource path="res://Sounds/card_sound.wav" type="AudioStream" id=1]
-[ext_resource path="res://Scripts/choose_weapon.gd" type="Script" id=4]
+[ext_resource type="AudioStream" uid="uid://cxa0y0rivdafu" path="res://Sounds/card_sound.wav" id="1"]
+[ext_resource type="Script" uid="uid://brkh8oic0e2f0" path="res://Scripts/choose_weapon.gd" id="4"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="ChooseWeapon" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
-script = ExtResource( 4 )
+script = ExtResource("4")
 weapon_file_path = "res://JSON/weapons_db.json"
 
 [node name="card" type="AudioStreamPlayer" parent="." groups=["card_sound"]]
-stream = ExtResource( 1 )
+stream = ExtResource("1")
 volume_db = -10.0
 pitch_scale = 2.0

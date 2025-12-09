@@ -16,7 +16,6 @@ func _on_PanelWeaponChoosing_gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if weapon_name_chosen and len(globals.weapons) > 0:
 				player.weapon_picked_up(weapon_name_chosen)
-				globals.weapons_left_to_choose.erase(weapon_name_chosen)
 				emit_signal("game_can_start")
 				get_parent().queue_free()
 
