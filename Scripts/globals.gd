@@ -1,5 +1,7 @@
 extends Node
 
+# Couleur Orange des menus au focus : #ff7921
+
 # Z-INDEX SORTING :
 # 0 : Floor
 # 1 : Blood Particles

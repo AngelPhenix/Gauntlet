@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=13 format=3 uid="uid://1wb212ex770t"]
 
-[ext_resource type="FontFile" path="res://Fonts/default_font.tres" id="1"]
+[ext_resource type="FontFile" uid="uid://fhsd5j6qeraf" path="res://Fonts/default_font.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="2"]
 
 [sub_resource type="StyleBoxEmpty" id="3"]

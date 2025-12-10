@@ -11,13 +11,11 @@ func _on_NinePatchRect_gui_input(event):
 			player.buff_collected(buff_name)
 			get_tree().paused = false
 			globals.get_node("levelup_music").stop()
-			globals.get_node("ingame_music").volume_db = -25
+			globals.get_node("ingame_music").volume_db = -35
 			lvlup_screen.queue_free()
-
 
 func _on_NinePatchRect_mouse_entered():
 	modulate = Color(1,1,1,1)
-
 
 func _on_NinePatchRect_mouse_exited():
 	modulate = Color(0.7,0.7,0.7,1)

@@ -12,7 +12,6 @@
 [sub_resource type="GDScript" id="1"]
 script/source = "extends Control
 
-const FADE_OUT_TIME: float = 1.0
 const SLIDING_TIME: float = 0.1
 var first_focus: bool = true
 var is_sliding: bool = false
@@ -24,6 +23,8 @@ var is_sliding: bool = false
 @onready var upgrade_btns: Array[Node] = get_tree().get_nodes_in_group(\"btn_upgrade\")
 @onready var skill_desc_node: Node = get_tree().get_nodes_in_group(\"skill_desc_node\")[0]
 @onready var skill_price: Node = get_tree().get_nodes_in_group(\"skill_price\")[0]
+
+var fadeout_scn: PackedScene = preload(\"res://Scenes/Interface/Fadeout.tscn\")
 
 func _ready() -> void:
 	globals.get_node(\"menu_music\").play()
@@ -119,17 +120,17 @@ func slide_left() -> void:
 	tween.tween_property(self, \"position:x\", position.x + size.x, SLIDING_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 
+func fade_menu() -> void:
+	var fadeout = fadeout_scn.instantiate()
+	add_child(fadeout)
+	await fadeout.fadeout(1)
+
 
 func _on_CheckButton_toggled(button_pressed):
 	if button_pressed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
-func fade_menu():
-	var tween: Tween = create_tween()
-	tween.tween_property($Fadeout, \"modulate:a\", 1, FADE_OUT_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	await tween.finished
 
 func _on_coin_spent() -> void:
 	money_display.text = str(globals.total_coins_collected)
@@ -321,20 +322,6 @@ text = "Back"
 [node name="SkillDescriptionContent" parent="Upgrades" instance=ExtResource("7_jttb6")]
 visible = false
 layout_mode = 1
-
-[node name="Fadeout" type="ColorRect" parent="." groups=["tint"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = -1.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/MainMenuList/Brawl" to="." method="_on_Brawl_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/MainMenuList/Upgrades" to="." method="_on_Upgrades_pressed"]

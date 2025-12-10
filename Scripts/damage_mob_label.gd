@@ -7,7 +7,6 @@ const UPWARD_POSITION_TO_DISAPPEAR_MAX: float = -20
 
 func _ready():
 	randomize()
-	
 	var tween: Tween = create_tween()
 	tween.parallel().tween_property($Label, "position", Vector2(0, randf_range(UPWARD_POSITION_TO_DISAPPEAR_MIN, UPWARD_POSITION_TO_DISAPPEAR_MAX)), randf_range(TIME_TO_DISAPPEAR_MIN, TIME_TO_DISAPPEAR_MAX))
 	tween.parallel().tween_property($Label, "modulate:a", 0, 0.8)

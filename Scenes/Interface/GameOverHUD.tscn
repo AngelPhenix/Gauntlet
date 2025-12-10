@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.5468978, 1.9608799, 0.94752604, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_wen7t"]
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.5468978, 1.9608799, 0.94752604, 1), Color(1.2303226, 1.9608799, 0.5468978, 1)]
+"values": [Color(1.9608799, 1.9608799, 1.9608799, 1), Color(1, 0.4745098, 0.12941177, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c1xpy"]
@@ -75,6 +75,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="GO_text" type="Label" parent="List"]
+custom_minimum_size = Vector2(320, 25)
 layout_mode = 2
 theme = ExtResource("3_c1xpy")
 theme_override_font_sizes/font_size = 8
@@ -85,11 +86,10 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="Menu" type="Button" parent="List"]
-z_as_relative = false
 layout_mode = 2
 focus_mode = 1
 theme = ExtResource("3_c1xpy")
-theme_override_colors/font_color = Color(0.5468978, 1.9608799, 0.94752604, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "Go to menu"
@@ -99,17 +99,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_c1xpy")
 }
 autoplay = "restart_btn"
-
-[node name="Fadeout" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-z_index = 50
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="List/Menu" to="." method="_on_menu_pressed"]
