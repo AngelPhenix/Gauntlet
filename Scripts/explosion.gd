@@ -17,6 +17,8 @@ func _ready():
 	await $AnimationPlayer.animation_finished
 	queue_free()
 
+# Explo1 : Radius increase
+# Explo2 : Damage increase
 func apply_upgrades() -> void:
 	scale = Vector2(globals.upgrades["Explo1"].effect[globals.upgrades["Explo1"].level],globals.upgrades["Explo1"].effect[globals.upgrades["Explo1"].level])
 	damage = base_damage * globals.upgrades["Explo2"].effect[globals.upgrades["Explo2"].level]

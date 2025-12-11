@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="4"]
 [ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="5_ms1au"]
 [ext_resource type="StyleBox" uid="uid://dlnmbfxjhn6xe" path="res://ThemeResources/ProgressBar_ExpBG.tres" id="6_rt5m7"]
-[ext_resource type="FontFile" path="res://Fonts/default_font.tres" id="7"]
+[ext_resource type="FontFile" uid="uid://fhsd5j6qeraf" path="res://Fonts/default_font.tres" id="7"]
 [ext_resource type="StyleBox" uid="uid://ckbkfdvmobl31" path="res://ThemeResources/ProgressBar_Exp.tres" id="7_na6wh"]
 
 [sub_resource type="FontFile" id="1"]

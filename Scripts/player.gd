@@ -14,8 +14,8 @@ var experience: int
 var equipped_weapon: String
 var weapons_in_inventory: Array
 
-var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
 @onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
+var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
 var levelup_panel_scn = preload("res://Scenes/Interface/Levelup.tscn")
 
 var can_fire: bool = true
@@ -70,7 +70,7 @@ func weapon_picked_up(weapon_name: String) -> void:
 	if weapons_in_inventory.size() == 0:
 		equipped_weapon = weapon_name
 	weapons_in_inventory.append(weapon_name)
-	interface._on_Interface_weapon_pickedup(weapon_name)
+	#interface._on_Interface_weapon_pickedup(weapon_name)
 
 func add_coins(value: int) -> void:
 	globals.total_coins_collected += value

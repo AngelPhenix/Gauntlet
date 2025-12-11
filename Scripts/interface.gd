@@ -4,7 +4,6 @@ extends Control
 
 @onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 @onready var gameoverhud: PackedScene = preload("res://Scenes/Interface/GameOverHUD.tscn")
-var rect_gun_scn = preload("res://Scenes/Interface/GunNode.tscn")
 var weapons: Array = []
 var exp_total: int = 0
 var exp_required: int
@@ -24,10 +23,6 @@ func _update_hud() -> void:
 	$hp.value = player.health
 	$Exp_Bar.max_value = exp_required
 	$Exp_Bar.value = player.experience
-	
-	if globals.player_weapons_in_inventory.size() > 0:
-		for weapon in globals.player_weapons_in_inventory:
-			_on_Interface_weapon_pickedup(weapon)
 
 
 func _input(event: InputEvent) -> void:
@@ -61,10 +56,3 @@ func _on_player_add_experience(exp_gained: int) -> void:
 		$Exp_Bar.value = player.experience
 		exp_required = get_required_experience(player.level + 1)
 		$Exp_Bar.max_value = exp_required
-	
-
-func _on_Interface_weapon_pickedup(weapon_name_picked_up: String) -> void:
-	var new_node = rect_gun_scn.instantiate()
-	new_node.texture = load(globals.weapons[weapon_name_picked_up]["png_path"])
-	if player.weapons_in_inventory.size() > 1:
-		new_node.modulate.a = 0.3
