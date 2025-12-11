@@ -8,7 +8,6 @@ signal game_can_start
 func _ready() -> void:
 	position = Vector2(-1500,0)
 	$VBoxContainer/Label.text = weapon_name_chosen
-	connect("game_can_start", Callable(main_level, "game_start"))
 	$VBoxContainer/Label2.text = "ATK : " + str(globals.weapons[weapon_name_chosen]["attack"])
 
 func _on_PanelWeaponChoosing_gui_input(event):
@@ -16,7 +15,7 @@ func _on_PanelWeaponChoosing_gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if weapon_name_chosen and len(globals.weapons) > 0:
 				player.weapon_picked_up(weapon_name_chosen)
-				emit_signal("game_can_start")
+				get_tree().paused = false
 				get_parent().queue_free()
 
 func _on_PanelWeaponChoosing_mouse_entered():

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlms7exlyn0fc" path="res://Scenes/MonsterGenerator.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bf6xr7fo5wyed" path="res://Scenes/Player.tscn" id="6"]
 
-[node name="LevelMockup" type="Node2D" groups=["level"]]
+[node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["HUD"]]

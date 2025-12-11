@@ -9,11 +9,11 @@ var exp_total: int = 0
 var exp_required: int
 
 func _ready() -> void:
-	player.connect("coin_pickedup", Callable(self, "_on_coin_pickedup"))
-	player.connect("hurt", Callable(self, "_on_player_hurt"))
-	player.connect("exp_pickedup", Callable(self, "_on_player_add_experience"))
-	
+	player.coin_pickedup.connect(_on_coin_pickedup)
+	player.hurt.connect(_on_player_hurt)
+	player.exp_pickedup.connect(_on_player_add_experience)
 	player.dead.connect(_on_player_dead)
+	
 	exp_required = get_required_experience(player.level + 1)
 	_update_hud()
 
@@ -29,7 +29,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("lvlup") && debug_mode:
 		player.levelup()
 		$Level.text = "Lv." + str(player.level)
-
 
 func _on_coin_pickedup(total_coins: int) -> void:
 	$CoinCounter/MarginContainer/HBoxContainer/number.text = str(total_coins)
