@@ -93,6 +93,7 @@ func add_experience(value: int) -> void:
 
 func levelup() -> void:
 	level += 1
+	experience = 0
 	exp_required = get_required_experience(level)
 	print("level "+ str(level)+", the exp required is : " + str(exp_required))
 	level_up.emit(level, exp_required)
