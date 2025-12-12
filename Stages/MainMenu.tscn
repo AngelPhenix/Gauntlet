@@ -27,8 +27,7 @@ var is_sliding: bool = false
 var fadeout_scn: PackedScene = preload(\"res://Scenes/Interface/Fadeout.tscn\")
 
 func _ready() -> void:
-	globals.play_music(\"menu\")
-	#globals.get_node(\"menu_music\").play()
+	globals.get_node(\"menu_music\").play()
 	menu_buttons[0].grab_focus()
 	money_display.text = str(globals.total_coins_collected)
 	

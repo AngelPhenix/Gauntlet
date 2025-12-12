@@ -82,7 +82,6 @@ var buffs: Dictionary = {
 }
 
 var music_settings: Dictionary
-var current_music: Node
 
 signal end_level
 
@@ -109,19 +108,7 @@ func music_initialization() -> void:
 		if music is AudioStreamPlayer:
 			music_settings[music.name] = { "normal_volume" : music.volume_db }
 
-func lower_music(name: String, db_change: float) -> void:
-	for node in get_children():
-		if node.name == name:
-			node.volume_db = db_change
-
-func reset_music_volume(node: Node) -> void:
+func reset_music_volume(node_name: String) -> void:
 	for music in get_children():
-		if music == node:
+		if music.name == node_name:
 			music.volume_db = music_settings[music.name].normal_volume
-
-func play_music(name: String) -> void:
-	var music_title: String = name + "_music"
-	for music in get_children():
-		if music.name == music_title:
-			music.play()
-			current_music = music

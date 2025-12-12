@@ -95,13 +95,13 @@ func levelup() -> void:
 	level += 1
 	experience = 0
 	exp_required = get_required_experience(level)
-	print("level "+ str(level)+", the exp required is : " + str(exp_required))
 	level_up.emit(level, exp_required)
-	#globals.get_node("levelup_music").play()
-	#globals.get_node("ingame_music").volume_db = -45
-	globals.play_music("levelup")
-	globals.lower_music("ingame", -45)
+	
+	globals.get_node("levelup_music").play()
+	globals.get_node("ingame_music").volume_db = -45
+	
 	get_tree().paused = true
+	
 	var panel = levelup_panel_scn.instantiate()
 	add_child(panel)
 	panel.process_mode = Node.PROCESS_MODE_ALWAYS
