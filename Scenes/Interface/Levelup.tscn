@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvk8p8tj466dq"]
 
-[ext_resource type="PackedScene" uid="uid://cgbmsbtxhgv6n" path="res://Scenes/Interface/PanelLevelup.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cgbmsbtxhgv6n" path="res://Scenes/Interface/PanelBuffIngame.tscn" id="1"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="2"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="3"]
 [ext_resource type="Script" uid="uid://2a1pyo15l737" path="res://Scripts/levelup.gd" id="4"]
@@ -30,6 +30,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://xldxgjhapwfg"]
+[gd_scene load_steps=12 format=3 uid="uid://xldxgjhapwfg"]
 
 [ext_resource type="Script" uid="uid://c71qliqvyshvi" path="res://Scripts/interface.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="2"]
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://87v6p1ase1ok" path="res://Scenes/Interface/GameOverHUD.tscn" id="3_na6wh"]
 [ext_resource type="Texture2D" uid="uid://bfosup075cmr" path="res://Sprites/9patch_panel.png" id="3_rt5m7"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="4"]
 [ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="5_ms1au"]
@@ -71,6 +72,7 @@ grow_vertical = 2
 theme = ExtResource("4")
 script = ExtResource("1")
 cheat_mode = true
+gameover_scn = ExtResource("3_na6wh")
 
 [node name="CoinCounter" type="NinePatchRect" parent="."]
 layout_mode = 0

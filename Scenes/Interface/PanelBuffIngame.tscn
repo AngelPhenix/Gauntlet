@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="3"]
 [ext_resource type="Script" uid="uid://b8v868f7fstny" path="res://Scripts/panel_levelup.gd" id="4"]
 
-[node name="NinePatchRect" type="NinePatchRect"]
+[node name="PanelBuffIngame" type="NinePatchRect"]
 modulate = Color(0.733333, 0.733333, 0.733333, 1)
 custom_minimum_size = Vector2(240, 47)
 offset_right = 188.0

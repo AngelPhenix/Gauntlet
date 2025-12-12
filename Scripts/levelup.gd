@@ -4,11 +4,10 @@ var indexes_left: Array
 var index: int = 0
 
 func _ready():
-	randomize()
 	for key in globals.buffs:
 		indexes_left.append(key)
 	
-	for buff_panel in $"%BuffContainer".get_children():
+	for buff_panel in %BuffContainer.get_children():
 		randomize()
 		var buff_key = indexes_left[randi() % indexes_left.size()]
 		buff_panel.get_tree().get_nodes_in_group("lvlup_sprite")[index].texture = load(globals.buffs[buff_key]["sprite"])

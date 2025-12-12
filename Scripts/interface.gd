@@ -1,8 +1,10 @@
 extends Control
 
 @export var cheat_mode: bool = false
+@export var gameover_scn: PackedScene
+
+#Player is needed to connect all of its signals to update the HUD
 @onready var player: Node = get_tree().get_nodes_in_group("player")[0]
-@onready var gameoverhud: PackedScene = preload("res://Scenes/Interface/GameOverHUD.tscn")
 
 func _ready() -> void:
 	player.coin_pickedup.connect(_on_coin_pickedup)
@@ -44,5 +46,5 @@ func _on_player_levelup(level: int, exp_max: float) -> void:
 
 func _on_player_dead() -> void:
 	get_tree().paused = true
-	var go_hud: Node = gameoverhud.instantiate()
-	add_child(go_hud)
+	var gameover_hud: Node = gameover_scn.instantiate()
+	add_child(gameover_hud)

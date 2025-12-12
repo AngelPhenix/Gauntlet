@@ -81,40 +81,14 @@ var buffs: Dictionary = {
 	}
 }
 
-var stats: Dictionary = {
-	"damage": {
-		"display_name": "Damage +",
-		"description": "Increase your damage",
-		"max_level": 10,
-		"base_value": 1.0,
-		"value_per_level": 0.2,
-		"base_cost": 100,
-		"cost_growth": 1.5,
-	},
-	"hp": {
-		"display_name": "HP+",
-		"description": "Increase your health points",
-		"max_level": 10,
-		"base_value": 1.0,
-		"value_per_level": 0.2,
-		"base_cost": 100,
-		"cost_growth": 1.5,
-	},
-	"mp": {
-		"display_name": "MP+",
-		"description": "Increase your mana",
-		"max_level": 10,
-		"base_value": 1.0,
-		"value_per_level": 0.2,
-		"base_cost": 100,
-		"cost_growth": 1.5,
-	}
-}
+var music_settings: Dictionary
+var current_music: Node
 
 signal end_level
 
 func _ready() -> void:
 	load_weapons(weapon_file_path)
+	music_initialization()
 
 # On return sous la forme de dictionnaire le fichier avec le JSON contenant les armes et leurs caractéristiques.
 func load_weapons(file_path: String) -> void:
@@ -129,3 +103,25 @@ func load_weapons(file_path: String) -> void:
 	assert(weapons_from_json.size() > 0) 
 	weapons = weapons_from_json
 	weapons_left_to_choose = weapons.duplicate(true)
+
+func music_initialization() -> void:
+	for music in get_children():
+		if music is AudioStreamPlayer:
+			music_settings[music.name] = { "normal_volume" : music.volume_db }
+
+func lower_music(name: String, db_change: float) -> void:
+	for node in get_children():
+		if node.name == name:
+			node.volume_db = db_change
+
+func reset_music_volume(node: Node) -> void:
+	for music in get_children():
+		if music == node:
+			music.volume_db = music_settings[music.name].normal_volume
+
+func play_music(name: String) -> void:
+	var music_title: String = name + "_music"
+	for music in get_children():
+		if music.name == music_title:
+			music.play()
+			current_music = music
