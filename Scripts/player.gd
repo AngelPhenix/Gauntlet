@@ -10,6 +10,7 @@ var body_should_damage_us_map: Dictionary
 var level: int = 1
 
 var experience: int
+var exp_required: float
 
 var equipped_weapon: String
 var weapons_in_inventory: Array
@@ -26,9 +27,15 @@ var touching_enemy: bool = false
 var buffs: Dictionary = {}
 
 signal hurt(health)
+signal exp_init()
 signal coin_pickedup(value)
-signal exp_pickedup(value)
+signal exp_pickedup
+signal level_up
 signal dead
+
+func _ready() -> void:
+	exp_required = get_required_experience(level)
+	exp_init.emit(exp_required)
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -70,7 +77,6 @@ func weapon_picked_up(weapon_name: String) -> void:
 	if weapons_in_inventory.size() == 0:
 		equipped_weapon = weapon_name
 	weapons_in_inventory.append(weapon_name)
-	#interface._on_Interface_weapon_pickedup(weapon_name)
 
 func add_coins(value: int) -> void:
 	globals.total_coins_collected += value
@@ -78,9 +84,27 @@ func add_coins(value: int) -> void:
 	($audio/treasure as AudioStreamPlayer2D).play()
 
 func add_experience(value: int) -> void:
-	experience += value
-	emit_signal("exp_pickedup", value)
+	if experience + value < exp_required:
+		experience += value
+		exp_pickedup.emit(experience)
+	else:
+		levelup()
 	($audio/treasure as AudioStreamPlayer2D).play()
+
+func levelup() -> void:
+	level += 1
+	exp_required = get_required_experience(level)
+	print("level "+ str(level)+", the exp required is : " + str(exp_required))
+	level_up.emit(level, exp_required)
+	globals.get_node("levelup_music").play()
+	globals.get_node("ingame_music").volume_db = -45
+	get_tree().paused = true
+	var panel = levelup_panel_scn.instantiate()
+	add_child(panel)
+	panel.process_mode = Node.PROCESS_MODE_ALWAYS
+
+func get_required_experience(level: int) -> float:
+	return round(pow(level, 1.8) + level * 2)
 
 func _on_hitbox_body_entered(body: Object) -> void:
 	# If the body hit is an enemy
@@ -109,15 +133,6 @@ func _on_hitbox_body_entered(body: Object) -> void:
 func _on_hitbox_body_exited(body: Object) -> void:
 	if body.is_in_group("enemy"):
 		body_should_damage_us_map[body] = false # tell our loop to stop damaging
-
-func levelup() -> void:
-	level += 1
-	globals.get_node("levelup_music").play()
-	globals.get_node("ingame_music").volume_db = -45
-	get_tree().paused = true
-	var panel = levelup_panel_scn.instantiate()
-	add_child(panel)
-	panel.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func buff_collected(name: String) -> void:
 	var hasBuff: bool = false

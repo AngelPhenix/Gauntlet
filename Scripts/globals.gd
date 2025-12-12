@@ -81,6 +81,36 @@ var buffs: Dictionary = {
 	}
 }
 
+var stats: Dictionary = {
+	"damage": {
+		"display_name": "Damage +",
+		"description": "Increase your damage",
+		"max_level": 10,
+		"base_value": 1.0,
+		"value_per_level": 0.2,
+		"base_cost": 100,
+		"cost_growth": 1.5,
+	},
+	"hp": {
+		"display_name": "HP+",
+		"description": "Increase your health points",
+		"max_level": 10,
+		"base_value": 1.0,
+		"value_per_level": 0.2,
+		"base_cost": 100,
+		"cost_growth": 1.5,
+	},
+	"mp": {
+		"display_name": "MP+",
+		"description": "Increase your mana",
+		"max_level": 10,
+		"base_value": 1.0,
+		"value_per_level": 0.2,
+		"base_cost": 100,
+		"cost_growth": 1.5,
+	}
+}
+
 signal end_level
 
 func _ready() -> void:

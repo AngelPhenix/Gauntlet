@@ -70,7 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4")
 script = ExtResource("1")
-debug_mode = true
+cheat_mode = true
 
 [node name="CoinCounter" type="NinePatchRect" parent="."]
 layout_mode = 0
@@ -82,7 +82,6 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CoinCounter"]
 layout_mode = 1
