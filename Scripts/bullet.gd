@@ -18,7 +18,7 @@ var fire_bullet: bool = false
 
 # Checks all the players buffs and act accordingly
 func _ready() -> void:
-	base_dmg = int(globals.weapons[player.equipped_weapon]["attack"])
+	base_dmg = int(globals.weapons[player.equipped_weapon].attack)
 	apply_buffs()
 	dmg_calculated = (base_dmg + atk_boost) + (base_dmg + atk_boost) * (atk_multiplier/10)
 
@@ -26,18 +26,19 @@ func _process(delta: float) -> void:
 	translate(faced_direction * speed * delta)
 
 func apply_buffs() ->void:
-	for buff in player.buffs.keys():
-		if buff == "attack_raw":
-			atk_boost = player.buffs["attack_raw"]
-		if buff == "attack_multiplier":
-			atk_multiplier += player.buffs["attack_multiplier"]
-		if buff == "piercing":
-			penetration = true
-			penetration_depth = player.buffs["piercing"]
-		if buff == "fire":
-			fire_bullet = true
-		if buff == "explosive":
-			explosive_bullet = true
+	atk_boost = globals.get_active_buff_level("attack_raw")
+	atk_multiplier = globals.get_active_buff_level("attack_multiplier")
+	
+	var pierce_level: int = globals.get_active_buff_level("piercing")
+	if pierce_level > 0:
+		penetration = true
+		penetration_depth = pierce_level
+	
+	if globals.get_active_buff_level("fire") > 0:
+		fire_bullet = true
+	
+	if globals.get_active_buff_level("explosive") > 0:
+		explosive_bullet = true
 
 func shoot(target_position: Vector2, player_position: Vector2) -> void:
 	position = player_position
@@ -51,18 +52,19 @@ func _on_Bullet_body_entered(body: Object) -> void:
 			if explosive_bullet:
 				var explosion = explosion_scn.instantiate()
 				explosion.position = self.position
-				explosion.damage = player.buffs["explosive"] * 3
 				get_tree().get_root().call_deferred('add_child', explosion)
+				#This line can be changed to have it explode at each body collided with
 				explosive_bullet = false
 			
 			body.hit(dmg_calculated)
 			
-			if fire_bullet:
+			# IGNITING BULLET
+			if fire_bullet and body.has_method("on_fire"):
 				body.on_fire()
-
+				
+			# PENETRATING BULLET
 			if !penetration:
 				queue_free()
-				
 			else:
 				penetration_depth -= 1
 				if penetration_depth < 0:

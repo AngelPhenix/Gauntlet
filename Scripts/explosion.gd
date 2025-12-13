@@ -21,4 +21,4 @@ func _ready():
 # Explo2 : Damage increase
 func apply_upgrades() -> void:
 	scale = Vector2(globals.upgrades["Explo1"].effect[globals.upgrades["Explo1"].level],globals.upgrades["Explo1"].effect[globals.upgrades["Explo1"].level])
-	damage = base_damage * globals.upgrades["Explo2"].effect[globals.upgrades["Explo2"].level]
+	damage = base_damage * globals.upgrades["Explo2"].effect[globals.upgrades["Explo2"].level] + globals.active_buffs["explosive"].level

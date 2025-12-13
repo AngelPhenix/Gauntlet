@@ -24,7 +24,7 @@ var shoot: bool = true
 var is_playing: bool = false
 var touching_enemy: bool = false
 
-var buffs: Dictionary = {}
+#var buffs: Dictionary = {}
 
 signal hurt(health)
 signal exp_init()
@@ -55,7 +55,6 @@ func get_input() -> void:
 		($anim as AnimationPlayer).stop()
 		is_playing = false
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_down") && can_fire:
 		shooting()
@@ -65,6 +64,7 @@ func shooting() -> void:
 	($audio/gunshot as AudioStreamPlayer2D).play()
 	var bullet: Node = bullet_scn.instantiate()
 	get_tree().get_root().add_child(bullet)
+	# BIZARRE QUE CE SOIT LE PLAYER QUI FASSE CA
 	bullet.shoot(get_global_mouse_position(), global_position)
 	bullet.get_node("sprite").texture = load(globals.weapons[equipped_weapon]["bullet_sprite"])
 	bullet.get_node("light").color = Color(globals.weapons[equipped_weapon]["light_color"])
@@ -137,16 +137,16 @@ func _on_hitbox_body_exited(body: Object) -> void:
 	if body.is_in_group("enemy"):
 		body_should_damage_us_map[body] = false # tell our loop to stop damaging
 
-func buff_collected(name: String) -> void:
-	var hasBuff: bool = false
-	# Will execute only if the buff is already in the dictionary
-	for buff in buffs:
-		if buff == name:
-			buffs[buff] += 1
-			hasBuff = true
-	# Will execute only if the buff isn't in the dictionary and initialize it to 1
-	if hasBuff == false:
-		buffs[name] = 1
+#func buff_collected(name: String) -> void:
+	#var hasBuff: bool = false
+	## Will execute only if the buff is already in the dictionary
+	#for buff in buffs:
+		#if buff == name:
+			#buffs[buff] += 1
+			#hasBuff = true
+	## Will execute only if the buff isn't in the dictionary and initialize it to 1
+	#if hasBuff == false:
+		#buffs[name] = 1
 
 
 func _on_shoot_rate_timeout():

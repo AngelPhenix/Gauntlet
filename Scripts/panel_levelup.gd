@@ -8,7 +8,7 @@ var buff_name: String
 func _on_NinePatchRect_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			player.buff_collected(buff_name)
+			globals.active_buffs[buff_name].level += 1
 			
 			get_tree().paused = false
 			

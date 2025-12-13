@@ -102,7 +102,7 @@ func on_fire() -> void:
 		tween.tween_property(self, "modulate", Color(1,1,1), globals.base_burn_timer)
 
 func _on_OnFire_timeout():
-	hit(player.buffs["fire"])
+	hit(globals.active_buffs["fire"].level)
 
 func _on_StopFire_timeout():
 	$FireTick.stop()

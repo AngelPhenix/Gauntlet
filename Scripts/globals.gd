@@ -53,30 +53,30 @@ var upgrades: Dictionary = {
 	}
 }
 
-var buffs: Dictionary = {
-	0 : {
-		"name" : "attack_raw",
-		"tooltip" : "Adds +1 to base damage",
+var active_buffs: Dictionary = {
+	"attack_raw" : {
+		"level" : 0,
+		"description" : "Adds +1 to base damage",
 		"sprite" : "res://Sprites/Buffs/attack_raw.png"
 	},
-	1 : {
-		"name" : "attack_multiplier",
-		"tooltip" : "Adds 10% to damage multiplier",
+	"attack_multiplier" : {
+		"level" : 0,
+		"description" : "Adds 10% to damage multiplier",
 		"sprite" : "res://Sprites/Buffs/attack_multiplier.png"
 	},
-	2 : {
-		"name" : "piercing",
-		"tooltip" : "Bullet pierce depending on level",
+	"piercing" : {
+		"level" : 0,
+		"description" : "Bullet pierce depending on level",
 		"sprite" : "res://Sprites/Buffs/pierce_buff.png"
 	},
-	3 : {
-		"name" : "fire",
-		"tooltip" : "Burn the enemy over time",
+	"fire" : {
+		"level" : 0,
+		"description" : "Burn the enemy over time",
 		"sprite" : "res://Sprites/Buffs/fire_buff.png"
 	},
-	4 : {
-		"name" : "explosive",
-		"tooltip" : "Bullet explode on impact",
+	"explosive" : {
+		"level" : 0,
+		"description" : "Bullet explode on impact",
 		"sprite" : "res://Sprites/Buffs/Explo1.png"
 	}
 }
@@ -88,6 +88,10 @@ signal end_level
 func _ready() -> void:
 	load_weapons(weapon_file_path)
 	music_initialization()
+
+func get_active_buff_level(name: String) -> int:
+	var buff_level: int = active_buffs[name].level
+	return buff_level
 
 # On return sous la forme de dictionnaire le fichier avec le JSON contenant les armes et leurs caractéristiques.
 func load_weapons(file_path: String) -> void:
