@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlms7exlyn0fc"]
+[gd_scene load_steps=3 format=3 uid="uid://dlms7exlyn0fc"]
 
 [ext_resource type="Script" uid="uid://crje8lw1cllbc" path="res://Scripts/monster_generator.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://m1jrqhtave5n" path="res://Scenes/Zombie.tscn" id="2_rr1k0"]
 
 [node name="MonsterGenerator" type="Node2D"]
 script = ExtResource("1")
+zombie_scn = ExtResource("2_rr1k0")
 
 [node name="Tick" type="Timer" parent="."]
 wait_time = 3.0

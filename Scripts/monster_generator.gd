@@ -4,9 +4,10 @@ var screen_w_size: int = 320
 var screen_h_size: int = 320
 var spawning_margin: int = 50
 var number_of_mobs: int = 5
-var zombie_prob_boss: float = 0.01
+var enemy_prob_veteran: float = 0.05
+var enemy_prob_boss: float = 0.01
 
-var zombie_scn: PackedScene = preload("res://Scenes/Zombie.tscn")
+@export var zombie_scn: PackedScene
 @onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 
 func _ready():
@@ -35,13 +36,18 @@ func _on_Tick_timeout():
 			#Bottom
 			else:
 				zombie.position.y = randf_range(bot_side_screen, bot_side_screen + spawning_margin)
-		# Le point n'est pas dans l'écran, on peut prendre n'importe quel valeur vertical entre min et max
+		# Le point n'est pas dans l'écran, on peut prendre n'importe quelle valeur verticale entre min et max
 		else:
 			zombie.position.x = random_x_pos
 			zombie.position.y = randf_range(top_side_screen - spawning_margin,
 			bot_side_screen + spawning_margin)
 			
 		var proba: float = randf()
-		if proba < zombie_prob_boss:
+		if proba < enemy_prob_veteran:
 			zombie.veteran = true
-		add_child(zombie)
+			add_child(zombie)
+			return
+		if proba < enemy_prob_boss:
+			zombie.boss = true
+			add_child(zombie)
+			return
