@@ -6,7 +6,7 @@ signal game_can_start
 @onready var player : Node = get_tree().get_nodes_in_group("player")[0]
 
 func _ready() -> void:
-	position = Vector2(-1500,0)
+	position = Vector2(-500,0)
 	$VBoxContainer/Label.text = weapon_name_chosen
 	$VBoxContainer/Label2.text = "ATK : " + str(globals.weapons[weapon_name_chosen]["attack"])
 

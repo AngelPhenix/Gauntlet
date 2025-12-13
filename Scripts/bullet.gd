@@ -2,21 +2,20 @@ extends Area2D
 
 var faced_direction: Vector2 = Vector2()
 var speed: int = 200
-var base_dmg = 20
+var base_dmg: int
 var dmg_calculated: float
+
+# Set in apply_buffs() via getting active_buffs in GLOBALS singleton
 var atk_multiplier = 1.0
 var atk_boost = 0
 var penetration: bool = false
 var penetration_depth: int = 0
-
-@onready var explosion_scn: PackedScene = preload("res://Scenes/Explosion.tscn")
-
 var explosive_bullet: bool = false
 var fire_bullet: bool = false
 
+@export var explosion_scn: PackedScene
 @onready var player: Node = get_tree().get_nodes_in_group("player")[0]
 
-# Checks all the players buffs and act accordingly
 func _ready() -> void:
 	base_dmg = int(globals.weapons[player.equipped_weapon].attack)
 	apply_buffs()

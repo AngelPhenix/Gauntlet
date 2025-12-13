@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuycl0wd60o43"]
+[gd_scene load_steps=5 format=3 uid="uid://cuycl0wd60o43"]
 
 [ext_resource type="Script" uid="uid://n2v6n54pvuqc" path="res://Scripts/bullet.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b1p6a24p37a4j" path="res://Sprites/lightmask01.png" id="2_14k46"]
+[ext_resource type="PackedScene" uid="uid://ds2ph3tiu57v1" path="res://Scenes/Explosion.tscn" id="2_qvus8"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 2.0673
@@ -10,6 +11,7 @@ height = 10.6368
 [node name="Bullet" type="Area2D"]
 z_index = 2
 script = ExtResource("1")
+explosion_scn = ExtResource("2_qvus8")
 
 [node name="sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
