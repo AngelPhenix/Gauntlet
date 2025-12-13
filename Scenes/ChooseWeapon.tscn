@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://nmxduwfegirw" path="res://Scenes/PanelWeaponChoosing.tscn" id="2_unptg"]
 [ext_resource type="Script" uid="uid://brkh8oic0e2f0" path="res://Scripts/choose_weapon.gd" id="4"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" groups=["choose_weapon_hud"]]
+process_mode = 3
 
 [node name="ChooseWeapon" type="Control" parent="."]
 layout_mode = 3

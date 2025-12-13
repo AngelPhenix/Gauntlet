@@ -1,7 +1,6 @@
 extends Node2D
 
 const weapon_start_scn: PackedScene = preload("res://Scenes/ChooseWeapon.tscn")
-
 @onready var fragment_scn: PackedScene = preload("res://Scenes/TileFragment.tscn")
 
 var player_frag_position: Vector2 = Vector2(0, 0)
@@ -95,9 +94,3 @@ func _choose_weapon() -> void:
 	get_tree().paused = true
 	var weapons_panel = weapon_start_scn.instantiate()
 	add_child(weapons_panel)
-	weapons_panel.process_mode = Node.PROCESS_MODE_ALWAYS
-
-# Is called when the weapon has been chosen and the game can start.
-# The signal is emitted by PanelWeaponChoosing on click on one of the panels appearing at the start
-func game_start() -> void:
-	get_tree().paused = false

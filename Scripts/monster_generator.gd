@@ -4,8 +4,11 @@ var screen_w_size: int = 320
 var screen_h_size: int = 320
 var spawning_margin: int = 50
 var number_of_mobs: int = 5
-var enemy_prob_veteran: float = 0.05
-var enemy_prob_boss: float = 0.01
+
+# 1% chance to spawn a boss
+var enemy_proba_boss: int = 1
+# 5% chance to spawn a veteran (6%-1% for the boss leaves 5%)
+var enemy_proba_veteran: int = 6
 
 @export var zombie_scn: PackedScene
 @onready var player: Node = get_tree().get_nodes_in_group("player")[0]
@@ -41,13 +44,11 @@ func _on_Tick_timeout():
 			zombie.position.x = random_x_pos
 			zombie.position.y = randf_range(top_side_screen - spawning_margin,
 			bot_side_screen + spawning_margin)
-			
-		var proba: float = randf()
-		if proba < enemy_prob_veteran:
-			zombie.veteran = true
-			add_child(zombie)
-			return
-		if proba < enemy_prob_boss:
+		
+		# roll entre 1 et 100
+		var proba: int = randi() % 100 + 1
+		if proba <= enemy_proba_boss:
 			zombie.boss = true
-			add_child(zombie)
-			return
+		elif proba <= enemy_proba_veteran:
+			zombie.veteran = true
+		add_child(zombie)
