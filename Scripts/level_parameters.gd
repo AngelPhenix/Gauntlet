@@ -1,6 +1,6 @@
 extends Node2D
 
-const choose_weapon_hud_scn: PackedScene = preload("res://Scenes/Interface/ChooseWeapon.tscn")
+const choose_weapon_hud_scn: PackedScene = preload("res://Scenes/Interfaces/HUD_ChooseWeapon.tscn")
 @onready var fragment_scn: PackedScene = preload("res://Scenes/TileFragment.tscn")
 
 var player_frag_position: Vector2 = Vector2(0, 0)

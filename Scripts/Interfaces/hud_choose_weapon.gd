@@ -1,25 +1,26 @@
 extends Control
 
-@export var weapon_file_path : String # (String, FILE, "*.json")
-@export var weaponpanel_scn: PackedScene
+@export var weapon_card_scn: PackedScene
+@onready var player : Node = get_tree().get_nodes_in_group("player")[0]
 
 func _ready():
-	var weapon_to_choose_from: Array 
+	var all_weapons: Array 
 	randomize()
 	
 	# Populate weapon_to_choose_from with all the weapons name that exists, in an Array
 	for weapon in globals.weapons_left_to_choose.keys():
-		weapon_to_choose_from.append(weapon)
+		all_weapons.append(weapon)
 	
 	# Shuffle to then have "random" 0-1-2 indexes weapons
-	weapon_to_choose_from.shuffle()
+	all_weapons.shuffle()
 	
 	for index in range(3):
-		var weapon_name = weapon_to_choose_from[index]
-		var new_panel: Panel = weaponpanel_scn.instantiate()
-		new_panel.weapon_name_chosen = weapon_name
-		add_child(new_panel)
-		get_tree().get_nodes_in_group("weapon_display")[index].texture = load(globals.weapons_left_to_choose[weapon_name].png_path)
+		var weapon: String = all_weapons[index]
+		var weapon_card: Panel = weapon_card_scn.instantiate()
+		weapon_card.weapon_name = weapon
+		add_child(weapon_card)
+		weapon_card.weapon_chosen.connect(_on_weapon_chosen)
+
 		await get_tree().process_frame
 
 	for index in len(get_children()):
@@ -34,3 +35,8 @@ func _ready():
 				tween.tween_property(node_to_move, "position", Vector2(220,85), 0.4)
 		get_tree().get_nodes_in_group("card_sound")[0].play()
 		await tween.finished
+
+func _on_weapon_chosen(weapon_name) -> void:
+	player.equip(weapon_name)
+	get_tree().paused = false
+	get_tree().get_nodes_in_group("choose_weapon_hud")[0].queue_free()

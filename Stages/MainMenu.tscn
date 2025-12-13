@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dommik54whurs"]
+[gd_scene load_steps=11 format=3 uid="uid://dommik54whurs"]
 
-[ext_resource type="PackedScene" uid="uid://du1hideq43ggx" path="res://Scenes/Interface/MainMenuButton.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://du1hideq43ggx" path="res://Scenes/Interfaces/MainMenuButton.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
-[ext_resource type="PackedScene" uid="uid://26kdk36wcac" path="res://Scenes/Interface/UpgradeBtn.tscn" id="3_rw2bk"]
+[ext_resource type="PackedScene" uid="uid://bpintvu20sant" path="res://Scenes/Interfaces/Fadeout.tscn" id="2_du6k5"]
+[ext_resource type="PackedScene" uid="uid://26kdk36wcac" path="res://Scenes/Interfaces/UpgradeBtn.tscn" id="3_rw2bk"]
 [ext_resource type="Texture2D" uid="uid://vxnu0pffdsgq" path="res://Sprites/Buffs/disabled.png" id="4_du6k5"]
 [ext_resource type="Texture2D" uid="uid://dmy2cio2o4hy1" path="res://Sprites/Buffs/Explo2.png" id="4_v8rri"]
 [ext_resource type="Texture2D" uid="uid://dk1qg4mtkhwbv" path="res://Sprites/Buffs/Explo2_focused.png" id="5_473rl"]
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="6_473rl"]
-[ext_resource type="PackedScene" uid="uid://cl7hcui4iknsu" path="res://Scenes/Interface/SkillDescriptionContent.tscn" id="7_jttb6"]
+[ext_resource type="PackedScene" uid="uid://cl7hcui4iknsu" path="res://Scenes/Interfaces/SkillDescriptionContent.tscn" id="7_jttb6"]
 
 [sub_resource type="GDScript" id="1"]
 script/source = "extends Control
@@ -24,7 +25,7 @@ var is_sliding: bool = false
 @onready var skill_desc_node: Node = get_tree().get_nodes_in_group(\"skill_desc_node\")[0]
 @onready var skill_price: Node = get_tree().get_nodes_in_group(\"skill_price\")[0]
 
-var fadeout_scn: PackedScene = preload(\"res://Scenes/Interface/Fadeout.tscn\")
+@export var fadeout_scn: PackedScene
 
 func _ready() -> void:
 	globals.get_node(\"menu_music\").play()
@@ -144,6 +145,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2")
 script = SubResource("1")
+fadeout_scn = ExtResource("2_du6k5")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0

@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
+@export var damage_label: PackedScene
+
 var speed: int = 20
 var strength: int = 1
 var health: int = 35
 var inventory: Array = []
-var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
 var veteran: bool = false
 var boss: bool = false
 var level: int = 1
@@ -72,7 +73,7 @@ func _drop_items() -> void:
 			looted_item.global_position = global_position + Vector2(5, 5)
 
 func display_damage(damage: int) -> void:
-	var dmg_taken = label.instantiate()
+	var dmg_taken = damage_label.instantiate()
 	dmg_taken.position = position + Vector2(-8, -10)
 	get_tree().get_root().add_child(dmg_taken)
 	dmg_taken.get_node("Label").text = str(damage)

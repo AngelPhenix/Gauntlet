@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpintvu20sant"]
 
-[ext_resource type="Script" uid="uid://bx1rgskujdhgw" path="res://Scripts/fadeout.gd" id="1_eeedg"]
+[ext_resource type="Script" uid="uid://bx1rgskujdhgw" path="res://Scripts/Interfaces/fadeout.gd" id="1_eeedg"]
 
 [node name="Fadeout" type="ColorRect"]
 modulate = Color(1, 1, 1, 0)

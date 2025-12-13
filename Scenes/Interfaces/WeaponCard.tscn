@@ -1,15 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://nmxduwfegirw"]
 
-[ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="1"]
-[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
-[ext_resource type="Script" uid="uid://bxwxcgvcg6n14" path="res://Scripts/panel_weapon.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://d0cklelxxx3bs" path="res://Sprites/Guns/01.png" id="3_viht0"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="1_ow8ng"]
+[ext_resource type="Script" uid="uid://bxwxcgvcg6n14" path="res://Scripts/Interfaces/weapon_card.gd" id="2_lw3cu"]
+[ext_resource type="Texture2D" uid="uid://d0cklelxxx3bs" path="res://Sprites/Guns/01.png" id="3_ckbmn"]
+[ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="4_2ie8h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xyrm2"]
 font_size = 8
 
 [sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+fallbacks = Array[Font]([ExtResource("4_2ie8h"), ExtResource("4_2ie8h")])
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
@@ -82,12 +82,12 @@ cache/0/4/0/scale = 1.0
 [sub_resource type="LabelSettings" id="LabelSettings_jhaeg"]
 font_size = 8
 
-[node name="PanelWeaponChoosing" type="Panel"]
+[node name="WeaponCard" type="Panel"]
 custom_minimum_size = Vector2(80, 150)
 offset_right = 80.0
 offset_bottom = 150.0
-theme = ExtResource("2")
-script = ExtResource("3")
+theme = ExtResource("1_ow8ng")
+script = ExtResource("2_lw3cu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -113,17 +113,18 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2")
+theme = ExtResource("1_ow8ng")
 text = "name"
 label_settings = SubResource("LabelSettings_xyrm2")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer" groups=["weapon_display"]]
+[node name="WeaponSprite" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 21)
 layout_mode = 2
-texture = ExtResource("3_viht0")
+texture = ExtResource("3_ckbmn")
 stretch_mode = 3
 
 [node name="WeaponATK" type="Label" parent="VBoxContainer"]

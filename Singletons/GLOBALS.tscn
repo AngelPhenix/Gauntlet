@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://br4fyk3wr3fp1"]
 
-[ext_resource type="Script" uid="uid://d2su2d5s0n43o" path="res://Scripts/globals.gd" id="1"]
+[ext_resource type="Script" uid="uid://d2su2d5s0n43o" path="res://Singletons/globals.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://d061oap0iseh2" path="res://Sounds/zombiedeath.wav" id="2"]
 [ext_resource type="AudioStream" uid="uid://dkuyjrko6qrwx" path="res://Sounds/Intro-remaxim.ogg" id="3_6tejs"]
 [ext_resource type="AudioStream" uid="uid://c6qymmdm3yptl" path="res://Sounds/ingame_music.mp3" id="4_0nk1l"]

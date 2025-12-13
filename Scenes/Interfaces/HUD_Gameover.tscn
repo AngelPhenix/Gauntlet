@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://87v6p1ase1ok"]
+[gd_scene load_steps=8 format=3 uid="uid://87v6p1ase1ok"]
 
-[ext_resource type="Script" uid="uid://bytscwfjav1s7" path="res://Scripts/game_over_hud.gd" id="1_wen7t"]
+[ext_resource type="Script" uid="uid://bytscwfjav1s7" path="res://Scripts/Interfaces/hud_game_over.gd" id="1_wen7t"]
 [ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="2_adovk"]
+[ext_resource type="PackedScene" uid="uid://bpintvu20sant" path="res://Scenes/Interfaces/Fadeout.tscn" id="2_vwcvo"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="3_c1xpy"]
 
 [sub_resource type="Animation" id="Animation_adovk"]
@@ -51,6 +52,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wen7t")
+fadeout_scn = ExtResource("2_vwcvo")
 
 [node name="List" type="VBoxContainer" parent="."]
 layout_mode = 1

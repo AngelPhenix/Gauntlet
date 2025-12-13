@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://kjo8a34dm8"]
 
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2"]
-[ext_resource type="Script" uid="uid://dvguexp4fd3px" path="res://Scripts/damage_mob_label.gd" id="3"]
+[ext_resource type="Script" uid="uid://dvguexp4fd3px" path="res://Scripts/Interfaces/damage_mob_label.gd" id="3"]
 
 [node name="DamageMobLabel" type="Node2D"]
 z_index = 999

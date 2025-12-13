@@ -15,8 +15,11 @@ var exp_required: float
 var equipped_weapon: String
 
 @onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
-var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
-var levelup_panel_scn = preload("res://Scenes/Interface/Levelup.tscn")
+
+@export var bullet_scn: PackedScene
+@export var hud_levelup_scn: PackedScene
+#var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
+#var levelup_panel_scn = preload("res://Scenes/Interfaces/HUD_Levelup.tscn")
 
 var can_fire: bool = true
 var shoot: bool = true
@@ -24,14 +27,13 @@ var is_playing: bool = false
 var touching_enemy: bool = false
 
 signal hurt(health)
-signal exp_init()
+signal exp_init
 signal coin_pickedup(value)
 signal exp_pickedup
 signal level_up
 signal dead
 
 func _ready() -> void:
-	
 	exp_required = get_required_experience(level)
 	exp_init.emit(exp_required)
 
@@ -64,7 +66,7 @@ func shooting() -> void:
 	bullet.shoot(get_global_mouse_position(), global_position)
 	($shoot_rate as Timer).start()
 
-func _on_weapon_picked_up(weapon_name: String) -> void:
+func equip(weapon_name: String) -> void:
 	equipped_weapon = weapon_name
 
 func add_coins(value: int) -> void:
@@ -91,9 +93,9 @@ func levelup() -> void:
 	
 	get_tree().paused = true
 	
-	var panel = levelup_panel_scn.instantiate()
-	add_child(panel)
-	panel.process_mode = Node.PROCESS_MODE_ALWAYS
+	var hud_levelup = hud_levelup_scn.instantiate()
+	add_child(hud_levelup)
+	#panel.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func get_required_experience(level: int) -> float:
 	return round(pow(level, 1.8) + level * 2)

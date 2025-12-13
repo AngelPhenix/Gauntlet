@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf6xr7fo5wyed"]
+[gd_scene load_steps=14 format=3 uid="uid://bf6xr7fo5wyed"]
 
 [ext_resource type="Script" uid="uid://dbmpr8hlk1pp8" path="res://Scripts/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c4dhic5hp0trv" path="res://Sprites/player_weapon.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://cuycl0wd60o43" path="res://Scenes/Bullet.tscn" id="2_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://dvk8p8tj466dq" path="res://Scenes/Interfaces/HUD_Levelup.tscn" id="3_megsn"]
 [ext_resource type="Texture2D" uid="uid://b1p6a24p37a4j" path="res://Sprites/lightmask01.png" id="3_nn08x"]
 [ext_resource type="AudioStream" uid="uid://brqxfnso8nsh1" path="res://Sounds/gunshot.wav" id="4"]
 [ext_resource type="AudioStream" uid="uid://ceroy3v5dhonj" path="res://Sounds/treasure.wav" id="5"]
@@ -42,6 +44,8 @@ light_mask = 2
 z_index = 3
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1")
+bullet_scn = ExtResource("2_bhhdu")
+hud_levelup_scn = ExtResource("3_megsn")
 
 [node name="sprite" type="Sprite2D" parent="."]
 material = SubResource("1")
@@ -81,7 +85,7 @@ texture_scale = 2.5
 
 [node name="gunshot" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource("4")
-volume_db = -27.0
+volume_db = -35.0
 attenuation = 0.297302
 
 [node name="treasure" type="AudioStreamPlayer2D" parent="audio"]

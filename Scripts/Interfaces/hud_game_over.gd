@@ -1,6 +1,6 @@
 extends Control
 
-@onready var fadeout_scn: PackedScene = preload("res://Scenes/Interface/Fadeout.tscn")
+@export var fadeout_scn: PackedScene
 
 func _on_menu_pressed() -> void:
 	await fade_menu()

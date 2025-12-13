@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bcm3iibc7vtbs" path="res://Scripts/level_parameters.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://b5jghws618t60" path="res://Scenes/TileFragment.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://xldxgjhapwfg" path="res://Scenes/Interface/Interface.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://dlms7exlyn0fc" path="res://Scenes/MonsterGenerator.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://xldxgjhapwfg" path="res://Scenes/Interfaces/HUD_Player.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dlms7exlyn0fc" path="res://Scenes/EnemyGenerator.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bf6xr7fo5wyed" path="res://Scenes/Player.tscn" id="6"]
+
 
 [node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1")
