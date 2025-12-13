@@ -93,6 +93,10 @@ func get_active_buff_level(name: String) -> int:
 	var buff_level: int = active_buffs[name].level
 	return buff_level
 
+func reset_active_buffs() -> void:
+	for buff in active_buffs:
+		active_buffs[buff].level = 0
+
 # On return sous la forme de dictionnaire le fichier avec le JSON contenant les armes et leurs caractéristiques.
 func load_weapons(file_path: String) -> void:
 	#var content = file.get_as_text()
