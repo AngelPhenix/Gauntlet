@@ -13,8 +13,7 @@ script/source = "extends Control
 func _ready() -> void:
 	# Connecting signal sent from each UpgradeBtn to MainMenu
 	for upgrade_btn in upgrade_btns:
-		upgrade_btn.connect(\"skill_levelup\", Callable(self, \"_on_skill_levelup\"))
-		
+		upgrade_btn.skill_levelup.connect(_on_skill_levelup)
 
 func _on_skill_levelup(new_skill_price) -> void:
 	get_tree().get_nodes_in_group(\"skill_price\")[0].text = str(new_skill_price)

@@ -23,9 +23,9 @@ func _on_pressed() -> void:
 		if globals.total_coins_collected >= globals.upgrades[name].price[globals.upgrades[name].level]:
 			
 			# Spend the right amount of money to upgrade then update money display
-			globals.total_coins_collected -= globals.upgrades[name].price[globals.upgrades[name].level]
+			globals.total_coins_collected -= globals.get_upgrade_price(name)
 			globals.get_node("skill_lvlup").play()
-			emit_signal("coins_spent")
+			coins_spent.emit()
 			
 			# Level up the skill. If it's higher than max_level, lock it
 			globals.upgrades[name].level = globals.upgrades[name].level + 1
@@ -42,14 +42,14 @@ func _on_pressed() -> void:
 				return
 			
 			if !globals.upgrades[name].level == globals.upgrades[name].max_level:
-				emit_signal("skill_levelup", globals.upgrades[name].price[globals.upgrades[name].level])
+				skill_levelup.emit(globals.get_upgrade_price(name))
 			else:
-				emit_signal("skill_levelup", "00")
+				skill_levelup.emit("xx")
 			
 			# Update the display to show current level after leveling it up
 			$Level.text = str(globals.upgrades[name].level) + "/" + str(globals.upgrades[name].max_level)
 			
-		 # Player doesn't have enough money to upgrade the buff
+		# Player doesn't have enough money to upgrade the buff
 		else:
 			return
 
@@ -58,7 +58,7 @@ func _on_focus_entered() -> void:
 	if !globals.upgrades[name].level == globals.upgrades[name].max_level:
 		skill_price.text = str(globals.upgrades[name].price[globals.upgrades[name].level])
 	else:
-		skill_price.text = "00"
+		skill_price.text = "xx"
 	skill_desc_node.visible = true
 
 func _on_focus_exited() -> void:

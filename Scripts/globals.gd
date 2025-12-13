@@ -97,6 +97,14 @@ func reset_active_buffs() -> void:
 	for buff in active_buffs:
 		active_buffs[buff].level = 0
 
+func get_upgrade_level(name: String) -> int:
+	var upgrade_level: int = upgrades[name].level
+	return upgrade_level
+
+func get_upgrade_price(name: String) -> int:
+	var upgrade_price: int = upgrades[name].price[get_upgrade_level(name)]
+	return upgrade_price
+
 # On return sous la forme de dictionnaire le fichier avec le JSON contenant les armes et leurs caractéristiques.
 func load_weapons(file_path: String) -> void:
 	#var content = file.get_as_text()
