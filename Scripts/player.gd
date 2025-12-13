@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # variables
-var speed: int = 150
+var speed: int = 100
 var max_health: int = 20
 var health: int = 1
 var coins: int = 0
@@ -13,7 +13,6 @@ var experience: int
 var exp_required: float
 
 var equipped_weapon: String
-var weapons_in_inventory: Array
 
 @onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
 var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
@@ -24,8 +23,6 @@ var shoot: bool = true
 var is_playing: bool = false
 var touching_enemy: bool = false
 
-#var buffs: Dictionary = {}
-
 signal hurt(health)
 signal exp_init()
 signal coin_pickedup(value)
@@ -34,6 +31,7 @@ signal level_up
 signal dead
 
 func _ready() -> void:
+	
 	exp_required = get_required_experience(level)
 	exp_init.emit(exp_required)
 
@@ -44,7 +42,6 @@ func _physics_process(delta: float) -> void:
 	rotation += get_local_mouse_position().angle()
 
 func get_input() -> void:
-	velocity = Vector2()
 	velocity.x = -int(Input.is_action_pressed('ui_left')) + int(Input.is_action_pressed('ui_right'))
 	velocity.y = -int(Input.is_action_pressed('ui_up')) + int(Input.is_action_pressed('ui_down'))
 	if velocity != Vector2():
@@ -63,20 +60,12 @@ func shooting() -> void:
 	can_fire = false
 	($audio/gunshot as AudioStreamPlayer2D).play()
 	var bullet: Node = bullet_scn.instantiate()
-	get_tree().get_root().add_child(bullet)
-	# BIZARRE QUE CE SOIT LE PLAYER QUI FASSE CA
+	get_parent().add_child(bullet)
 	bullet.shoot(get_global_mouse_position(), global_position)
-	bullet.get_node("sprite").texture = load(globals.weapons[equipped_weapon]["bullet_sprite"])
-	bullet.get_node("light").color = Color(globals.weapons[equipped_weapon]["light_color"])
 	($shoot_rate as Timer).start()
 
-func weapon_swapped(weapon_name_in_inv: String) -> void:
-	equipped_weapon = weapon_name_in_inv
-
-func weapon_picked_up(weapon_name: String) -> void:
-	if weapons_in_inventory.size() == 0:
-		equipped_weapon = weapon_name
-	weapons_in_inventory.append(weapon_name)
+func _on_weapon_picked_up(weapon_name: String) -> void:
+	equipped_weapon = weapon_name
 
 func add_coins(value: int) -> void:
 	globals.total_coins_collected += value
@@ -136,18 +125,6 @@ func _on_hitbox_body_entered(body: Object) -> void:
 func _on_hitbox_body_exited(body: Object) -> void:
 	if body.is_in_group("enemy"):
 		body_should_damage_us_map[body] = false # tell our loop to stop damaging
-
-#func buff_collected(name: String) -> void:
-	#var hasBuff: bool = false
-	## Will execute only if the buff is already in the dictionary
-	#for buff in buffs:
-		#if buff == name:
-			#buffs[buff] += 1
-			#hasBuff = true
-	## Will execute only if the buff isn't in the dictionary and initialize it to 1
-	#if hasBuff == false:
-		#buffs[name] = 1
-
 
 func _on_shoot_rate_timeout():
 	can_fire = true

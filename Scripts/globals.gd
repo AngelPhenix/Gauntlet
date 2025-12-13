@@ -17,8 +17,8 @@ var total_coins_collected: int = 1000
 
 var weapons_left_to_choose: Dictionary
 var weapons: Dictionary
-var player_weapons_in_inventory: Array
-var player_equipped_weapon: String
+
+var player_weapon: String
 var hud: Array
 var center_touched: bool = false
 var last_area: Node

@@ -1,6 +1,6 @@
 extends Node2D
 
-const weapon_start_scn: PackedScene = preload("res://Scenes/ChooseWeapon.tscn")
+const choose_weapon_hud_scn: PackedScene = preload("res://Scenes/Interface/ChooseWeapon.tscn")
 @onready var fragment_scn: PackedScene = preload("res://Scenes/TileFragment.tscn")
 
 var player_frag_position: Vector2 = Vector2(0, 0)
@@ -92,5 +92,5 @@ func _clean_map(map_to_clean: Array) -> void:
 
 func _choose_weapon() -> void:
 	get_tree().paused = true
-	var weapons_panel = weapon_start_scn.instantiate()
-	add_child(weapons_panel)
+	var choose_weapon_hud = choose_weapon_hud_scn.instantiate()
+	add_child(choose_weapon_hud)

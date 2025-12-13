@@ -79,11 +79,11 @@ func display_damage(damage: int) -> void:
 
 func get_loot() -> void:
 	var chance = randi() % 100 + 1
-	# Chance d'avoir un coin
-	if chance > 2 && chance <= 6:
+	# Chance d'avoir un coin : 5%
+	if chance >= 0 && chance <= 5:
 		inventory.append(drop_table[0])
-	# Chance d'avoir exp
-	if chance > 6 && chance <= 96:
+	# Chance d'avoir exp : 20%
+	if chance > 5 && chance <= 25:
 		inventory.append(drop_table[1])
 
 

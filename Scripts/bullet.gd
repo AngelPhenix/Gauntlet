@@ -20,6 +20,9 @@ func _ready() -> void:
 	base_dmg = int(globals.weapons[player.equipped_weapon].attack)
 	apply_buffs()
 	dmg_calculated = (base_dmg + atk_boost) + (base_dmg + atk_boost) * (atk_multiplier/10)
+	
+	%sprite.texture = load(globals.weapons[player.equipped_weapon].bullet_sprite)
+	%light.color = Color(globals.weapons[player.equipped_weapon].light_color)
 
 func _process(delta: float) -> void:
 	translate(faced_direction * speed * delta)
