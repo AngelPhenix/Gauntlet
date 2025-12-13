@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://1wb212ex770t"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://1wb212ex770t"]
 
 [ext_resource type="FontFile" uid="uid://fhsd5j6qeraf" path="res://Fonts/default_font.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="2"]
@@ -86,11 +86,17 @@ cache/0/3/0/underline_position = 0.0
 cache/0/3/0/underline_thickness = 0.0
 cache/0/3/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="9"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gbq1"]
+bg_color = Color(0, 0.7176471, 0.3764706, 0.11764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1mhe"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="10"]
 bg_color = Color(0.788235, 0.345098, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atibq"]
+bg_color = Color(0, 0.57874966, 0.288069, 1)
 
 [sub_resource type="StyleBoxEmpty" id="11"]
 
@@ -155,8 +161,10 @@ CheckButton/constants/hseparation = 30
 HBoxContainer/constants/separation = 4
 Label/fonts/font = SubResource("8")
 ProgressBar/fonts/font = ExtResource("1")
-ProgressBar/styles/bg = SubResource("9")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_4gbq1")
+ProgressBar/styles/bg = SubResource("StyleBoxFlat_y1mhe")
 ProgressBar/styles/fg = SubResource("10")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_atibq")
 RichTextLabel/fonts/normal_font = ExtResource("1")
 VBoxContainer/constants/separation = 20
 VSeparator/styles/separator = SubResource("11")

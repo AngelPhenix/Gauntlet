@@ -12,50 +12,32 @@ extends Node
 
 var coin_scn: PackedScene = preload("res://Scenes/Coin.tscn")
 var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
-var zombie_possible_items: Array = [coin_scn, exp_scn]
-var total_coins_collected: int = 1000
+var current_coins: int = 1000
 
-var weapons: Dictionary
-
-var player_weapon: String
-var hud: Array
+# ####################### MAP RELATED ####################### #
 var center_touched: bool = false
 var last_area: Node
 
-
-# DEBUFF RELATED
+# ####################### DEBUFF RELATED ####################### #
 var base_burn_timer: int = 1
 var base_tick_burn: float = 0.5
 
-@export var weapon_file_path : String # (String, FILE, "*.json")
+func _ready() -> void:
+	load_weapons(weapon_file_path)
+	music_initialization()
 
-var upgrades: Dictionary = {
-	"Explo1" : {
-		"name" : "Explosivity",
-		"level" : 0,
-		"max_level" : 2,
-		"price" : [10, 25],
-		"description" : "This card's effect doubles/quadruples the radius of explosions.",
-		"effect" : [2, 4, 6],
-		"locked" : false,
-		"next_upgrade" : "Explo2"
-	},
-	"Explo2" : {
-		"name" : "Atomic Bomb",
-		"level" : 0,
-		"max_level" : 5,
-		"price" : [100, 120, 150, 200, 260],
-		"description" : "Adds a multiplier to 3/7/10/20/40x more base damage to explosions.",
-		"effect" : [1, 3, 7, 10, 20, 40],
-		"locked" : true,
-		"next_upgrade" : ""
-	}
-}
 
-func get_current_upgrade_effect(name: String) -> int:
-	var effect: int = upgrades[name].effect[upgrades[name].level]
-	return effect
 
+
+
+
+
+
+
+
+
+
+# ####################### IN-GAME BUFFS ####################### #
 var active_buffs: Dictionary = {
 	"attack_raw" : {
 		"level" : 0,
@@ -84,14 +66,6 @@ var active_buffs: Dictionary = {
 	}
 }
 
-var music_settings: Dictionary
-
-signal end_level
-
-func _ready() -> void:
-	load_weapons(weapon_file_path)
-	music_initialization()
-
 func get_active_buff_level(name: String) -> int:
 	var buff_level: int = active_buffs[name].level
 	return buff_level
@@ -99,6 +73,47 @@ func get_active_buff_level(name: String) -> int:
 func reset_active_buffs() -> void:
 	for buff in active_buffs:
 		active_buffs[buff].level = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ####################### UPGRADES ####################### #
+var upgrades: Dictionary = {
+	"Explo1" : {
+		"name" : "Explosivity",
+		"level" : 0,
+		"max_level" : 2,
+		"price" : [10, 25],
+		"description" : "This card's effect doubles/quadruples the radius of explosions.",
+		"effect" : [2, 4, 6],
+		"locked" : false,
+		"next_upgrade" : "Explo2"
+	},
+	"Explo2" : {
+		"name" : "Atomic Bomb",
+		"level" : 0,
+		"max_level" : 5,
+		"price" : [100, 120, 150, 200, 260],
+		"description" : "Adds a multiplier to 3/7/10/20/40x more base damage to explosions.",
+		"effect" : [1, 3, 7, 10, 20, 40],
+		"locked" : true,
+		"next_upgrade" : ""
+	}
+}
 
 func get_upgrade_level(name: String) -> int:
 	var upgrade_level: int = upgrades[name].level
@@ -108,10 +123,30 @@ func get_upgrade_price(name: String) -> int:
 	var upgrade_price: int = upgrades[name].price[get_upgrade_level(name)]
 	return upgrade_price
 
-# On return sous la forme de dictionnaire le fichier avec le JSON contenant les armes et leurs caractéristiques.
+func get_current_upgrade_effect(name: String) -> int:
+	var effect: int = upgrades[name].effect[upgrades[name].level]
+	return effect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ####################### WEAPONS ####################### #
+@export var weapon_file_path : String # (String, FILE, "*.json")
+var weapons: Dictionary
+var player_weapon: String
+
 func load_weapons(file_path: String) -> void:
-	#var content = file.get_as_text()
-	#return content
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	assert(file.file_exists(file_path),"Le fichier pour load weapons en JSON n'a pas été trouvé.")
 	file.open(file_path, file.READ)
@@ -120,6 +155,30 @@ func load_weapons(file_path: String) -> void:
 	var weapons_from_json = test_json_conv.get_data()
 	assert(weapons_from_json.size() > 0) 
 	weapons = weapons_from_json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ####################### MUSIC ####################### #
+var music_settings: Dictionary
 
 func music_initialization() -> void:
 	for music in get_children():

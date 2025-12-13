@@ -20,7 +20,7 @@ func _on_player_ready(exp_max: float) -> void:
 	%Exp_Bar.max_value = round(exp_max)
 
 func _update_hud() -> void:
-	%total_coins.text = str(globals.total_coins_collected)
+	%total_coins.text = str(globals.current_coins)
 	%hp.max_value = player.max_health
 	%hp.value = player.health
 	%Exp_Bar.value = player.experience

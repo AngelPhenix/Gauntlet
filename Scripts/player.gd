@@ -4,27 +4,20 @@ extends CharacterBody2D
 var speed: int = 100
 var max_health: int = 20
 var health: int = 1
-var coins: int = 0
 var invincibility_frame: float = 0.50
 var body_should_damage_us_map: Dictionary
 var level: int = 1
-
 var experience: int
 var exp_required: float
-
 var equipped_weapon: String
-
-@onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
 
 @export var bullet_scn: PackedScene
 @export var hud_levelup_scn: PackedScene
-#var bullet_scn: PackedScene = preload("res://Scenes/Bullet.tscn")
-#var levelup_panel_scn = preload("res://Scenes/Interfaces/HUD_Levelup.tscn")
+@onready var interface: Node = get_tree().get_nodes_in_group("interface")[0]
 
 var can_fire: bool = true
 var shoot: bool = true
 var is_playing: bool = false
-var touching_enemy: bool = false
 
 signal hurt(health)
 signal exp_init
@@ -70,8 +63,8 @@ func equip(weapon_name: String) -> void:
 	equipped_weapon = weapon_name
 
 func add_coins(value: int) -> void:
-	globals.total_coins_collected += value
-	emit_signal("coin_pickedup", globals.total_coins_collected)
+	globals.current_coins += value
+	emit_signal("coin_pickedup", globals.current_coins)
 	($audio/treasure as AudioStreamPlayer2D).play()
 
 func add_experience(value: int) -> void:
@@ -95,7 +88,6 @@ func levelup() -> void:
 	
 	var hud_levelup = hud_levelup_scn.instantiate()
 	add_child(hud_levelup)
-	#panel.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func get_required_experience(level: int) -> float:
 	return round(pow(level, 1.8) + level * 2)

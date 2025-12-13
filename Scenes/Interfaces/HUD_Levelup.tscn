@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvk8p8tj466dq"]
 
 [ext_resource type="Script" uid="uid://2a1pyo15l737" path="res://Scripts/Interfaces/hud_levelup.gd" id="1_pusus"]
-[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="2_ebec8"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="2_ebec8"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="3_na8ua"]
 [ext_resource type="PackedScene" uid="uid://cgbmsbtxhgv6n" path="res://Scenes/Interfaces/BuffCard.tscn" id="4_wu083"]
 

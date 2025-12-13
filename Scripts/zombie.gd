@@ -1,22 +1,22 @@
 extends CharacterBody2D
 
 @export var damage_label: PackedScene
+@onready var player: Object = get_tree().get_nodes_in_group("player")[0]
+@onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
+@onready var burning_particle: PackedScene = preload("res://Scenes/Particles/BurningParticle.tscn")
 
+var level: int = 1
 var speed: int = 20
 var strength: int = 1
 var health: int = 35
-var inventory: Array = []
 var veteran: bool = false
 var boss: bool = false
-var level: int = 1
 var drop_table: Array = [globals.coin_scn, globals.exp_scn]
+var inventory: Array = []
 
 # Debuff Related Variables
 var burning: bool = false
 
-@onready var player: Object = get_tree().get_nodes_in_group("player")[0]
-@onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
-@onready var burning_particle: PackedScene = preload("res://Scenes/Particles/BurningParticle.tscn")
 
 func _ready() -> void:
 	# Fill enemy inventory

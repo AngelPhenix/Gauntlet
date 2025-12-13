@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ll7l7n7plbse" path="res://Sprites/Buffs/Explo1.png" id="1_8mkbv"]
 [ext_resource type="Texture2D" uid="uid://4sm0b0fxkydg" path="res://Sprites/Buffs/Explo1_focused.png" id="2_ckc5p"]
 [ext_resource type="Script" uid="uid://dp5nrh7740vj7" path="res://Scripts/Interfaces/upgrade_btn.gd" id="2_ox2c7"]
-[ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="3_ox2c7"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="3_ox2c7"]
 
 [node name="UpgradeBtn" type="TextureButton" groups=["btn_upgrade", "menu_upgrades_btn"]]
 offset_right = 16.0

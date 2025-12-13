@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://87v6p1ase1ok"]
+[gd_scene load_steps=7 format=3 uid="uid://87v6p1ase1ok"]
 
 [ext_resource type="Script" uid="uid://bytscwfjav1s7" path="res://Scripts/Interfaces/hud_game_over.gd" id="1_wen7t"]
-[ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="2_adovk"]
 [ext_resource type="PackedScene" uid="uid://bpintvu20sant" path="res://Scenes/Interfaces/Fadeout.tscn" id="2_vwcvo"]
-[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="3_c1xpy"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="3_c1xpy"]
 
 [sub_resource type="Animation" id="Animation_adovk"]
 length = 0.001
@@ -67,7 +66,7 @@ alignment = 1
 
 [node name="GO" type="Label" parent="List"]
 layout_mode = 2
-theme = ExtResource("2_adovk")
+theme = ExtResource("3_c1xpy")
 theme_override_colors/font_color = Color(1, 0.35000002, 0.35000002, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2

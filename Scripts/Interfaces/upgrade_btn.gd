@@ -20,10 +20,10 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	if globals.upgrades[name].level < globals.upgrades[name].max_level:
 		 # Player has enough money compared to what the skill level costs
-		if globals.total_coins_collected >= globals.upgrades[name].price[globals.upgrades[name].level]:
+		if globals.current_coins >= globals.upgrades[name].price[globals.upgrades[name].level]:
 			
 			# Spend the right amount of money to upgrade then update money display
-			globals.total_coins_collected -= globals.get_upgrade_price(name)
+			globals.current_coins -= globals.get_upgrade_price(name)
 			globals.get_node("skill_lvlup").play()
 			coins_spent.emit()
 			

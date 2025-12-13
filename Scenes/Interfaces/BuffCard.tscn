@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgbmsbtxhgv6n"]
 
-[ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="1_3xrgr"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="1_3xrgr"]
 [ext_resource type="Texture2D" uid="uid://bfosup075cmr" path="res://Sprites/9patch_panel.png" id="2_po8r8"]
 [ext_resource type="Script" uid="uid://b8v868f7fstny" path="res://Scripts/Interfaces/buff_card.gd" id="3_r63rn"]
 

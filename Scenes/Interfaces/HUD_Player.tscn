@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://xldxgjhapwfg"]
+[gd_scene load_steps=24 format=3 uid="uid://xldxgjhapwfg"]
 
-[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://Fonts/Theme_Menu.tres" id="1_pe852"]
+[ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="1_pe852"]
 [ext_resource type="Script" uid="uid://c71qliqvyshvi" path="res://Scripts/Interfaces/hud_player.gd" id="2_fgg51"]
 [ext_resource type="PackedScene" uid="uid://87v6p1ase1ok" path="res://Scenes/Interfaces/HUD_Gameover.tscn" id="3_0ojj5"]
 [ext_resource type="Texture2D" uid="uid://bfosup075cmr" path="res://Sprites/9patch_panel.png" id="4_2vyfj"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="5_86td8"]
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="6_3rdpv"]
-[ext_resource type="Theme" uid="uid://b3cuhhlhaw0w4" path="res://Fonts/Theme_Panel_Lvl.tres" id="7_qj7tf"]
 [ext_resource type="StyleBox" uid="uid://dlnmbfxjhn6xe" path="res://ThemeResources/ProgressBar_ExpBG.tres" id="8_3xgv7"]
 [ext_resource type="StyleBox" uid="uid://ckbkfdvmobl31" path="res://ThemeResources/ProgressBar_Exp.tres" id="9_hw6ld"]
 [ext_resource type="FontFile" uid="uid://fhsd5j6qeraf" path="res://Fonts/default_font.tres" id="10_iq5to"]
@@ -61,6 +60,147 @@ cache/0/8/0/descent = 0.0
 cache/0/8/0/underline_position = 0.0
 cache/0/8/0/underline_thickness = 0.0
 cache/0/8/0/scale = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="3"]
+
+[sub_resource type="StyleBoxEmpty" id="7"]
+
+[sub_resource type="StyleBoxEmpty" id="4"]
+
+[sub_resource type="StyleBoxEmpty" id="2"]
+
+[sub_resource type="StyleBoxEmpty" id="5"]
+
+[sub_resource type="FontFile" id="8"]
+fallbacks = Array[Font]([ExtResource("5_86td8")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/1/0/ascent = 0.0
+cache/0/1/0/descent = 0.0
+cache/0/1/0/underline_position = 0.0
+cache/0/1/0/underline_thickness = 0.0
+cache/0/1/0/scale = 1.0
+cache/0/2/0/ascent = 0.0
+cache/0/2/0/descent = 0.0
+cache/0/2/0/underline_position = 0.0
+cache/0/2/0/underline_thickness = 0.0
+cache/0/2/0/scale = 1.0
+cache/0/3/0/ascent = 0.0
+cache/0/3/0/descent = 0.0
+cache/0/3/0/underline_position = 0.0
+cache/0/3/0/underline_thickness = 0.0
+cache/0/3/0/scale = 1.0
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/6/0/ascent = 0.0
+cache/0/6/0/descent = 0.0
+cache/0/6/0/underline_position = 0.0
+cache/0/6/0/underline_thickness = 0.0
+cache/0/6/0/scale = 1.0
+cache/0/7/0/ascent = 0.0
+cache/0/7/0/descent = 0.0
+cache/0/7/0/underline_position = 0.0
+cache/0/7/0/underline_thickness = 0.0
+cache/0/7/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlnp3"]
+bg_color = Color(0, 0.7176471, 0.3764706, 0.11764706)
+
+[sub_resource type="StyleBoxFlat" id="9"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="10"]
+bg_color = Color(0.788235, 0.345098, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5kmq"]
+bg_color = Color(0, 0.57874966, 0.288069, 1)
+
+[sub_resource type="StyleBoxEmpty" id="11"]
+
+[sub_resource type="FontFile" id="6"]
+fallbacks = Array[Font]([ExtResource("5_86td8")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/1/0/ascent = 0.0
+cache/0/1/0/descent = 0.0
+cache/0/1/0/underline_position = 0.0
+cache/0/1/0/underline_thickness = 0.0
+cache/0/1/0/scale = 1.0
+cache/0/2/0/ascent = 0.0
+cache/0/2/0/descent = 0.0
+cache/0/2/0/underline_position = 0.0
+cache/0/2/0/underline_thickness = 0.0
+cache/0/2/0/scale = 1.0
+cache/0/3/0/ascent = 0.0
+cache/0/3/0/descent = 0.0
+cache/0/3/0/underline_position = 0.0
+cache/0/3/0/underline_thickness = 0.0
+cache/0/3/0/scale = 1.0
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/6/0/ascent = 0.0
+cache/0/6/0/descent = 0.0
+cache/0/6/0/underline_position = 0.0
+cache/0/6/0/underline_thickness = 0.0
+cache/0/6/0/scale = 1.0
+cache/0/7/0/ascent = 0.0
+cache/0/7/0/descent = 0.0
+cache/0/7/0/underline_position = 0.0
+cache/0/7/0/underline_thickness = 0.0
+cache/0/7/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_h10eq"]
+default_font = SubResource("6")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("3")
+Button/styles/focus = SubResource("7")
+Button/styles/hover = SubResource("4")
+Button/styles/normal = SubResource("2")
+Button/styles/pressed = SubResource("5")
+CheckButton/constants/hseparation = 30
+HBoxContainer/constants/separation = 4
+Label/fonts/font = SubResource("8")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = ExtResource("10_iq5to")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_hlnp3")
+ProgressBar/styles/bg = SubResource("9")
+ProgressBar/styles/bg_exp = ExtResource("8_3xgv7")
+ProgressBar/styles/fg = SubResource("10")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_a5kmq")
+ProgressBar/styles/fill_exp = ExtResource("9_hw6ld")
+RichTextLabel/fonts/normal_font = ExtResource("10_iq5to")
+VBoxContainer/constants/separation = 20
+VSeparator/styles/separator = SubResource("11")
 
 [node name="Interface" type="Control" groups=["interface"]]
 layout_mode = 3
@@ -127,7 +267,7 @@ anchor_bottom = 1.0
 offset_top = -9.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("7_qj7tf")
+theme = SubResource("Theme_h10eq")
 theme_override_styles/background = ExtResource("8_3xgv7")
 theme_override_styles/fill = ExtResource("9_hw6ld")
 step = 1.0
@@ -140,7 +280,7 @@ layout_mode = 0
 offset_right = 149.0
 offset_bottom = 10.0
 size_flags_horizontal = 3
-theme = ExtResource("7_qj7tf")
+theme = ExtResource("1_pe852")
 theme_override_font_sizes/font_size = 8
 step = 1.0
 value = 100.0
