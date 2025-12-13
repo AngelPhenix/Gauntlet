@@ -15,7 +15,6 @@ var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
 var zombie_possible_items: Array = [coin_scn, exp_scn]
 var total_coins_collected: int = 1000
 
-var weapons_left_to_choose: Dictionary
 var weapons: Dictionary
 
 var player_weapon: String
@@ -52,6 +51,10 @@ var upgrades: Dictionary = {
 		"next_upgrade" : ""
 	}
 }
+
+func get_current_upgrade_effect(name: String) -> int:
+	var effect: int = upgrades[name].effect[upgrades[name].level]
+	return effect
 
 var active_buffs: Dictionary = {
 	"attack_raw" : {
@@ -117,7 +120,6 @@ func load_weapons(file_path: String) -> void:
 	var weapons_from_json = test_json_conv.get_data()
 	assert(weapons_from_json.size() > 0) 
 	weapons = weapons_from_json
-	weapons_left_to_choose = weapons.duplicate(true)
 
 func music_initialization() -> void:
 	for music in get_children():

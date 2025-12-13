@@ -15,7 +15,7 @@ var boss: bool = false
 
 var inventory: Array
 var drop_table: Array = [globals.coin_scn, globals.exp_scn]
-var label: PackedScene = preload("res://Scenes/Interface/DamageMobLabel.tscn")
+var label: PackedScene = preload("res://Scenes/Interfaces/DamageMobLabel.tscn")
 
 @onready var player: Object = get_tree().get_nodes_in_group("player")[0]
 @onready var blood_particle: PackedScene = preload("res://Scenes/Particles/BloodParticle.tscn")
