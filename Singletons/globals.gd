@@ -10,9 +10,21 @@ extends Node
 # 4 : Flying Enemies
 # 5 : Thrown Weapons?
 
+func _ready() -> void:
+	load_weapons(weapon_file_path)
+	music_initialization()
+
+
+
+
 var coin_scn: PackedScene = preload("res://Scenes/Coin.tscn")
 var exp_scn: PackedScene = preload("res://Scenes/Experience.tscn")
+
+# ####################### DEBUG MODE ####################### #
+var debug_mode: bool = true
 var current_coins: int = 1000
+var max_drop_coin: int = 50
+var max_drop_exp: int = 100
 
 # ####################### MAP RELATED ####################### #
 var center_touched: bool = false
@@ -21,10 +33,6 @@ var last_area: Node
 # ####################### DEBUFF RELATED ####################### #
 var base_burn_timer: int = 1
 var base_tick_burn: float = 0.5
-
-func _ready() -> void:
-	load_weapons(weapon_file_path)
-	music_initialization()
 
 
 
