@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgbmsbtxhgv6n"]
+[gd_scene load_steps=5 format=3 uid="uid://cgbmsbtxhgv6n"]
 
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="1_3xrgr"]
 [ext_resource type="Texture2D" uid="uid://bfosup075cmr" path="res://Sprites/9patch_panel.png" id="2_po8r8"]
 [ext_resource type="Script" uid="uid://b8v868f7fstny" path="res://Scripts/Interfaces/buff_card.gd" id="3_r63rn"]
+[ext_resource type="Texture2D" uid="uid://dlgqdt052q6l6" path="res://Sprites/Buffs/buff_test.png" id="4_po8r8"]
 
 [node name="BuffCard" type="NinePatchRect"]
 modulate = Color(0.733333, 0.733333, 0.733333, 1)
@@ -27,22 +28,24 @@ anchor_bottom = 1.0
 mouse_filter = 2
 theme_override_constants/margin_left = 42
 theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 45
 
 [node name="BuffSprite" type="TextureRect" parent="MarginContainer/HBoxContainer" groups=["buff_sprite"]]
 layout_mode = 2
 size_flags_vertical = 4
+texture = ExtResource("4_po8r8")
 stretch_mode = 6
 
 [node name="BuffName" type="RichTextLabel" parent="MarginContainer/HBoxContainer" groups=["buff_name"]]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+text = "This is an example text"
 scroll_active = false
 vertical_alignment = 1
 meta_underlined = false
