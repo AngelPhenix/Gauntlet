@@ -60,6 +60,11 @@ cache/0/8/0/descent = 0.0
 cache/0/8/0/underline_position = 0.0
 cache/0/8/0/underline_thickness = 0.0
 cache/0/8/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="3"]
 
@@ -73,6 +78,9 @@ cache/0/8/0/scale = 1.0
 
 [sub_resource type="FontFile" id="8"]
 fallbacks = Array[Font]([ExtResource("5_86td8")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -135,6 +143,9 @@ bg_color = Color(0, 0.57874966, 0.288069, 1)
 
 [sub_resource type="FontFile" id="6"]
 fallbacks = Array[Font]([ExtResource("5_86td8")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -215,10 +226,13 @@ cheat_mode = true
 gameover_scn = ExtResource("3_0ojj5")
 
 [node name="CoinCounter" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 267.0
-offset_right = 320.0
-offset_bottom = 16.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -177.0
+offset_bottom = 49.0
+grow_horizontal = 0
 texture = ExtResource("4_2vyfj")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -234,7 +248,7 @@ offset_left = 1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 11
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CoinCounter/MarginContainer"]
 layout_mode = 2
@@ -247,8 +261,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_pe852")
 theme_override_fonts/font = SubResource("1")
-theme_override_font_sizes/font_size = 8
-text = "0"
+text = "0000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -266,7 +279,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -9.0
+offset_top = -47.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_h10eq")
@@ -279,8 +292,8 @@ show_percentage = false
 [node name="hp" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 149.0
-offset_bottom = 10.0
+offset_right = 479.0
+offset_bottom = 38.0
 size_flags_horizontal = 3
 theme = ExtResource("1_pe852")
 theme_override_font_sizes/font_size = 8
@@ -288,13 +301,15 @@ step = 1.0
 value = 100.0
 show_percentage = false
 
-[node name="Level" type="Label" parent="."]
+[node name="Level" type="Label" parent="hp"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 34.0
-offset_bottom = 9.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_right = 32.0
+offset_bottom = 4.0
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("10_iq5to")
-theme_override_font_sizes/font_size = 8
 text = "Lv.1"

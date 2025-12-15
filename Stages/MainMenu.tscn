@@ -109,12 +109,12 @@ func _on_Quit_pressed():
 # We're on the Upgrade menu when this happens
 func slide_right() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, \"position:x\", position.x - size.x, SLIDING_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, \"position:x\", position.x - size.x, SLIDING_TIME)
 	await tween.finished
 
 func slide_left() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(self, \"position:x\", position.x + size.x, SLIDING_TIME).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, \"position:x\", position.x + size.x, SLIDING_TIME)
 	await tween.finished
 
 func fade_menu() -> void:
