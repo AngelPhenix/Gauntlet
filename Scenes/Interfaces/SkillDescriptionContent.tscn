@@ -24,7 +24,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -25.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -36,15 +36,15 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
+offset_top = -132.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_grhaq")
-region_rect = Rect2(0, 0, 48, 48)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+region_rect = Rect2(0, 0, 144, 144)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [node name="SkillDescription" type="Label" parent="NinePatchRect" groups=["skill_desc"]]
 layout_mode = 1
@@ -54,7 +54,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_66jn6")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "This is the placeholder description of a skill to see how the text reacts to its parent."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -62,16 +62,16 @@ autowrap_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 273.0
-offset_top = -12.0
-offset_right = 319.0
-offset_bottom = 5.0
+offset_left = 828.0
+offset_top = -34.0
+offset_right = 954.0
+offset_bottom = 21.0
 texture = ExtResource("1_grhaq")
-region_rect = Rect2(0, 0, 48, 48)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+region_rect = Rect2(0, 0, 144, 144)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/NinePatchRect"]
 layout_mode = 1
@@ -88,7 +88,7 @@ alignment = 2
 [node name="Price" type="Label" parent="NinePatchRect/NinePatchRect/HBoxContainer" groups=["skill_price"]]
 layout_mode = 2
 theme = ExtResource("2_66jn6")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -15,6 +15,11 @@ cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
 
 [node name="LevelUp" type="CanvasLayer"]
 process_mode = 3
@@ -59,14 +64,19 @@ vertical_alignment = 1
 [node name="BuffContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 16
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 80
 alignment = 1
 
 [node name="Buff1" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource("4_wu083")]
+custom_minimum_size = Vector2(720, 150)
 layout_mode = 2
 
 [node name="Buff2" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource("4_wu083")]
+custom_minimum_size = Vector2(720, 150)
 layout_mode = 2
 
 [node name="Buff3" parent="Control/MarginContainer/VBoxContainer/BuffContainer" instance=ExtResource("4_wu083")]
+custom_minimum_size = Vector2(720, 150)
 layout_mode = 2

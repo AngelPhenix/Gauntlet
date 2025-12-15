@@ -1,12 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dommik54whurs"]
+[gd_scene load_steps=8 format=3 uid="uid://dommik54whurs"]
 
 [ext_resource type="PackedScene" uid="uid://du1hideq43ggx" path="res://Scenes/Interfaces/MainMenuButton.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://bpintvu20sant" path="res://Scenes/Interfaces/Fadeout.tscn" id="2_du6k5"]
 [ext_resource type="PackedScene" uid="uid://26kdk36wcac" path="res://Scenes/Interfaces/UpgradeBtn.tscn" id="3_rw2bk"]
-[ext_resource type="Texture2D" uid="uid://vxnu0pffdsgq" path="res://Sprites/Buffs/disabled.png" id="4_du6k5"]
-[ext_resource type="Texture2D" uid="uid://dmy2cio2o4hy1" path="res://Sprites/Buffs/Explo2.png" id="4_v8rri"]
-[ext_resource type="Texture2D" uid="uid://dk1qg4mtkhwbv" path="res://Sprites/Buffs/Explo2_focused.png" id="5_473rl"]
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="6_473rl"]
 [ext_resource type="PackedScene" uid="uid://cl7hcui4iknsu" path="res://Scenes/Interfaces/SkillDescriptionContent.tscn" id="7_jttb6"]
 
@@ -17,10 +14,10 @@ const SLIDING_TIME: float = 0.1
 var first_focus: bool = true
 var is_sliding: bool = false
 
-@onready var menu_buttons: Array = $Background/MarginContainer/VBoxContainer/MainMenuList.get_children()
-@onready var back_btn_options: Button = $Options/ColorRect/MarginContainer/VBoxContainer/OptionBack
-@onready var back_btn_upgrades: Button = $Upgrades/ColorRect/MarginContainer/VBoxContainer/UpgradesBack
-@onready var money_display: Label = $Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton/MoneyContainer/Money
+@onready var menu_buttons: Array = %MainMenuList.get_children()
+@onready var back_btn_options: Button = %OptionBack
+@onready var back_btn_upgrades: Button = %UpgradesBack
+@onready var money_display: Label = %Money
 @onready var upgrade_btns: Array[Node] = get_tree().get_nodes_in_group(\"btn_upgrade\")
 @onready var skill_desc_node: Node = get_tree().get_nodes_in_group(\"skill_desc_node\")[0]
 @onready var skill_price: Node = get_tree().get_nodes_in_group(\"skill_price\")[0]
@@ -167,12 +164,16 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Gauntlet v0.5"
+theme_override_font_sizes/font_size = 48
+text = "Gauntlet v0.7"
+horizontal_alignment = 1
 
 [node name="MainMenuList" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
+theme_override_constants/separation = 80
 alignment = 1
 
 [node name="Brawl" parent="Background/MarginContainer/VBoxContainer/MainMenuList" groups=["main_menu_btn"] instance=ExtResource("1")]
@@ -192,11 +193,14 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Options" type="Control" parent="."]
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 320.0
-offset_right = 320.0
+offset_left = 960.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="Options"]
@@ -233,14 +237,20 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="OptionBack" parent="Options/ColorRect/MarginContainer/VBoxContainer" groups=["menu_option_btn"] instance=ExtResource("1")]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 text = "Back"
 
 [node name="Upgrades" type="Control" parent="."]
-anchors_preset = 0
-offset_left = -320.0
-offset_bottom = 320.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_right = -960.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Upgrades"]
@@ -266,9 +276,9 @@ alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 0
 
 [node name="TextureButton" type="Control" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer"]
@@ -277,21 +287,17 @@ mouse_filter = 2
 
 [node name="Explo1" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
 layout_mode = 1
-offset_left = 6.0
-offset_top = 7.0
-offset_right = -278.0
-offset_bottom = -251.0
-texture_disabled = ExtResource("4_du6k5")
+offset_left = 27.0
+offset_top = 29.0
+offset_right = 87.0
+offset_bottom = 89.0
 
 [node name="Explo2" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 7.0
-offset_right = 63.0
-offset_bottom = 23.0
-texture_normal = ExtResource("4_v8rri")
-texture_disabled = ExtResource("4_du6k5")
-texture_focused = ExtResource("5_473rl")
+offset_left = 161.0
+offset_top = 29.0
+offset_right = 221.0
+offset_bottom = 89.0
 
 [node name="MoneyContainer" type="HBoxContainer" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton"]
 layout_mode = 1
@@ -304,8 +310,9 @@ grow_horizontal = 0
 alignment = 2
 
 [node name="Money" type="Label" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton/MoneyContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -317,6 +324,7 @@ texture = ExtResource("6_473rl")
 stretch_mode = 2
 
 [node name="UpgradesBack" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer" groups=["menu_upgrades_btn"] instance=ExtResource("1")]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 text = "Back"

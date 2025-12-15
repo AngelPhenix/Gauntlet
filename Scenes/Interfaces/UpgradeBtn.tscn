@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://26kdk36wcac"]
+[gd_scene load_steps=4 format=3 uid="uid://26kdk36wcac"]
 
-[ext_resource type="Texture2D" uid="uid://ll7l7n7plbse" path="res://Sprites/Buffs/Explo1.png" id="1_8mkbv"]
-[ext_resource type="Texture2D" uid="uid://4sm0b0fxkydg" path="res://Sprites/Buffs/Explo1_focused.png" id="2_ckc5p"]
+[ext_resource type="Texture2D" uid="uid://dlgqdt052q6l6" path="res://Sprites/Buffs/buff_test.png" id="1_xws8q"]
 [ext_resource type="Script" uid="uid://dp5nrh7740vj7" path="res://Scripts/Interfaces/upgrade_btn.gd" id="2_ox2c7"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="3_ox2c7"]
 
@@ -9,18 +8,26 @@
 offset_right = 16.0
 offset_bottom = 16.0
 mouse_filter = 2
-texture_normal = ExtResource("1_8mkbv")
-texture_focused = ExtResource("2_ckc5p")
+texture_normal = ExtResource("1_xws8q")
+texture_disabled = ExtResource("1_xws8q")
+texture_focused = ExtResource("1_xws8q")
 script = ExtResource("2_ox2c7")
 
 [node name="Level" type="Label" parent="."]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 18.0
-offset_right = 20.0
-offset_bottom = 26.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -5.0
+offset_right = 48.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("3_ox2c7")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "0/3"
 horizontal_alignment = 1
 vertical_alignment = 1
