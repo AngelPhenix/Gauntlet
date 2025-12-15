@@ -1,9 +1,9 @@
 extends Node
 
-var screen_w_size: int = 320
-var screen_h_size: int = 320
-var spawning_margin: int = 50
-var number_of_mobs: int = 5
+var screen_w_size: int = 960
+var screen_h_size: int = 960
+var spawning_margin: int = 250
+var number_of_mobs: int = 6
 
 # 1% chance to spawn a boss
 var enemy_proba_boss: int = 1

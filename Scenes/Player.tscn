@@ -13,7 +13,7 @@
 light_mode = 1
 
 [sub_resource type="CircleShape2D" id="2"]
-radius = 195.46385
+radius = 108.57143
 
 [sub_resource type="Animation" id="3"]
 loop_mode = 1
