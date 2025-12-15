@@ -81,13 +81,13 @@ func _draw_new_map_from_array(array_to_draw_with: Array) -> void:
 
 func _clean_map(map_to_clean: Array) -> void:
 	for map in map_to_clean:
-		if map.position.x > player_frag_position.x + 320:
+		if map.position.x > player_frag_position.x + 960:
 			map.queue_free()
-		if map.position.x < player_frag_position.x - 320:
+		if map.position.x < player_frag_position.x - 960:
 			map.queue_free()
-		if map.position.y > player_frag_position.y + 320:
+		if map.position.y > player_frag_position.y + 960:
 			map.queue_free()
-		if map.position.y < player_frag_position.y - 320:
+		if map.position.y < player_frag_position.y - 960:
 			map.queue_free()
 
 func _choose_weapon() -> void:

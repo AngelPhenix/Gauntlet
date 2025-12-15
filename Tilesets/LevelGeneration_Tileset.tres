@@ -9,26 +9,32 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4fxqx"]
 resource_name = "floor"
 texture = ExtResource("4")
+texture_region_size = Vector2i(48, 48)
 0:0/next_alternative_id = 9
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vkcci"]
 texture = ExtResource("2_6kqn6")
+texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5qx6"]
 texture = ExtResource("3_4fxqx")
+texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8e6g4"]
 texture = ExtResource("4_d5kvm")
+texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o65p5"]
 texture = ExtResource("5_p268m")
+texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 
 [resource]
+tile_size = Vector2i(48, 48)
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
