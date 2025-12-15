@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # variables
-var speed: int = 100
+var speed: int = 300
 var max_health: int = 20
 var health: int = 1
 var invincibility_frame: float = 0.50

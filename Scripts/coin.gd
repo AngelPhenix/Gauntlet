@@ -11,5 +11,5 @@ func _on_Coin_body_entered(body: Object) -> void:
 func _moving_to_ui() -> void:
 	var tween: Tween = create_tween()
 	tween.parallel().tween_property(self, "scale", Vector2(0.2,0.2), 1)
-	tween.parallel().tween_property(self, "position", position + Vector2(500, -500), 1)
+	tween.parallel().tween_property(self, "position", position + Vector2(1500, -1500), 1)
 	await tween.finished

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2jj5ykigxsyn" path="res://Sprites/piece.png" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]
-radius = 10.556621
+radius = 26.938932
 
 [node name="Coin" type="Area2D"]
 z_index = 2

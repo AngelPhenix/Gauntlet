@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ds2ph3tiu57v1" path="res://Scenes/Explosion.tscn" id="2_qvus8"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
-radius = 2.0673
-height = 10.6368
+radius = 11.001973
+height = 55.13509
 
 [node name="Bullet" type="Area2D"]
 z_index = 2

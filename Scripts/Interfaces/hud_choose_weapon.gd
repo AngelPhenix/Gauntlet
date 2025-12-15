@@ -22,11 +22,11 @@ func _ready():
 		var tween: Tween = create_tween()
 		match index:
 			0:
-				tween.tween_property(node_to_move, "position", Vector2(20,85), 0.4)
+				tween.tween_property(node_to_move, "position", Vector2(60,255), 0.4)
 			1:
-				tween.tween_property(node_to_move, "position", Vector2(120,85), 0.4)
+				tween.tween_property(node_to_move, "position", Vector2(360,255), 0.4)
 			2:
-				tween.tween_property(node_to_move, "position", Vector2(220,85), 0.4)
+				tween.tween_property(node_to_move, "position", Vector2(660,255), 0.4)
 		get_tree().get_nodes_in_group("card_sound")[0].play()
 		await tween.finished
 

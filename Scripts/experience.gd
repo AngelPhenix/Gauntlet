@@ -22,5 +22,5 @@ func _change_exp_level(mob_level: int) -> void:
 func _moving_to_ui() -> void:
 	var tween: Tween = create_tween()
 	tween.parallel().tween_property(self, "scale", Vector2(0.2,0.2), 1)
-	tween.parallel().tween_property(self, "position", position + Vector2(-250, 500), 1)
+	tween.parallel().tween_property(self, "position", position + Vector2(-750, 1500), 1)
 	await tween.finished

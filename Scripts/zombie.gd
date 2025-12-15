@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var burning_particle: PackedScene = preload("res://Scenes/Particles/BurningParticle.tscn")
 
 var level: int = 1
-var speed: int = 20
+var speed: int = 60
 var strength: int = 1
 var health: int = 35
 var veteran: bool = false

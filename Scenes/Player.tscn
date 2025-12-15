@@ -13,7 +13,7 @@
 light_mode = 1
 
 [sub_resource type="CircleShape2D" id="2"]
-radius = 28.4724
+radius = 195.46385
 
 [sub_resource type="Animation" id="3"]
 loop_mode = 1
@@ -37,7 +37,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="4"]
-radius = 22.704
+radius = 85.99999
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 light_mask = 2

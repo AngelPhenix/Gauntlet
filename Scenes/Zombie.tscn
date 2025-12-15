@@ -6,7 +6,7 @@
 
 [sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true
-radius = 9.18283
+radius = 34.104416
 
 [sub_resource type="Animation" id="2"]
 resource_name = "walk"

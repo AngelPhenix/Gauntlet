@@ -1,12 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://nmxduwfegirw"]
+[gd_scene load_steps=6 format=3 uid="uid://nmxduwfegirw"]
 
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="1_ow8ng"]
 [ext_resource type="Script" uid="uid://bxwxcgvcg6n14" path="res://Scripts/Interfaces/weapon_card.gd" id="2_lw3cu"]
 [ext_resource type="Texture2D" uid="uid://d0cklelxxx3bs" path="res://Sprites/Guns/01.png" id="3_ckbmn"]
 [ext_resource type="FontFile" uid="uid://cu85a0up2sfh4" path="res://Fonts/kongtext.ttf" id="4_2ie8h"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_xyrm2"]
-font_size = 8
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("4_2ie8h"), ExtResource("4_2ie8h")])
@@ -78,14 +75,21 @@ cache/0/4/0/descent = 0.0
 cache/0/4/0/underline_position = 0.0
 cache/0/4/0/underline_thickness = 0.0
 cache/0/4/0/scale = 1.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_jhaeg"]
-font_size = 8
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
 
 [node name="WeaponCard" type="Panel"]
 custom_minimum_size = Vector2(80, 150)
-offset_right = 80.0
-offset_bottom = 150.0
+offset_right = 240.0
+offset_bottom = 450.0
 theme = ExtResource("1_ow8ng")
 script = ExtResource("2_lw3cu")
 
@@ -106,7 +110,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 65
 alignment = 1
 
 [node name="WeaponName" type="Label" parent="VBoxContainer"]
@@ -114,8 +118,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_ow8ng")
+theme_override_font_sizes/font_size = 24
 text = "name"
-label_settings = SubResource("LabelSettings_xyrm2")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -131,8 +135,8 @@ stretch_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = SubResource("1")
+theme_override_font_sizes/font_size = 24
 text = "ATK : 10"
-label_settings = SubResource("LabelSettings_jhaeg")
 horizontal_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_PanelWeaponChoosing_gui_input"]

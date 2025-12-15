@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cx1cum4sk3lmt" path="res://Scripts/experience.gd" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]
+radius = 23.0
 
 [node name="Experience" type="Area2D" groups=["experience"]]
 z_index = 2

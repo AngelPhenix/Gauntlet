@@ -5,7 +5,7 @@ var weapon_name: String
 signal weapon_chosen(weapon_name)
 
 func _ready() -> void:
-	position = Vector2(-500,0)
+	position = Vector2(-1500,0)
 	%WeaponName.text = weapon_name
 	%WeaponATK.text = "ATK : " + str(globals.weapons[weapon_name].attack)
 	%WeaponSprite.texture = load(globals.weapons[weapon_name].png_path)

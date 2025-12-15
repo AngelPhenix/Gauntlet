@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4hjvbiw77ni0" path="res://Sprites/explosion.png" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]
-radius = 9.00617
+radius = 25.5
 
 [sub_resource type="Animation" id="2"]
 length = 0.001
