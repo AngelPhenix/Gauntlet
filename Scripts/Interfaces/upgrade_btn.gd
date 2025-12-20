@@ -15,7 +15,7 @@ func _ready() -> void:
 	$Level.text = str(globals.upgrades[name].level) + "/" + str(globals.upgrades[name].max_level)
 	
 	if globals.upgrades[name].locked:
-		self.texture_focused = load("res://Sprites/Buffs/disabled_focus.png")
+		%Sprite.self_modulate = Color(0.129, 0.129, 0.129)
 
 func _on_pressed() -> void:
 	if globals.upgrades[name].level < globals.upgrades[name].max_level:
@@ -35,7 +35,7 @@ func _on_pressed() -> void:
 				if node.name == globals.upgrades[name].next_upgrade:
 					globals.upgrades[node.name].locked = false
 					node.disabled = false
-					node.texture_focused = load("res://Sprites/Buffs/"+node.name+"_focused.png")
+					node.get_node("%Sprite").self_modulate = Color(1, 1, 1)
 			
 			if globals.upgrades[name].level > globals.upgrades[name].max_level:
 				globals.upgrades[name].level = globals.upgrades[name].max_level

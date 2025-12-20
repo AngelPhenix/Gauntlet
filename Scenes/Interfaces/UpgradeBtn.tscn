@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://26kdk36wcac"]
+[gd_scene load_steps=6 format=3 uid="uid://26kdk36wcac"]
 
-[ext_resource type="Texture2D" uid="uid://dlgqdt052q6l6" path="res://Sprites/Buffs/buff_test.png" id="1_xws8q"]
+[ext_resource type="Texture2D" uid="uid://bpwhp2clxwiir" path="res://Sprites/Buffs/SkillTree/upgrade_tree_solo_empty_border.png" id="1_xlcmi"]
+[ext_resource type="Texture2D" uid="uid://cwwj8clffte1" path="res://Sprites/Buffs/SkillTree/upgrade_tree_solo_empty_border_focused.png" id="2_2r5os"]
 [ext_resource type="Script" uid="uid://dp5nrh7740vj7" path="res://Scripts/Interfaces/upgrade_btn.gd" id="2_ox2c7"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="3_ox2c7"]
+[ext_resource type="Texture2D" uid="uid://djms1n0vccpbc" path="res://Sprites/Buffs/SkillTree/test.png" id="5_2r5os"]
 
 [node name="UpgradeBtn" type="TextureButton" groups=["btn_upgrade", "menu_upgrades_btn"]]
 offset_right = 16.0
 offset_bottom = 16.0
 mouse_filter = 2
-texture_normal = ExtResource("1_xws8q")
-texture_disabled = ExtResource("1_xws8q")
-texture_focused = ExtResource("1_xws8q")
+texture_normal = ExtResource("1_xlcmi")
+texture_disabled = ExtResource("1_xlcmi")
+texture_focused = ExtResource("2_2r5os")
 script = ExtResource("2_ox2c7")
 
 [node name="Level" type="Label" parent="."]
@@ -31,6 +33,11 @@ theme_override_font_sizes/font_size = 24
 text = "0/3"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(36, 45)
+texture = ExtResource("5_2r5os")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
