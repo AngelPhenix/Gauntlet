@@ -31,8 +31,9 @@ func _process(delta: float) -> void:
 [node name="BloodParticle" type="GPUParticles2D"]
 light_mask = 2
 z_index = 1
+scale = Vector2(3, 3)
 emitting = false
-amount = 50
+amount = 150
 lifetime = 2.0
 one_shot = true
 explosiveness = 0.95
