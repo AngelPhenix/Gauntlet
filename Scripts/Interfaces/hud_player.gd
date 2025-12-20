@@ -13,6 +13,7 @@ func _ready() -> void:
 	player.dead.connect(_on_player_dead)
 	player.level_up.connect(_on_player_levelup)
 	player.exp_init.connect(_on_player_ready)
+	player.reset_hp.connect(_on_player_resethp)
 
 	_update_hud()
 
@@ -43,6 +44,10 @@ func _on_player_levelup(level: int, exp_max: float) -> void:
 	%Level.text = "Lv." + str(level)
 	%Exp_Bar.value = 0
 	%Exp_Bar.max_value = round(exp_max)
+
+func _on_player_resethp(new_max_health: int) -> void:
+	%hp.max_value = new_max_health
+	%hp.value = %hp.max_value
 
 func _on_player_dead() -> void:
 	get_tree().paused = true

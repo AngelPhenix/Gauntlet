@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cwwj8clffte1" path="res://Sprites/Buffs/SkillTree/upgrade_tree_solo_empty_border_focused.png" id="2_2r5os"]
 [ext_resource type="Script" uid="uid://dp5nrh7740vj7" path="res://Scripts/Interfaces/upgrade_btn.gd" id="2_ox2c7"]
 [ext_resource type="Theme" uid="uid://1wb212ex770t" path="res://ThemeResources/Theme_Menu.tres" id="3_ox2c7"]
-[ext_resource type="Texture2D" uid="uid://djms1n0vccpbc" path="res://Sprites/Buffs/SkillTree/test.png" id="5_2r5os"]
+[ext_resource type="Texture2D" uid="uid://djms1n0vccpbc" path="res://Sprites/Buffs/SkillTree/upgrade_hp.png" id="5_2r5os"]
 
 [node name="UpgradeBtn" type="TextureButton" groups=["btn_upgrade", "menu_upgrades_btn"]]
 offset_right = 16.0

@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 # variables
 var speed: int = 300
-var max_health: int = 20
-var health: int = 1
+var max_health: int = 5
+var health: int = 5
 var invincibility_frame: float = 0.50
 var body_should_damage_us_map: Dictionary
 var level: int = 1
@@ -20,6 +20,7 @@ var shoot: bool = true
 var is_playing: bool = false
 
 signal hurt(health)
+signal reset_hp(health)
 signal exp_init
 signal coin_pickedup(value)
 signal exp_pickedup
@@ -29,6 +30,7 @@ signal dead
 func _ready() -> void:
 	exp_required = get_required_experience(level)
 	exp_init.emit(exp_required)
+	stat_check()
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -91,6 +93,11 @@ func levelup() -> void:
 
 func get_required_experience(level: int) -> float:
 	return round(pow(level, 1.8) + level * 2)
+
+func stat_check() -> void:
+	max_health += globals.get_current_upgrade_effect("hp")
+	health = max_health
+	reset_hp.emit(max_health)
 
 func _on_hitbox_body_entered(body: Object) -> void:
 	# If the body hit is an enemy

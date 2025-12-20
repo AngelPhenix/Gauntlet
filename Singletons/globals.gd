@@ -120,6 +120,16 @@ var upgrades: Dictionary = {
 		"effect" : [1, 3, 7, 10, 20, 40],
 		"locked" : true,
 		"next_upgrade" : ""
+	},
+	"hp" : { # TOTAL COST: 110g, TOTAL EFFECT: +100HP
+		"name" : "Health Increase",
+		"level" : 0,
+		"max_level" : 10,
+		"price" : [2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+		"description" : "Gives +10HP for each level.",
+		"effect" : [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+		"locked" : false,
+		"next_upgrade" : ""
 	}
 }
 

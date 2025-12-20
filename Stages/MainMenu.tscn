@@ -292,7 +292,7 @@ offset_top = 29.0
 offset_right = 87.0
 offset_bottom = 89.0
 
-[node name="Explo2" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
+[node name="hp" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
 layout_mode = 0
 offset_left = 161.0
 offset_top = 29.0
