@@ -285,19 +285,26 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Explo1" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
-layout_mode = 1
-offset_left = 27.0
-offset_top = 29.0
-offset_right = 87.0
-offset_bottom = 89.0
-
 [node name="hp" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
 layout_mode = 0
-offset_left = 161.0
-offset_top = 29.0
-offset_right = 221.0
-offset_bottom = 89.0
+offset_left = 374.0
+offset_top = 312.0
+offset_right = 446.0
+offset_bottom = 402.0
+
+[node name="Explo1" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 312.0
+offset_right = 518.0
+offset_bottom = 402.0
+
+[node name="Explo2" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton" instance=ExtResource("3_rw2bk")]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 249.0
+offset_right = 482.0
+offset_bottom = 339.0
 
 [node name="MoneyContainer" type="HBoxContainer" parent="Upgrades/ColorRect/MarginContainer/VBoxContainer/MarginContainer/TextureButton"]
 layout_mode = 1
@@ -330,6 +337,7 @@ mouse_filter = 2
 text = "Back"
 
 [node name="SkillDescriptionContent" parent="Upgrades" instance=ExtResource("7_jttb6")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/MainMenuList/Brawl" to="." method="_on_Brawl_pressed"]
